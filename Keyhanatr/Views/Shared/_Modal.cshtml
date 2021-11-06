@@ -1,0 +1,1386 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Cartzilla | ارگانیک</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cartzilla - Bootstrap تجارت الکترونیکی Template">
+    <meta name="keywords" content="bootstrap, shop, تجارت الکترونیکی, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="گروه ستین">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css" />
+    <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css" />
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <!-- Google Tag Manager-->
+
+</head>
+<!-- Body-->
+<body class="bg-secondary">
+    <!-- Google Tag Manager (noscript)-->
+    <!-- Sign in / sign up modal-->
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>ورود</a></li>
+                        <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>ثبت نام</a></li>
+                    </ul>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body tab-content py-4">
+                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+                        <div class="mb-3">
+                            <label class="form-label" for="si-email">آدرس ایمیل</label>
+                            <input class="form-control" type="email" id="si-email" placeholder="Setin@gmail.com" required>
+                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="si-password">پسورد</label>
+                            <div class="password-toggle">
+                                <input class="form-control" type="password" id="si-password" required>
+                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
+                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex flex-wrap justify-content-between">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="si-remember">
+                                <label class="form-check-label" for="si-remember">مرا به خاطر بسپار</label>
+                            </div><a class="fs-sm" href="#">فراموشی رمز؟</a>
+                        </div>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ورود</button>
+                    </form>
+                    <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+                        <div class="mb-3">
+                            <label class="form-label" for="su-name">نام</label>
+                            <input class="form-control" type="text" id="su-name" placeholder="ستین" required>
+                            <div class="invalid-feedback">لطفا نام را وارد کنید</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="su-email">آدرس ایمیل</label>
+                            <input class="form-control" type="email" id="su-email" placeholder="Setin@gmail.com" required>
+                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="su-password">پسورد</label>
+                            <div class="password-toggle">
+                                <input class="form-control" type="password" id="su-password" required>
+                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
+                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="su-password-confirm">تکرار پسورد</label>
+                            <div class="password-toggle">
+                                <input class="form-control" type="password" id="su-password-confirm" required>
+                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
+                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ثبت نام</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar-->
+    <header class="bg-light shadow-sm fixed-top" data-fixed-element>
+        <div class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand d-none d-sm-block me-3 me-xl-4 flex-shrink-0" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+                <!-- Search-->
+                <div class="input-group d-none d-lg-flex flex-nowrap mx-4">
+                    <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                    <input class="form-control rounded-start w-100" type="text" placeholder="جستجو برای محصول">
+                    <select class="form-select flex-shrink-0" style="width: 14rem;">
+                        <option>همه دسته بندی</option>
+                        <option>نانوایی</option>
+                        <option>تخم مرغ</option>
+                        <option>میوه و سبزیحات</option>
+                        <option>گوشت و مرغ</option>
+                        <option>ماهی</option>
+                        <option>سس و ادویه</option>
+                        <option>کنسرو و روغن</option>
+                        <option>نوشیدنی</option>
+                        <option>نوشابه</option>
+                        <option>غلات</option>
+                        <option>منجمد</option>
+                        <option>اسنک،شیرینی</option>
+                        <option>بهداشت شخصی</option>
+                        <option>وسایل آشپزخانه</option>
+                    </select>
+                </div>
+                <!-- Toolbar-->
+                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center ms-xl-2">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideNav"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-flex d-lg-none" href="#searchBox" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="searchBox">
+                        <span class="navbar-tool-tooltip">جستجو</span>
+                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div>
+                    </a><a class="navbar-tool d-none d-lg-flex" href="#">
+                        <span class="navbar-tool-tooltip">علاقه مندی</span>
+                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-heart"></i></div>
+                    </a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
+                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                        <div class="navbar-tool-text ms-n3"><small>سلام وارد شوید</small>حساب من</div>
+                    </a>
+                    <div class="navbar-tool dropdown ms-3">
+                        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="grocery-checkout.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="grocery-checkout.html"><small>سبدخرید</small>25000</a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
+                                <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
+                                    <div class="widget-cart-item pb-2 border-bottom">
+                                        <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                                        <div class="d-flex align-items-center">
+                                            <a class="d-block" href="grocery-single.html"><img src="img/grocery/cart/th01.jpg" width="64" alt="Product"></a>
+                                            <div class="ps-2">
+                                                <h6 class="widget-product-title"><a href="grocery-single.html">مرغ های آماده فر منجمد</a></h6>
+                                                <div class="widget-product-meta"><span class="text-accent me-2">150<small>00</small></span><span class="text-muted">x 1</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-cart-item py-2 border-bottom">
+                                        <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                                        <div class="d-flex align-items-center">
+                                            <a class="d-block" href="grocery-single.html"><img src="img/grocery/cart/th02.jpg" width="64" alt="Product"></a>
+                                            <div class="ps-2">
+                                                <h6 class="widget-product-title"><a href="grocery-single.html">خمیر شکلات آجیل (750 گرم)</a></h6>
+                                                <div class="widget-product-meta"><span class="text-accent me-2">60<small>50</small></span><span class="text-muted">x 1</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-cart-item py-2 border-bottom">
+                                        <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                                        <div class="d-flex align-items-center">
+                                            <a class="d-block" href="grocery-single.html"><img src="img/grocery/cart/th03.jpg" width="64" alt="Product"></a>
+                                            <div class="ps-2">
+                                                <h6 class="widget-product-title"><a href="grocery-single.html">پنیر کوچک موزارلا</a></h6>
+                                                <div class="widget-product-meta"><span class="text-accent me-2">30<small>50</small></span><span class="text-muted">x 1</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-wrap justify-content-between align-items-center pt-3">
+                                    <div class="fs-sm me-2 py-2"><span class="text-muted">مجموع:</span><span class="text-accent fs-base ms-1">250<small>00</small></span></div><a class="btn btn-primary btn-sm" href="grocery-checkout.html"><i class="ci-card me-2 fs-base align-middle"></i>بررسی<i class="ci-arrow-left  ms-1 me-n1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search collapse-->
+        <div class="collapse" id="searchBox">
+            <div class="card pt-2 pb-4 border-0 rounded-0">
+                <div class="container">
+                    <div class="input-group">
+                        <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                        <input class="form-control rounded-start" type="text" placeholder="جستجو برای محصول">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Sidebar menu-->
+    <aside class="offcanvas offcanvas-expand w-100 border-end zindex-lg-5 pt-lg-5" id="sideNav" style="max-width: 21.875rem;">
+        <div class="pt-2 d-none d-lg-block"></div>
+        <ul class="nav nav-tabs nav-justified mt-4 mt-lg-5 mb-0" role="tablist" style="min-height: 3rem;">
+            <li class="nav-item"><a class="nav-link fw-medium active" href="#categories" data-bs-toggle="tab" role="tab">دسته بندی</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#menu" data-bs-toggle="tab" role="tab">منو</a></li>
+            <li class="nav-item d-lg-none"><a class="nav-link fs-sm" href="#" data-bs-dismiss="offcanvas" role="tab"><i class="ci-close fs-xs me-2"></i>بستن</a></li>
+        </ul>
+        <div class="offcanvas-body px-0 pt-3 pb-0" data-simplebar>
+            <div class="tab-content">
+                <!-- Categories-->
+                <div class="sidebar-nav tab-pane fade show active" id="categories" role="tabpanel">
+                    <div class="widget widget-categories">
+                        <div class="accordion" id="shop-categories">
+                            <!-- پیشنهادهای ویژه-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter"><a class="nav-link-style d-block fs-md fw-normal py-3" href="#"><span class="d-flex align-items-center"><i class="ci-discount fs-lg text-danger mt-n1 me-2"></i>پیشنهادهای ویژه</span></a></h3>
+                            </div>
+                            <!-- Bakery-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#bakery" aria-expanded="false" aria-controls="bakery"><span class="d-flex align-items-center"><i class="ci-bread fs-lg opacity-60 mt-n1 me-2"></i>نان</span></button>
+                                </h3>
+                                <div class="collapse" id="bakery" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">نان</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">باگت</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">نان گندم</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">قرص نان</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">نان جو</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">نان </a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">نان خشک</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">نان منجمد</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">شیرینی</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">قنادی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">نان پر</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">نان تازه</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">نان کنجدی</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- تخم مرغ-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#fruits" aria-expanded="false" aria-controls="fruits"><span class="d-flex align-items-center"><i class="ci-apple fs-lg opacity-60 mt-n1 me-2"></i>تخم مرغ</span></button>
+                                </h3>
+                                <div class="collapse" id="fruits" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">میوه و سبزیجات</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">سیب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">سبزی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">موز</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">پرتقال</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">گیلاس</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">انار</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">توت</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">قارچ</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سبزی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">مرکبات</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">آلو</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- میوه و سبزیحات-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#dairy" aria-expanded="false" aria-controls="dairy"><span class="d-flex align-items-center"><i class="ci-cheese fs-lg opacity-60 mt-n1 me-2"></i>میوه و سبزیحات</span></button>
+                                </h3>
+                                <div class="collapse" id="dairy" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">شیر</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ماست</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ترشی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر تازه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شبر چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر کم چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیرینی</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">دسر</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">غذا</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ماست</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ترشی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر تازه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شبر چرب</a></li>
+
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ماست</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ترشی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیر تازه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شبر چرب</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیر کم چرب</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیرینی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">تخم مرغ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- گوشت و مرغ-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#meat" aria-expanded="false" aria-controls="meat"><span class="d-flex align-items-center"><i class="ci-ham-leg fs-lg opacity-60 mt-n1 me-2"></i>گوشت و مرغ</span></button>
+                                </h3>
+                                <div class="collapse" id="meat" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">ژامبون</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ماست</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ترشی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر تازه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شبر چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر کم چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیرینی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ترشی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیرینی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">ماست</a></li>
+
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سوشی</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">غذا دریایی</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">گوجه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">تند</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر تازه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شبر چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر کم چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیرینی</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ماهی-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#fish" aria-expanded="false" aria-controls="fish"><span class="d-flex align-items-center"><i class="ci-fish fs-lg opacity-60 me-2"></i>ماهی</span></button>
+                                </h3>
+                                <div class="collapse" id="fish" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">غلات</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">ماهی شور</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">گوجه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">تند</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر تازه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شبر چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیر کم چرب</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">شیرینی</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سوشی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">کباب</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- سس و ادویه-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#sauces" aria-expanded="false" aria-controls="sauces"><span class="d-flex align-items-center"><i class="ci-fish fs-lg opacity-60 me-2"></i>سس و ادویه</span></button>
+                                </h3>
+                                <div class="collapse" id="sauces" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سس تند</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link" href="#">سس کاری</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">فلفلی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">فرانسه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">تند</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">گوجه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">فلفلی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">فرانسه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">تند</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">گوجه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">فلفلی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">فرانسه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">تند</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="#">گوجه</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">کچاپ</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سالاد</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سفید</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- کنسرو و روغن-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#canned" aria-expanded="false" aria-controls="canned"><span class="d-flex align-items-center"><i class="ci-canned-food fs-lg opacity-60 me-2"></i>کنسرو و روغن</span></button>
+                                </h3>
+                                <div class="collapse" id="canned" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سرکه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">روغن</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ماهی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">لوبیا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سرکه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">روغن</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ماهی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">لوبیا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">لوبیا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سرکه</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- نوشیدنی-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#alcoholic" aria-expanded="false" aria-controls="alcoholic"><span class="d-flex align-items-center"><i class="ci-wine fs-lg opacity-60 me-2"></i>نوشیدنی</span></button>
+                                </h3>
+                                <div class="collapse" id="alcoholic" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">آب</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">نوشابه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیر</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">انرژی زا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">نوشابه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیر</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- نوشابه-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#drinks" aria-expanded="false" aria-controls="drinks"><span class="d-flex align-items-center"><i class="ci-juice fs-lg opacity-60 me-2"></i>نوشابه</span></button>
+                                </h3>
+                                <div class="collapse" id="drinks" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">آب</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">نوشابه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیر</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">انرژی زا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">نوشابه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیر</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">چای</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">قهوه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">بستنی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">کوکا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">چای داغ</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شیر موز</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- غلات-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#packets" aria-expanded="false" aria-controls="packets"><span class="d-flex align-items-center"><i class="ci-corn fs-lg opacity-60 me-2"></i>غلات</span></button>
+                                </h3>
+                                <div class="collapse" id="packets" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">پاستا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ارد</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">فلفل</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">غلات</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">لوبیا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">عدس</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سویا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">لوبیا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ارد</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- منجمد-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#frozen" aria-expanded="false" aria-controls="frozen"><span class="d-flex align-items-center"><i class="ci-frozen fs-lg opacity-60 me-2"></i>منجمد</span></button>
+                                </h3>
+                                <div class="collapse" id="frozen" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ماهس</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">گوشت و مرغ</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سالاد</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">غذا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">پیتزا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ماهس</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">گوشت و مرغ</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">سالاد</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">غذا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">پیتزا</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- بهداشت شخصی-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#hygiene" aria-expanded="false" aria-controls="hygiene"><span class="d-flex align-items-center"><i class="ci-toothbrush fs-lg opacity-60 me-2"></i>بهداشت شخصی</span></button>
+                                </h3>
+                                <div class="collapse" id="hygiene" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">مسواک</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">خمیر دندان</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">آرایش</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">صابون</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شستشو</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">شامپو</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- وسایل آشپزخانه-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenware" aria-expanded="false" aria-controls="kitchenware"><span class="d-flex align-items-center"><i class="ci-pot fs-lg opacity-60 me-2"></i>وسایل آشپزخانه</span></button>
+                                </h3>
+                                <div class="collapse" id="kitchenware" data-bs-parent="#shop-categories">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">دیدن همه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">یک بار مصرف</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">قابلمه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">لیوان</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">وسایل آشپزخانه</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">ظرف</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="#">مواد غذایی</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu-->
+                <div class="sidebar-nav tab-pane fade" id="menu" role="tabpanel">
+                    <div class="widget widget-categories">
+                        <div class="accordion" id="shop-menu">
+                            <!-- Homepages-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#home" aria-expanded="false" aria-controls="home">صفحه اصلی</button>
+                                </h3>
+                                <div class="collapse" id="home" data-bs-parent="#shop-menu">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="home-fashion-store-v1.html">فروشگاه مد</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="home-electronics-store.html">فروشگاه الکترونیکی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="home-marketplace.html">چند فروشندگی</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="home-grocery-store.html">ارگانیک</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="home-food-delivery.html">خدمات تحویل غذا</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="home-fashion-store-v2.html">فروشگاه مد 2</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="home-single-store.html">فروشگاه</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Shop-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#shop" aria-expanded="false" aria-controls="shop">فروشگاه</button>
+                                </h3>
+                                <div class="collapse" id="shop" data-bs-parent="#shop-menu">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">لایه های فروشگاه</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">فروشگاه-نوار سمت راست</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-rs.html">فروشگاه-نوار سمت چپ</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ft.html">فروشگاه-فیلتر بالا</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ls.html">لیست فروشگاه-منو راست</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-list-rs.html">لیست فروشگاه-منوچپ</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ft.html">لیست فروشگاه-فیلتر بالا</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">بازار</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="marketplace-category.html">دسته بندی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="marketplace-single.html">تک صفحه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="marketplace-vendor.html">چند فروشنده</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="marketplace-cart.html">سبدخرید</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="marketplace-checkout.html">بررسی</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">ارگانیک</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="grocery-catalog.html">کاتالوگ محصول</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="grocery-single.html">تک محصول</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="grocery-checkout.html">بررسی</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">تحوبل غذا</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-category.html">دسته بندی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-single.html">تک محصول</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-cart.html">سبد خرید</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-checkout.html">بررسی و پرداخت</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">صفحات فروشگاه</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-categories.html">دسته بندی فروشگاه</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v1.html">محصول 1</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v2.html">محصول 2 </a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="shop-cart.html">سبدخرید</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="checkout-details.html">بررسی-جزئیات</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="checkout-shipping.html">بررسی-حمل و نقل</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="checkout-payment.html">بررسی-پرداخت</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="checkout-review.html">بررسی-مشاهده</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="checkout-complete.html">بررسی-کامل شدن</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="order-tracking.html">رهیگیری سفارش</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="comparison.html">مقایسه محصول</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Account-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="false" aria-controls="account">حساب کاربری</button>
+                                </h3>
+                                <div class="collapse" id="account" data-bs-parent="#shop-menu">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">حساب کاربری فروشگاه</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="account-orders.html">تاریخچه سفارشات</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="account-profile.html">پروفایل</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="account-address.html">آدرس</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="account-payment.html">روش پرداخت</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="account-wishlist.html">علاقه مندی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="account-tickets.html">تیکت</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="account-single-ticket.html">صفحه تکی تیکت</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">داشبورد فروشنده</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="dashboard-settings.html">تنظیمات</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="dashboard-purchases.html">خرید</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="dashboard-favorites.html">علاقه مندی ها</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="dashboard-sales.html">فروش</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="dashboard-products.html">محصول</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="dashboard-add-new-product.html">محصول جدید</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="dashboard-payouts.html">پرداخت</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="account-signin.html">ورود/ثبت نام</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="account-password-recovery.html">بازیابی رمز</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pages-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages">صفحات</button>
+                                </h3>
+                                <div class="collapse" id="pages" data-bs-parent="#shop-menu">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="about.html">درباره ما</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="contacts.html">تماس با ما</a></li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">کمک</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="help-topics.html">موضوع های کمک </a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="help-single-topic.html">موضوع تکی</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="help-submit-request.html">ارسال درخواست</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">پیدا نشد 404</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="404-simple.html">4404 متن ساده </a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="404-illustration.html">404 تصویر</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Blog-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#blog" aria-expanded="false" aria-controls="blog">وبلاگ</button>
+                                </h3>
+                                <div class="collapse" id="blog" data-bs-parent="#shop-menu">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">طرح بندی لیست بلاگ</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="blog-list-sidebar.html">لیست با نوار کناری</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="blog-list.html">لیست بدون نوار کناری</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">طرح شبکه ای وبلاگ</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="blog-grid-sidebar.html">شبکه با نوار کناری</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="blog-grid.html">شبکه بدون نوار کناری</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="widget-list-item">
+                                                    <a class="widget-list-link fw-medium" href="#">چیدمات تک پست</a>
+                                                    <ul class="widget-list pt-1">
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="blog-single-sidebar.html">مقاله با نوار کناری</a></li>
+                                                        <li class="widget-list-item"><a class="widget-list-link" href="blog-single.html">مقاله بدون نوار کناری</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Docs-->
+                            <div class="accordion-item border-bottom">
+                                <h3 class="accordion-header px-grid-gutter">
+                                    <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#docs" aria-expanded="false" aria-controls="docs">مستندات</button>
+                                </h3>
+                                <div class="collapse" id="docs" data-bs-parent="#shop-menu">
+                                    <div class="px-grid-gutter pt-1 pb-4">
+                                        <div class="widget widget-links">
+                                            <ul class="widget-list">
+                                                <li class="widget-list-item"><a class="widget-list-link" href="docs/dev-setup.html">اسناد</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="components/typography.html">ابزار</a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="docs/changelog.html">تغییرات<span class="badge bg-success ms-2">ورژن 1.4</span></a></li>
+                                                <li class="widget-list-item"><a class="widget-list-link" href="">پشتیبانی</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-cap d-block px-grid-gutter pt-5 pb-4 mb-2">
+            <div class="d-flex mb-3">
+                <i class="ci-support h4 mb-0 fw-normal text-primary mt-1 me-1"></i>
+                <div class="ps-2">
+                    <div class="text-muted fs-sm">پشتیبانی</div><a class="nav-link-style fs-md" href="tel:+09162352304">09162352304</a>
+                </div>
+            </div>
+            <div class="d-flex mb-3">
+                <i class="ci-mail h5 mb-0 fw-normal text-primary mt-1 me-1"></i>
+                <div class="ps-2">
+                    <div class="text-muted fs-sm">ایمیل</div><a class="nav-link-style fs-md" href="">customer@example.com</a>
+                </div>
+            </div>
+            <h6 class="pt-2 pb-1">ما را دنبال کنید</h6><a class="btn-social bs-outline bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-outline bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-outline bs-instagram me-2 mb-2" href="#"><i class="ci-instagram"></i></a><a class="btn-social bs-outline bs-youtube me-2 mb-2" href="#"><i class="ci-youtube"></i></a>
+        </div>
+    </aside>
+    <!-- Page-->
+    <main class="offcanvas-enabled" style="padding-top: 5rem;">
+        <section class="ps-lg-4 pe-lg-3 pt-4">
+            <div class="px-3 pt-2">
+                <!-- Page title + breadcrumb-->
+                <!-- Content-->
+                <!-- Slider-->
+                <section class="tns-carousel mb-3 mb-md-5">
+                    <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 1, &quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;: {&quot;nav&quot;: true, &quot;controls&quot;: false}, &quot;576&quot;: {&quot;nav&quot;: false, &quot;controls&quot;: true}}}">
+                        <!-- Slide 1-->
+                        <div>
+                            <div class="rounded-3 px-md-5 text-center text-xl-start" style="background-color: #59c879;">
+                                <div class="d-xl-flex justify-content-between align-items-center px-4 px-sm-5 mx-auto" style="max-width: 1226px;">
+                                    <div class="py-5 me-xl-4 mx-auto mx-xl-0" style="max-width: 490px;">
+                                        <h2 class="h1 text-light">غذاهای تازه با یک کلیک </h2>
+                                        <p class="text-light pb-4">هر کالایی را از فروشگاه ما بصورت آنلاین سفارش دهید و ما آن را در زمانی مناسب برای شما به درب منزل تحویل دهیم.</p>
+                                        <h5 class="text-light pb-3">برنامه تلفن را دریافت کنید</h5>
+                                        <div class="d-flex flex-wrap justify-content-center justify-content-xl-start"><a class="btn-market btn-apple me-2 mb-2" href="#" role="button"><span class="btn-market-subtitle">بارگیری در</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google mb-2" href="#" role="button"><span class="btn-market-subtitle">بارگیری در</span><span class="btn-market-title">Google Play</span></a></div>
+                                    </div>
+                                    <div><img src="img/grocery/slider/slide01.jpg" alt="Image"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2-->
+                        <div>
+                            <div class="rounded-3 px-md-5 text-center text-xl-start" style="background-color: #1a6fb0;">
+                                <div class="d-xl-flex justify-content-between align-items-center px-4 px-sm-5 mx-auto" style="max-width: 1226px;">
+                                    <div class="py-5 me-xl-4 mx-auto mx-xl-0" style="max-width: 490px;">
+                                        <h2 class="h1 text-light">خدمات تحویل 24/7</h2>
+                                        <p class="text-light pb-4">هر کالایی را از فروشگاه ما بصورت آنلاین سفارش دهید و ما آن را در زمانی مناسب برای شما به درب منزل تحویل دهیم.</p>
+                                        <h5 class="text-light pb-3">برنامه تلفن را دریافت کنید</h5>
+                                        <div class="d-flex flex-wrap justify-content-center justify-content-xl-start"><a class="btn-market btn-apple me-2 mb-2" href="#" role="button"><span class="btn-market-subtitle">بارگیری در</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google mb-2" href="#" role="button"><span class="btn-market-subtitle">بارگیری در</span><span class="btn-market-title">Google Play</span></a></div>
+                                    </div>
+                                    <div><img src="img/grocery/slider/slide02.jpg" alt="Image"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- How it works-->
+                <section class="pt-4 mb-4 mb-md-5">
+                    <h2 class="h3 text-center mb-grid-gutter pt-2">چگونه کار می کند؟</h2>
+                    <div class="row g-0 bg-light rounded-3">
+                        <div class="col-xl-4 col-lg-12 col-md-4 border-end">
+                            <div class="py-3">
+                                <div class="d-flex align-items-center mx-auto py-3 px-3" style="max-width: 362px;">
+                                    <div class="display-3 fw-normal opacity-15 me-4">1</div>
+                                    <div class="ps-2">
+                                        <img class="d-block my-2" src="img/grocery/steps/01.png" width="72" alt="Order online">
+                                        <p class="mb-3 pt-1">شما محصولات مورد علاقه خود را بصورت آنلاین سفارش می دهید</p>
+                                    </div>
+                                </div>
+                                <hr class="d-md-none d-lg-block d-xl-none">
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-12 col-md-4 border-end">
+                            <div class="py-3">
+                                <div class="d-flex align-items-center mx-auto py-3 px-3" style="max-width: 362px;">
+                                    <div class="display-3 fw-normal opacity-15 me-4">2</div>
+                                    <div class="ps-2">
+                                        <img class="d-block my-2" src="img/grocery/steps/02.png" width="72" alt="Grocery collected">
+                                        <p class="mb-3 pt-1">یک دستیار شخصی محصولات را از لیست شما جمع می کند</p>
+                                    </div>
+                                </div>
+                                <hr class="d-md-none d-lg-block d-xl-none">
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-12 col-md-4">
+                            <div class="py-3">
+                                <div class="d-flex align-items-center mx-auto py-3 px-3" style="max-width: 362px;">
+                                    <div class="display-3 fw-normal opacity-15 me-4">3</div>
+                                    <div class="ps-2">
+                                        <img class="d-block my-2" src="img/grocery/steps/03.png" width="72" alt="Delivery">
+                                        <p class="mb-3 pt-1">ما در زمان مناسب شما درب منزل تحویل می دهیم</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- محصولات با تخفیف (Carousel)-->
+                <section class="pt-3 pt-md-4">
+                    <!-- Heading-->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
+                        <h2 class="h3 mb-0 pt-3 me-3">محصولات با تخفیف</h2>
+                        <div class="pt-3"><a class="btn btn-outline-accent btn-sm" href="grocery-catalog.html">محصولات بیشتر<i class="ci-arrow-left  ms-1 me-n1"></i></a></div>
+                    </div>
+                    <div class="tns-carousel tns-controls-static tns-controls-outside tns-nav-enabled pt-2 ltr">
+                        <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;gutter&quot;: 16, &quot;controls&quot;: true, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1}, &quot;480&quot;:{&quot;items&quot;:2}, &quot;720&quot;:{&quot;items&quot;:3}, &quot;991&quot;:{&quot;items&quot;:2}, &quot;1140&quot;:{&quot;items&quot;:3}, &quot;1300&quot;:{&quot;items&quot;:4}, &quot;1500&quot;:{&quot;items&quot;:5}}}">
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 ">
+                                    <span class="badge bg-danger badge-shadow">فروش</span>
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/01.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تخم مرغ</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price">
+                                            <span class="text-accent">10<small>99</small></span>
+                                            <del class="fs-sm text-muted">20<small>99</small></del>
+                                        </div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <span class="badge bg-danger badge-shadow">فروش</span>
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/02.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">میوه و سبزیحات</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price">
+                                            <span class="text-accent">20<small>99</small></span>
+                                            <del class="fs-sm text-muted">30<small>99</small></del>
+                                        </div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <span class="badge bg-danger badge-shadow">فروش</span>
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/03.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">نوشابه</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price">
+                                            <span class="text-accent">10<small>00</small></span>
+                                            <del class="fs-sm text-muted">10<small>25</small></del>
+                                        </div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <span class="badge bg-danger badge-shadow">فروش</span>
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/04.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تخم مرغ</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price">
+                                            <span class="text-accent">10<small>15</small></span>
+                                            <del class="fs-sm text-muted">10<small>75</small></del>
+                                        </div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <span class="badge bg-danger badge-shadow">فروش</span>
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/05.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">بهداشت شخصی</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price">
+                                            <span class="text-accent">40<small>20</small></span>
+                                            <del class="fs-sm text-muted">50<small>99</small></del>
+                                        </div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <span class="badge bg-danger badge-shadow">فروش</span>
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/06.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">نارگیل ، اندونزی (قطعه)</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">خمیر شکلات آجیل (750 گرم)</a></h3>
+                                        <div class="product-price">
+                                            <span class="text-accent">60<small>50</small></span>
+                                            <del class="fs-sm text-muted">70<small>99</small></del>
+                                        </div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <span class="badge bg-danger badge-shadow">فروش</span>
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/07.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">میوه و سبزیحات</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">پنیر کوچک موزارلا</a></h3>
+                                        <div class="product-price">
+                                            <span class="text-accent">30<small>50</small></span>
+                                            <del class="fs-sm text-muted">40<small>99</small></del>
+                                        </div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Bestsellers (Carousel)-->
+                <section class="pt-5 pb-4">
+                    <!-- Heading-->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
+                        <h2 class="h3 mb-0 pt-3 me-3">بهترین فروشندگان</h2>
+                        <div class="pt-3"><a class="btn btn-outline-accent btn-sm" href="grocery-catalog.html">محصولات بیشتر<i class="ci-arrow-left  ms-1 me-n1"></i></a></div>
+                    </div>
+                    <div class="tns-carousel tns-controls-static tns-controls-outside tns-dots-enabled pt-2 ltr">
+                        <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;gutter&quot;: 16, &quot;controls&quot;: true, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1}, &quot;480&quot;:{&quot;items&quot;:2}, &quot;720&quot;:{&quot;items&quot;:3}, &quot;991&quot;:{&quot;items&quot;:2}, &quot;1140&quot;:{&quot;items&quot;:3}, &quot;1300&quot;:{&quot;items&quot;:4}, &quot;1500&quot;:{&quot;items&quot;:5}}}">
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/08.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">میوه و سبزیحات</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price"><span class="text-accent">40<small>30</small></span></div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/09.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">بهداشت شخصی</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price"><span class="text-accent">50<small>99</small></span></div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/10.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">گوشت و مرغ</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">مرغ های آماده فر منجمد</a></h3>
+                                        <div class="product-price"><span class="text-accent">12<small>00</small></span></div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/11.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">نارگیل ، اندونزی (قطعه)</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price"><span class="text-accent">20<small>50</small></span></div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/12.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">کنسرو و روغن</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price"><span class="text-accent">30<small>10</small></span></div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/13.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">ماهی</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price"><span class="text-accent">170<small>99</small></span></div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div>
+                                <div class="card product-card card-static pb-3 rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="img/grocery/catalog/14.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">کنسرو و روغن</a>
+                                        <h3 class="product-title fs-sm text-truncate"><a href="grocery-single.html">نارگیل ، اندونزی (قطعه)</a></h3>
+                                        <div class="product-price"><span class="text-accent">30<small>25</small></span></div>
+                                    </div>
+                                    <div class="product-floating-btn">
+                                        <button class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Reviews-->
+                <section class="py-5 bg-light rounded-3 my-4 my-md-5 px-3 px-sm-4">
+                    <h2 class="h3 py-4 text-center">نظرات مشتری</h2>
+                    <div class="tns-carousel mb-3 ltr">
+                        <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;gutter&quot;: 20, &quot;controls&quot;: false, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 5000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1}, &quot;576&quot;:{&quot;items&quot;:2},&quot;1200&quot;:{&quot;items&quot;:3},&quot;1560&quot;:{&quot;items&quot;:4}}}">
+                            <blockquote class="mb-2">
+                                <div class="card border-0">
+                                    <div class="card-body px-3 fs-md text-muted">
+                                        <div class="mb-2">
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                    </div>
+                                </div>
+                                <footer class="d-flex justify-content-center align-items-center pt-4">
+                                    <img class="rounded-circle" src="img/testimonials/03.jpg" width="50" alt="لورا ویلسون">
+                                    <div class="ps-3">
+                                        <h6 class="fs-sm mb-n1">لورا ویلسون</h6><span class="fs-ms text-muted opacity-75">26 تیر 1400</span>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                            <blockquote class="mb-2">
+                                <div class="card border-0">
+                                    <div class="card-body px-3 fs-md text-muted">
+                                        <div class="mb-2">
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                                            </div>
+                                        </div>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                    </div>
+                                </div>
+                                <footer class="d-flex justify-content-center align-items-center pt-4">
+                                    <img class="rounded-circle" src="img/testimonials/04.jpg" width="50" alt="لورا ویلسون">
+                                    <div class="ps-3">
+                                        <h6 class="fs-sm mb-n1">لورا ویلسون</h6><span class="fs-ms text-muted opacity-75">26 تیر 1400</span>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                            <blockquote class="mb-2">
+                                <div class="card border-0">
+                                    <div class="card-body px-3 fs-md text-muted">
+                                        <div class="mb-2">
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                    </div>
+                                </div>
+                                <footer class="d-flex justify-content-center align-items-center pt-4">
+                                    <img class="rounded-circle" src="img/testimonials/01.jpg" width="50" alt="Mary Grant">
+                                    <div class="ps-3">
+                                        <h6 class="fs-sm mb-n1">مری آلیس گرانت</h6><span class="fs-ms text-muted opacity-75">26 تیر 1400</span>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                            <blockquote class="mb-2">
+                                <div class="card border-0">
+                                    <div class="card-body px-3 fs-md text-muted">
+                                        <div class="mb-2">
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                    </div>
+                                </div>
+                                <footer class="d-flex justify-content-center align-items-center pt-4">
+                                    <img class="rounded-circle" src="img/shop/reviews/01.jpg" width="50" alt="رافائل مارکز">
+                                    <div class="ps-3">
+                                        <h6 class="fs-sm mb-n1">رافائل مارکز</h6><span class="fs-ms text-muted opacity-75">26 تیر 1400</span>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                            <blockquote class="mb-2">
+                                <div class="card border-0">
+                                    <div class="card-body px-3 fs-md text-muted">
+                                        <div class="mb-2">
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                                            </div>
+                                        </div>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                    </div>
+                                </div>
+                                <footer class="d-flex justify-content-center align-items-center pt-4">
+                                    <img class="rounded-circle" src="img/testimonials/02.jpg" width="50" alt="لورا ویلسون">
+                                    <div class="ps-3">
+                                        <h6 class="fs-sm mb-n1">لورا ویلسون</h6><span class="fs-ms text-muted opacity-75">26 تیر 1400</span>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                            <blockquote class="mb-2">
+                                <div class="card border-0">
+                                    <div class="card-body px-3 fs-md text-muted">
+                                        <div class="mb-2">
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                    </div>
+                                </div>
+                                <footer class="d-flex justify-content-center align-items-center pt-4">
+                                    <img class="rounded-circle" src="img/shop/reviews/03.jpg" width="50" alt="لورا ویلسون">
+                                    <div class="ps-3">
+                                        <h6 class="fs-sm mb-n1">لورا ویلسون</h6><span class="fs-ms text-muted opacity-75">26 تیر 1400</span>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </section>
+                <div class="pb-3"></div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="bg-dark pt-5">
+            <div class="px-lg-3 pt-2 pb-4">
+                <div class="mx-auto px-3" style="max-width: 80rem;">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-3 col-sm-4 pb-2 mb-4">
+                            <div class="mt-n1"><a class="d-inline-block align-middle" href="#"><img class="d-block mb-4" src="img/footer-logo-light.png" width="117" alt="Cartzilla"></a></div>
+                            <div class="btn-group dropdown disable-autohide">
+                                <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"><img class="me-2" src="img/flags/en.png" width="20" alt="English">دلار-انگلیس</button>
+                                <ul class="dropdown-menu my-1">
+                                    <li class="dropdown-item">
+                                        <select class="form-select form-select-sm">
+                                            <option value="usd">دلار</option>
+                                            <option value="eur">تومان</option>
+                                            <option value="ukp">یورو</option>
+                                            <option value="jpy">پوند</option>
+                                        </select>
+                                    </li>
+                                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/fr.png" width="20" alt="فرانسه">فرانسه</a></li>
+                                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/de.png" width="20" alt="آلمان">آلمان</a></li>
+                                    <li><a class="dropdown-item" href="#"><img class="me-2" src="img/flags/it.png" width="20" alt="ایتالیا">ایتالیا</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-sm-4">
+                            <div class="widget widget-links widget-light pb-2 mb-4">
+                                <h3 class="widget-title text-light">کاتالوگ محصول</h3>
+                                <ul class="widget-list">
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">پیشنهادهای ویژه</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">نان</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">تخم مرغ</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">میوه و سبزیحات</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">گوشت و مرغ</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">ماهی</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">سس و ادویه</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">کنسرو و روغن</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">نوشیدنی</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">نوشابه</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">غلات</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">منجمد</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">بهداشت شخصی</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">وسایل آشپزخانه</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-sm-4">
+                            <div class="widget widget-links widget-light pb-2 mb-4">
+                                <h3 class="widget-title text-light">شرکت</h3>
+                                <ul class="widget-list">
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">درباره ما</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">فروشگاه یاب</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">مشاغل</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">تماس با ما</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">کمک</a></li>
+                                    <li class="widget-list-item"><a class="widget-list-link" href="#">اخبار</a></li>
+                                </ul>
+                            </div>
+                            <div class="widget widget-light pb-2 mb-4">
+                                <h3 class="widget-title text-light">ما را دنبال کنید</h3><a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-instagram me-2 mb-2" href="#"><i class="ci-instagram"></i></a><a class="btn-social bs-light bs-youtube me-2 mb-2" href="#"><i class="ci-youtube"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-sm-8">
+                            <div class="widget pb-2 mb-4">
+                                <h3 class="widget-title text-light pb-1">در جریان باشید</h3>
+                                <form class="subscription-form validate" action="" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                                    <div class="input-group flex-nowrap">
+                                        <i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                                        <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="ایمیل شما" required>
+                                        <button class="btn btn-primary" type="submit" name="subscribe">عضویت</button>
+                                    </div>
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; right: -5000px;" aria-hidden="true">
+                                        <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+                                    </div>
+                                    <div class="form-text text-light opacity-50">* برای دریافت پیشنهادات تخفیف ، به روزرسانی و اطلاعات جدید محصولات ، در خبرنامه ما مشترک شوید.</div>
+                                    <div class="subscription-status"></div>
+                                </form>
+                            </div>
+                            <div class="widget pb-2 mb-4">
+                                <h3 class="widget-title text-light pb-1">برنامه ما را بارگیری کنید</h3>
+                                <div class="d-flex flex-wrap">
+                                    <div class="me-2 mb-2"><a class="btn-market btn-apple" href="#" role="button"><span class="btn-market-subtitle">بارگیری در</span><span class="btn-market-title">App Store</span></a></div>
+                                    <div class="mb-2"><a class="btn-market btn-google" href="#" role="button"><span class="btn-market-subtitle">بارگیری در</span><span class="btn-market-title">Google Play</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-darker px-lg-3 py-3">
+                <div class="d-sm-flex justify-content-between align-items-center mx-auto px-3" style="max-width: 80rem;">
+                    <div class="fs-xs text-light opacity-50 text-center text-sm-start py-3">© کلیه حقوق محفوظ است <a class="text-light" href="" target="_blank" rel="noopener">گروه ستین</a></div>
+                    <div class="py-3"><img class="d-block mx-auto mx-sm-start" src="img/cards-alt.png" width="187" alt="روش های پرداخت"></div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+</body>
+</html>
