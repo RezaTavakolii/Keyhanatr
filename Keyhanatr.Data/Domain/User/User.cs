@@ -50,7 +50,6 @@ namespace Keyhanatr.Data.Domain.User
 
         //public int Rate { get; set; }
 
-        [ForeignKey("RoleId")]
         public Role Role { get; set; }
     }
 }
