@@ -16,5 +16,8 @@ namespace Keyhanatr.Controllers
         {
             return View();
         }
+        public IActionResult Test(){
+            return null;
+        }
     }
 }
