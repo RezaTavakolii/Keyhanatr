@@ -7,42 +7,43 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Keyhanatr.Data.Context;
 using Keyhanatr.Data.Domain.Products;
+using Keyhanatr.Core.Interfaces.Products;
 
 namespace Keyhanatr.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductGroupsController : Controller
     {
-        private readonly KeyhanatrContext _context;
+        private readonly IProductServices _productServices;
 
-        public ProductGroupsController(KeyhanatrContext context)
+        public ProductGroupsController(IProductServices productServices)
         {
-            _context = context;
+            _productServices = productServices;
         }
 
         // GET: Admin/ProductGroups
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.ProductGroups.ToListAsync());
+            return View(_productServices.GetAllProducts());
         }
 
         // GET: Admin/ProductGroups/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public  IActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var productGroup = await _context.ProductGroups
-                .FirstOrDefaultAsync(m => m.GroupId == id);
-            if (productGroup == null)
-            {
-                return NotFound();
-            }
+        //    var productGroup =  _context.ProductGroups
+        //        .FirstOrDefaultAsync(m => m.GroupId == id);
+        //    if (productGroup == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(productGroup);
-        }
+        //    return View(productGroup);
+        //}
 
         // GET: Admin/ProductGroups/Create
         public IActionResult Create()
@@ -55,26 +56,25 @@ namespace Keyhanatr.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GroupId,GroupTitle")] ProductGroup productGroup)
+        public IActionResult Create([Bind("GroupId,GroupTitle")] ProductGroup productGroup)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(productGroup);
-                await _context.SaveChangesAsync();
+                _productServices.AddProductGroup(productGroup);
                 return RedirectToAction(nameof(Index));
             }
             return View(productGroup);
         }
 
-        // GET: Admin/ProductGroups/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        //GET: Admin/ProductGroups/Edit/5
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var productGroup = await _context.ProductGroups.FindAsync(id);
+            var productGroup = _productServices.GetProductGroupById(id.Value);
             if (productGroup == null)
             {
                 return NotFound();
@@ -87,46 +87,30 @@ namespace Keyhanatr.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GroupId,GroupTitle")] ProductGroup productGroup)
+        public IActionResult Edit([Bind("GroupId,GroupTitle")] ProductGroup productGroup)
         {
-            if (id != productGroup.GroupId)
-            {
-                return NotFound();
-            }
+           
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(productGroup);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductGroupExists(productGroup.GroupId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                _productServices.EditProductGroup(productGroup);
                 return RedirectToAction(nameof(Index));
             }
             return View(productGroup);
         }
 
-        // GET: Admin/ProductGroups/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+
+        //// GET: Admin/ProductGroups/Delete/5
+        public  IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var productGroup = await _context.ProductGroups
-                .FirstOrDefaultAsync(m => m.GroupId == id);
+            var productGroup = _productServices.GetProductGroupById(id.Value);
+                
             if (productGroup == null)
             {
                 return NotFound();
@@ -138,17 +122,11 @@ namespace Keyhanatr.Areas.Admin.Controllers
         // POST: Admin/ProductGroups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public  IActionResult DeleteConfirmed(int id)
         {
-            var productGroup = await _context.ProductGroups.FindAsync(id);
-            _context.ProductGroups.Remove(productGroup);
-            await _context.SaveChangesAsync();
+            var productGroup =  _productServices.GetProductGroupById(id);
+            _productServices.DeleteProductGroup(productGroup);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductGroupExists(int id)
-        {
-            return _context.ProductGroups.Any(e => e.GroupId == id);
         }
     }
 }
