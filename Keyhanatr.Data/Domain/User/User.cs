@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,7 +50,7 @@ namespace Keyhanatr.Data.Domain.User
 
         //public int Rate { get; set; }
 
-        
+        [ForeignKey("RoleId")]
         public Role Role { get; set; }
     }
 }
