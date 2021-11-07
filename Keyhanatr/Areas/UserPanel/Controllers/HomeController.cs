@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Keyhanatr.Areas.UserPanel.Controllers
 {
     [Area("UserPanel")]
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()

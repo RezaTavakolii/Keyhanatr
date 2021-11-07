@@ -23,6 +23,7 @@
     <link rel="stylesheet" media="screen" href="/vendor/tiny-slider/dist/tiny-slider.css" />
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="/css/theme.min.css">
+    <link href="~/css/CustomStyles.css" rel="stylesheet" />
     <!-- Google Tag Manager-->
 
 </head>
@@ -346,7 +347,7 @@
                 </aside>
                 <!-- Content-->
                 <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
-                    
+                    @RenderBody()
                 </section>
             </div>
         </div>
@@ -462,6 +463,7 @@
     <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
     <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    @RenderSection("Scripts",false)
     <!-- Main theme script-->
     <script src="/js/theme.min.js"></script>
 </body>
