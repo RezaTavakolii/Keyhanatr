@@ -48,8 +48,7 @@ namespace Keyhanatr.Data.Domain.User
         public string Address { get; set; }
 
         //public int Rate { get; set; }
-
-        
+      
         public Role Role { get; set; }
     }
 }
