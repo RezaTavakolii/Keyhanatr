@@ -22,7 +22,8 @@
     <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css" />
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css" />
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="/css/theme.min.css">
+    <link href="~/css/CustomStyles.css" rel="stylesheet" />
     <!-- Google Tag Manager-->
 
 </head>
@@ -346,7 +347,7 @@
                 </aside>
                 <!-- Content-->
                 <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
-                    
+                    @RenderBody()
                 </section>
             </div>
         </div>
@@ -458,10 +459,11 @@
     </div>
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
-    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
-    <script src="vendor/tiny-slider/dist/min/tiny-slider.js"></script>
-    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    @RenderSection("Scripts",false)
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
 </body>
