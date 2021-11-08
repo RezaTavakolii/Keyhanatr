@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Keyhanatr.Data.Domain.Products.ProductSubGroup>
+
+@{
+    ViewData["Title"] = "لیست زیر گروه ها";
+}
+
+<h1>لیست زیر گروه محصولات</h1>
+
+<p>
+    <a asp-action="Create">ساخت زیرگروه جدید</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubGroupTitle)
+            </th>
+            <th>
+                گروه اصلی
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubGroupTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductGroup.GroupTitle)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SubGroupId">ویرایش</a> |
+                    <a asp-action="Details" asp-route-id="@item.SubGroupId">جزییات</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SubGroupId">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

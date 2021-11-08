@@ -1,0 +1,35 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductSubGroup
+
+@{
+    ViewData["Title"] = "لیجاد زیرگروه";
+}
+
+<h1>ساخت زیرگروه جدید</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="ProductGroupId" class="control-label">عنوان گروه اصلی را از لیست زیر انتخاب کنید:</label>
+                <select id="ProductGroupId" asp-for="ProductGroupId" class ="form-control" asp-items="ViewBag.ProductGroupId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubGroupTitle" class="control-label"></label>
+                <input asp-for="SubGroupTitle" class="form-control" />
+                <span asp-validation-for="SubGroupTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ساخت زیرگروه جدید" class="btn btn-success d-block w-100" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">بازگشت به لیست زیرگروه ها</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
