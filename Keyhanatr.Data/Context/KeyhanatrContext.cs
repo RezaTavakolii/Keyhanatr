@@ -1,4 +1,5 @@
-﻿using Keyhanatr.Data.Domain.Products;
+﻿using Keyhanatr.Data.Domain;
+using Keyhanatr.Data.Domain.Products;
 using Keyhanatr.Data.Domain.User;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,6 +22,7 @@ namespace Keyhanatr.Data.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductGroup> ProductGroups { get; set; }
         public DbSet<ProductSubGroup> ProductSubGroups { get; set; }
+        public DbSet<Test> Tsets { get; set; }
 
 
         #region ModelBuilder
