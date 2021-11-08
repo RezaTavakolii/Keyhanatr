@@ -1,3 +1,4 @@
+using Keyhanatr.Core.Interfaces.Users;
 using Keyhanatr.Data.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -56,7 +57,6 @@ namespace Keyhanatr
 
             #region IoC
 
-            //services.AddScoped<IUserService, UserService>();
             //services.AddScoped<IMessageSender, MessageSender>();
 
             #endregion

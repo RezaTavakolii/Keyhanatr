@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace Keyhanatr.Data.ViewModels.Account
 {
-   public class RegisterViewModel
+  public  class ChangePasswordViewModel
     {
-        [Display(Name = "نام کاربری")]
+
+        [Display(Name = "کلمه عبور فعلی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
-        public string UserName { get; set; }
+        [DataType(DataType.Password)]
+        public string OldPassword { get; set; }
 
-        [Display(Name = "شماره همراه")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(11, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
-        [Phone(ErrorMessage = "شماره همراه وارد شده معتبر نمی باشد")]
-        public string Mobile { get; set; }
 
         [Display(Name = "کلمه عبور")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -29,7 +27,7 @@ namespace Keyhanatr.Data.ViewModels.Account
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
         [DataType(DataType.Password)]
-        [System.ComponentModel.DataAnnotations.Compare("Password",ErrorMessage = "کلمه های عبور مغایرت دارند")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "کلمه های عبور مغایرت دارند")]
         public string RePassword { get; set; }
     }
 }
