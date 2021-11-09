@@ -22,7 +22,7 @@ namespace Keyhanatr.Data.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductGroup> ProductGroups { get; set; }
         public DbSet<ProductSubGroup> ProductSubGroups { get; set; }
-        public DbSet<Test> Tsets { get; set; }
+        //public DbSet<Test> Tsets { get; set; }
 
 
         #region ModelBuilder

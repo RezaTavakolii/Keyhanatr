@@ -65,7 +65,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             var groups = _productServices.GetGroupsListItem();
-            ViewData["ProductGroupId"] = new SelectList(groups, "Value", "Text",productSubGroup.ProductGroupId);
+            ViewData["GroupId"] = new SelectList(groups, "Value", "Text",productSubGroup.GroupId);
 
             return View(productSubGroup);
         }
@@ -84,7 +84,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
                 return NotFound();
             }
             var groups = _productServices.GetGroupsListItem();
-            ViewData["ProductGroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.ProductGroupId);
+            ViewData["GroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.GroupId);
             return View(productSubGroup);
         }
 
@@ -103,7 +103,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             var groups = _productServices.GetGroupsListItem();
-            ViewData["ProductGroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.ProductGroupId);
+            ViewData["GroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.GroupId);
             return View(productSubGroup);
         }
 
