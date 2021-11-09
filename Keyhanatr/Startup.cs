@@ -14,6 +14,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Keyhanatr.Core.Services.Users;
+using Keyhanatr.Core.Senders;
+using Keyhanatr.Core.Interfaces.Message;
 
 namespace Keyhanatr
 {
@@ -58,10 +61,9 @@ namespace Keyhanatr
             #endregion
 
             #region IoC
-
-            //services.AddScoped<IMessageSender, MessageSender>();
+            services.AddScoped<IMessageSender, MessageSender>();
             services.AddTransient<IProductServices,ProductServices>();
-
+            services.AddScoped<IUserService, UserService>();
             #endregion
         }
 

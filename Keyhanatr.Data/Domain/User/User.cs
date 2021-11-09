@@ -43,12 +43,8 @@ namespace Keyhanatr.Data.Domain.User
         [Display(Name = "فعال / غیر فعال")]
         public bool IsActive { get; set; }
 
-        [Display(Name = "کلمه عبور")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(500, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
-        public string Address { get; set; }
-
-        //public int Rate { get; set; }
+        
+        public Nullable<int> Rate { get; set; }
 
         public Role Role { get; set; }
     }

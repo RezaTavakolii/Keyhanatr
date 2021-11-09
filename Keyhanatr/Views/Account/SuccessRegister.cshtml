@@ -1,0 +1,26 @@
+﻿@model Keyhanatr.Data.ViewModels.Account.RegisterViewModel
+
+@{
+    ViewData["Title"] = "SuccessRegister";
+}
+
+<div class="container py-4 py-lg-5 my-4">
+    <div class="row">
+        <div class="col-md-8 offset-lg-3">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <h2 class="h4 mb-1">تایید حساب کاربری </h2>
+                    <br />
+                    <hr />
+                    <h4 class="alert alert-success">@Model.UserName عزیز خوش آمدید ، ثبت نام شما با موفقیت انجام شد.</h4>
+                    <br />
+                    <div class="row gx-4 gy-3">
+                        <div class="col-6 text-end">
+                            <a class="btn btn-secondary" href="/"><i class="ci-home me-2 ms-n1"></i>صفحه اصلی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

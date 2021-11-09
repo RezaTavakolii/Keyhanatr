@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Keyhanatr.Data.Migrations
 {
-    public partial class Add_First_Mig : Migration
+    public partial class InitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,7 +67,7 @@ namespace Keyhanatr.Data.Migrations
                     RegisterDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ActiveCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
+                    Rate = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

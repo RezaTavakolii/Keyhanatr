@@ -1,0 +1,39 @@
+﻿@model bool
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "فعالسازی";
+}
+<div class="container py-4 py-lg-5 my-4">
+    <div class="row">
+        <div class="col-md-8 offset-lg-3">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <h2 class="h4 mb-1">فعالسازی حساب کاربری</h2>
+                    <br />
+                    <hr />
+                    @if (Model)
+                    {
+                        <div class="alert alert-success">
+                            حساب کاربری شمات فعال شد میتوانید از طریق
+                            <a asp-action="Login">ورود به سایت</a>
+                            وارد شوید
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            با عرض پوزش حساب شما فعال نگردید
+                        </div>
+                    }
+                    <br />
+                    <div class="row gx-4 gy-3">
+                        <div class="col-6 text-end">
+                            <a class="btn btn-secondary" href="/"><i class="ci-home me-2 ms-n1"></i>صفحه اصلی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
