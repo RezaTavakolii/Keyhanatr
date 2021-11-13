@@ -33,6 +33,7 @@ namespace Keyhanatr
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             #region Authentication
 
             services.AddAuthentication(options =>

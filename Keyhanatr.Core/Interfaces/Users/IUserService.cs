@@ -1,4 +1,5 @@
 ﻿using Keyhanatr.Data.Domain.User;
+using Keyhanatr.Data.ViewModel.Account;
 using Keyhanatr.Data.ViewModels.Account;
 using System;
 using System.Collections.Generic;
@@ -12,20 +13,19 @@ namespace Keyhanatr.Core.Interfaces.Users
     {
 
         User GetUserById(int userId);
+        bool IsExistMobile(string Mobile);
 
         bool RegisterUser(RegisterViewModel register);
-        bool IsExistMobile(string Mobile);
         bool ActiveUser(string activeCode);
         User LoginUser(LoginViewModel login);
+
         bool IsUserPassword(int userId, string password);
         void ChangeUserPassword(int userId, string password);
         bool IsActive(int userId);
 
-
-        //bool ForgetPassword(ForgetPasswordViewModel forgetpass);
-        //User GetEmail(EmailViewModel getemail);
-        //bool SendLink(EmailViewModel sendemail);
-        //string GetEmailforpass(string activecode);
-        //string GetUserActiveCode(string email);
+        bool ResetPassword(string activeCode,string password);
+        User GetMobile(string mobileNumber);
+        bool SendLink(MobileViewModel sendSms);
+        
     }
 }

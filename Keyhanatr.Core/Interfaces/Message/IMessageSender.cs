@@ -8,6 +8,6 @@ namespace Keyhanatr.Core.Interfaces.Message
 {
     public interface IMessageSender
     {
-        void SendMessage(string mobileNumber, string text);
+        void SendMessage(string mobile, string activeCode, string text);
     }
 }

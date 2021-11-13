@@ -1,5 +1,13 @@
-﻿
+﻿@using System.Security.Claims
+
 <!DOCTYPE html>
+@{
+    string role = User.FindFirstValue("RoleId").ToString();
+    //if (role != "2")
+    //{
+    //    Context.Response.Redirect("/Login");
+    //}
+}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -464,7 +472,7 @@
     <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
     <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    @RenderSection("Scripts",false)
+    @RenderSection("Scripts", false)
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
 </body>

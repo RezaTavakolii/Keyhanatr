@@ -1,4 +1,6 @@
 ﻿using Keyhanatr.Core.Interfaces.Users;
+using Keyhanatr.Core.Senders;
+using Keyhanatr.Data.ViewModel.Account;
 using Keyhanatr.Data.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -7,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Keyhanatr.Controllers
@@ -41,167 +44,168 @@ namespace Keyhanatr.Controllers
                 return View(register);
             }
             _userService.RegisterUser(register);
-            return View("SuccessRegister", register);
+            return View("Active");
         }
         #endregion
 
         #region Active User
+        public IActionResult Active()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Active(ActiveViewModel active)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_userService.ActiveUser(active.ActiveCode))
+                {
+                    return RedirectToAction("ActiveUser");
+                }
+                else
+                {
+                    ModelState.AddModelError("Code", "کد فعالسازی صحیح نمی باشد");
+                    return View(active);
+                }
+            }
+            else
+            {
+                return View(active);
+            }
+        }
 
         public IActionResult ActiveUser(string id)
         {
             var result = _userService.ActiveUser(id);
             return View(result);
         }
-
         #endregion
 
-        //#region Login & Logout
+        #region Login & Logout
 
-        //[Route("Login")]
-        //public IActionResult Login(string ReturnUrl = "/")
-        //{
-        //    ViewBag.ret = ReturnUrl;
-        //    return View();
-        //}
+        [Route("Login")]
+        public IActionResult Login(string ReturnUrl = "/")
+        {
+            ViewBag.ret = ReturnUrl;
+            return View();
+        }
 
-        //[Route("Login")]
-        //[HttpPost]
-        //public IActionResult Login(LoginViewModel login, string ReturnUrl)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return View(login);
+        [Route("Login")]
+        [HttpPost]
+        public IActionResult Login(LoginViewModel login, string ReturnUrl)
+        {
+            if (!ModelState.IsValid)
+                return View(login);
 
-        //    var user = _userService.LoginUser(login);
+            var user = _userService.LoginUser(login);
 
-        //    if (user == null)
-        //    {
-        //        ModelState.AddModelError("Email", "اطلاعات صحیح نمی باشد");
-        //        return View(login);
-        //    }
-        //    if (user.IsActive)
-        //    {
-        //        var claims = new List<Claim>()
-        //        {
-        //            new Claim(ClaimTypes.Name,user.UserName),
-        //            new Claim(ClaimTypes.NameIdentifier,user.UserId.ToString()),
-        //            new Claim("RoleId",user.RoleId.ToString()),
-        //        };
-        //        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //        var principal = new ClaimsPrincipal(identity);
-        //        var properties = new AuthenticationProperties()
-        //        {
-        //            IsPersistent = login.RememberMe
-        //        };
+            if (user == null)
+            {
+                ModelState.AddModelError("UserName", "اطلاعات صحیح نمی باشد");
+                return View(login);
+            }
+            if (user.IsActive)
+            {
+                var claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Name,user.UserName),
+                   
+                    new Claim(ClaimTypes.NameIdentifier,user.UserId.ToString()),
+                    new Claim("RoleId",user.RoleId.ToString()),
+                   
+                };
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                var properties = new AuthenticationProperties()
+                {
+                    IsPersistent = login.RememberMe
+                };
 
-        //        HttpContext.SignInAsync(principal, properties);
-        //        return Redirect("/");
-        //    }
+                HttpContext.SignInAsync(principal, properties);
+                return Redirect("/");
+            }
 
-        //    ModelState.AddModelError("Email", "حساب کاربری شما فعال نشده است");
+            ModelState.AddModelError("Email", "حساب کاربری شما فعال نشده است");
 
-        //    return View(login);
-        //}
+            return View(login);
+        }
 
-        //#endregion
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-        //#region ForgetPass
-        //public IActionResult messageforpass(string id)
-        //{
-        //    return View();
-        //}
-        //public IActionResult ActivePass(string id)
-        //{
-        //    string email = _userService.GetEmailforpass(id);
-        //    var result = _userService.ActiveUser(id);
-        //    ViewBag.activecode = _userService.GetUserActiveCode(email);
-        //    return View("ActivePass", result);
-        //}
+            return Redirect("/Login");
+        }
+        #endregion
 
-        //[Route("ForgetPass")]
-        //public IActionResult ForgetPass(string activecode)
-        //{
-        //    ViewBag.activecode2 = activecode;
-        //    return View();
-        //}
+        #region ForgetPassword
 
-        //[Route("ForgetPass")]
-        //[HttpPost]
-        //public IActionResult ForgetPass(ForgetPasswordViewModel forgetpass, string activecode)
-        //{
-        //    if (!_userService.ActiveUser(activecode))
-        //    {
-        //        return View();
-        //    }
+        [Route("ResetPassword")]
+        public IActionResult ResetPassword(string activecode)
+        {
+            return View();
+        }
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        ModelState.AddModelError("error", "خطا");
-        //        return View(forgetpass);
-        //    }
-        //    if (!_userService.IsExistEmail(forgetpass.Email))
-        //    {
-        //        ModelState.AddModelError("Email", "ایمیل نامعتبر می باشد");
-        //        return View(forgetpass);
-        //    }
+        [Route("ResetPassword")]
+        [HttpPost]
+        public IActionResult ResetPassword(ResetPasswordViewModel resetPasssword)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_userService.ResetPassword(resetPasssword.ActiveCode, resetPasssword.Password))
+                {
+                    return RedirectToAction("RecoveryPassSuccess");
+                }
+                else
+                {
+                    ModelState.AddModelError("ActiveCode", "کد وارد شده صحیح نمی باشد");
+                    return View(resetPasssword);
+                }
+            }
+            else
+            {
+                return View("ActivePass");
+            }
+        }  
 
-        //    if (_userService.ForgetPassword(forgetpass) == true)
-        //    {
-        //        //forgetpass.Email = ViewBag.email;
-        //        //forgetpass.ActiveCode = ViewBag.activecode;
+        [Route("GetMobile")]
+        public IActionResult GetMobile()
+        {
+            return View();
+        }
 
-        //        // _userServices.ForgetPassword(forgetpass);
-
-        //        return View("SuccessChangePass", forgetpass);
-        //    }
-        //    return View("ActivePass");
-        //}
-
-
-        //[Route("GetEmail")]
-        //public IActionResult GetEmail()
-        //{
-        //    return View();
-        //}
-
-        //[Route("GetEmail")]
-        //[HttpPost]
-        //public IActionResult GetEmail(EmailViewModel getemail)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return View(getemail);
-
-        //    var user = _userService.GetEmail(getemail);
-        //    if (user == null)
-        //    {
-        //        ModelState.AddModelError("GetMail", "ایمیل یافت نشد");
-        //        // return View(getemail);
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError("GetMail", "ایمیل وارد شده اشتباه هست ");
-        //    }
-        //    if (user.IsActive)
-        //    {
-        //        if (_userService.SendLink(getemail))
-        //        {
-        //            _userService.GetEmail(getemail);
-
-        //            ViewBag.email = user.Email;
-
-        //            return View("messageforpass", getemail);
-        //        }
-        //        return View();
-        //    }
-        //    ModelState.AddModelError("GetMail", "ایمیل شما فعال نشده است");
-        //    return View();
-        //}
-        //#endregion
+        [Route("GetMobile")]
+        [HttpPost]
+        public IActionResult GetMobile(MobileViewModel getMobile)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _userService.GetMobile(getMobile.Mobile);
+                if (user != null)
+                {
+                    MessageSender sms = new MessageSender();
+                    sms.SendMessage(getMobile.Mobile, user.ActiveCode, "Verify");
+                    return RedirectToAction("ResetPassword");
+                }
+                else
+                {
+                    ModelState.AddModelError("Mobile", "شماره وارد شده صحیح نمی باشد");
+                    return View(getMobile);
+                }
+            }
+            else
+            {
+                return View(getMobile);
+            }
+        }
 
         [Route("RecoveryPassSuccess")]
         public IActionResult RecoveryPassSuccess()
         {
             return View();
         }
+        #endregion
     }
 }
 

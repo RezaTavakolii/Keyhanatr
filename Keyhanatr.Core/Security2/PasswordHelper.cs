@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Keyhanatr.Core.Security
+namespace Keyhanatr.Core.Security2
 {
     public class PasswordHelper
     {

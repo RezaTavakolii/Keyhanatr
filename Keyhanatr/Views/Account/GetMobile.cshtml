@@ -1,0 +1,50 @@
+﻿@model Keyhanatr.Data.ViewModel.Account.MobileViewModel
+
+@{
+    ViewData["Title"] = "GetMobile";
+}
+
+<div class="container py-4 py-lg-5 my-4">
+    <div class="row">
+        <div class="col-md-6 offset-lg-3">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <h2 class="h4 mb-1" style="text-align:center;">بازیابی کلمه عبور</h2>
+                    <br />
+                    <hr>
+                    <h3 class="fs-base pt-4 pb-2" style="text-align:center;"> لطفاً شماره همراه خود را وارد نمائید</h3>
+                    <form asp-action="GetMobile" class="needs-validation" novalidate>
+                        @*<input type="hidden" value="@ViewBag.ret" name="ReturnUrl" />*@
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="input-group mb-3">
+                            <i class="ci-user position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                            <input asp-for="Mobile" class="form-control rounded-start" type="tel" placeholder="شماره همراه" required>
+                            <span asp-validation-for="Mobile" class="text-danger"></span>
+                        </div>
+                        <hr class="mt-4">
+                        <div class="text-end pt-4">
+                            <button class="btn btn-primary" type="submit"><i class="ci-send me-2 ms-n21"></i>ثبت</button>
+                        </div>
+                    </form>
+                    <br />
+                    <hr />
+                    <br />
+                    <div class="row gx-4 gy-3">
+                        <div class="col-6 text-start">
+                            <a class="btn btn-success" href="Register"><i class="ci-user me-2 ms-n1"></i>ثبت نام</a>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a class="btn btn-secondary" href="/"><i class="ci-home me-2 ms-n1"></i>صفحه اصلی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
