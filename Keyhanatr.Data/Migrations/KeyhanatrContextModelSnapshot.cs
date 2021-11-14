@@ -124,6 +124,95 @@ namespace Keyhanatr.Data.Migrations
                     b.ToTable("ProductSubGroups");
                 });
 
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
+
+                    b.Property<string>("ImageName")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductSubGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductTitle")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Tags")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("ProductId");
+
+                    b.HasIndex("ProductSubGroupId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductGroup", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GroupTitle")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("GroupId");
+
+                    b.ToTable("ProductGroups");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSubGroup", b =>
+                {
+                    b.Property<int>("SubGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubGroupTitle")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("SubGroupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("ProductSubGroups");
+                });
+
             modelBuilder.Entity("Keyhanatr.Data.Domain.User.Role", b =>
                 {
                     b.Property<int>("RoleId")
@@ -214,6 +303,28 @@ namespace Keyhanatr.Data.Migrations
 =======
                         .HasForeignKey("GroupId")
 >>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ProductGroup");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
+                {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.ProductSubGroup", "ProductSubGroup")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductSubGroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ProductSubGroup");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSubGroup", b =>
+                {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.ProductGroup", "ProductGroup")
+                        .WithMany("ProductSubGroups")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

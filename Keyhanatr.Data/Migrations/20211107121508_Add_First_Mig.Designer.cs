@@ -10,16 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-<<<<<<< HEAD
-<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211108182313_InitDB.Designer.cs
-<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211108182313_InitDB.Designer.cs
-    [Migration("20211108182313_InitDB")]
-    partial class InitDB
-=======
-=======
-    [Migration("20211109094619_SomeChanges To Taste the Migrations")]
-    partial class SomeChangesToTastetheMigrations
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f:Keyhanatr.Data/Migrations/20211109094619_SomeChanges To Taste the Migrations.Designer.cs
+    [Migration("20211107121508_Add_First_Mig")]
+    partial class Add_First_Mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -103,16 +95,7 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211109094226_Add_New_Mig.Designer.cs
-                    b.Property<int?>("DecimalPrice")
-                        .HasColumnType("int");
-
-=======
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f:Keyhanatr.Data/Migrations/20211109094619_SomeChanges To Taste the Migrations.Designer.cs
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
-                    b.Property<int>("GroupId")
+                    b.Property<int>("ProductGroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("SubGroupTitle")
@@ -122,7 +105,7 @@ namespace Keyhanatr.Data.Migrations
 
                     b.HasKey("SubGroupId");
 
-                    b.HasIndex("GroupId");
+                    b.HasIndex("ProductGroupId");
 
                     b.ToTable("ProductSubGroups");
                 });
@@ -159,14 +142,11 @@ namespace Keyhanatr.Data.Migrations
                     b.Property<string>("ActiveCode")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
-=======
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -180,12 +160,6 @@ namespace Keyhanatr.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-<<<<<<< HEAD
-                    b.Property<int?>("Rate")
-                        .HasColumnType("int");
-
-=======
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");
 
@@ -219,7 +193,7 @@ namespace Keyhanatr.Data.Migrations
                 {
                     b.HasOne("Keyhanatr.Data.Domain.Products.ProductGroup", "ProductGroup")
                         .WithMany("ProductSubGroups")
-                        .HasForeignKey("GroupId")
+                        .HasForeignKey("ProductGroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
