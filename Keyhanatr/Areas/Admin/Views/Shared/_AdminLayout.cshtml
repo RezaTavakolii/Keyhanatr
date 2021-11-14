@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 @{
     string role = User.FindFirstValue("RoleId").ToString();
-    //if (role != "2")
-    //{
-    //    Context.Response.Redirect("/Login");
-    //}
+    if (role != "5")
+    {
+        Context.Response.Redirect("/Login");
+    }
 }
 <html lang="en">
 <head>
@@ -37,120 +37,7 @@
 </head>
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
-    <!-- Google Tag Manager (noscript)-->
-    <!-- Sign in / sign up modal-->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary">
-                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>ورود</a></li>
-                        <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>ثبت نام</a></li>
-                    </ul>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
-                        <div class="mb-3">
-                            <label class="form-label" for="si-email">آدرس ایمیل</label>
-                            <input class="form-control" type="email" id="si-email" placeholder="Setin@gmail.com" required>
-                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="si-password">پسورد</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="si-password" required>
-                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
-                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mb-3 d-flex flex-wrap justify-content-between">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="si-remember">
-                                <label class="form-check-label" for="si-remember">مرا به خاطر بسپار</label>
-                            </div><a class="fs-sm" href="#">فراموشی رمز؟</a>
-                        </div>
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ورود</button>
-                    </form>
-                    <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
-                        <div class="mb-3">
-                            <label class="form-label" for="su-name">نام</label>
-                            <input class="form-control" type="text" id="su-name" placeholder="ستین" required>
-                            <div class="invalid-feedback">لطفا نام را وارد کنید</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="su-email">آدرس ایمیل</label>
-                            <input class="form-control" type="email" id="su-email" placeholder="Setin@gmail.com" required>
-                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="su-password">پسورد</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="su-password" required>
-                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
-                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="su-password-confirm">تکرار پسورد</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="su-password-confirm" required>
-                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
-                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ثبت نام</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- روش پرداخت را اضافه کنید-->
-    <form class="needs-validation modal fade" method="post" id="add-payment" tabindex="-1" novalidate>
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">یک روش پرداخت اضافه کنید</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" id="paypal" name="payment-method">
-                        <label class="form-check-label" for="paypal">پی پال<img class="d-inline-block align-middle ms-2" src="img/card-paypal.png" width="39" alt="PayPal"></label>
-                    </div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" id="card" name="payment-method" checked>
-                        <label class="form-check-label" for="card">کارت اعتباری/نقدی<img class="d-inline-block align-middle ms-2" src="img/cards.png" width="187" alt="Credit card"></label>
-                    </div>
-                    <div class="row g-3 mb-2">
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" name="number" placeholder="شماره کارت" required>
-                            <div class="invalid-feedback">لطفا شماره کارت را پر کنید!</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" name="name" placeholder="نام و نام خانوادگی" required>
-                            <div class="invalid-feedback">لطفاً نام را روی کارت قید کنید!</div>
-                        </div>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="expiry" placeholder="ماه/سال" required>
-                            <div class="invalid-feedback">لطفا تاریخ انقضا کارت را ارائه دهید!</div>
-                        </div>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="cvc" placeholder="سی وی سی" required>
-                            <div class="invalid-feedback">لطفا کد CVC کارت را ارائه دهید!</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary d-block w-100" type="submit">این کارت را ثبت کنید</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <!-- Navbar Marketplace-->
+    
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="bg-light shadow-sm navbar-sticky">
         <div class="navbar navbar-expand-lg navbar-light">
@@ -348,6 +235,8 @@
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-add-new-product.html"><i class="ci-cloud-upload opacity-60 me-2"></i>محصول جدید</a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه ها </a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductSubGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>زیر گروه ها </a></li>
+                                <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Users" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>کاربران </a></li>
+                                
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a></li>
                                 <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a></li>
                             </ul>

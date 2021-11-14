@@ -10,18 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-<<<<<<< HEAD
-<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211109094226_Add_New_Mig.Designer.cs
-    [Migration("20211109094226_Add_New_Mig")]
-    partial class Add_New_Mig
-=======
-    [Migration("20211109094619_SomeChanges To Taste the Migrations")]
-    partial class SomeChangesToTastetheMigrations
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f:Keyhanatr.Data/Migrations/20211109094619_SomeChanges To Taste the Migrations.Designer.cs
-=======
-    [Migration("20211109094226_Add_New_Mig")]
-    partial class Add_New_Mig
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
+    [Migration("20211114113130_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -105,18 +95,6 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-<<<<<<< HEAD
-<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211109094226_Add_New_Mig.Designer.cs
-                    b.Property<int?>("DecimalPrice")
-                        .HasColumnType("int");
-
-=======
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f:Keyhanatr.Data/Migrations/20211109094619_SomeChanges To Taste the Migrations.Designer.cs
-=======
-                    b.Property<int?>("DecimalPrice")
-                        .HasColumnType("int");
-
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
@@ -164,11 +142,6 @@ namespace Keyhanatr.Data.Migrations
                     b.Property<string>("ActiveCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -181,6 +154,9 @@ namespace Keyhanatr.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<int?>("Rate")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");

@@ -16,17 +16,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-<<<<<<< HEAD
-=======
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-<<<<<<< HEAD
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
-=======
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
   </ItemGroup>
 
 </Project>

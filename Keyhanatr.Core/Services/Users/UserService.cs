@@ -67,6 +67,10 @@ namespace Keyhanatr.Core.Services.Users
         {
             return _context.Users.Any(u => u.UserId == userId && u.IsActive == true);
         }
+        public bool IsExistMobile(string mobile)
+        {
+            return _context.Users.Any(u => u.Mobile == mobile.ToString());
+        }
         #endregion
 
         #region change password
@@ -126,15 +130,50 @@ namespace Keyhanatr.Core.Services.Users
         }
         #endregion
 
-        public bool IsExistMobile(string mobile)
+        #region UserCrud
+        public IEnumerable<User> GetAllUser()
         {
-            return _context.Users.Any(u => u.Mobile == mobile.ToString());
-        }
-        public User GetUserById(int userId)
-        {
-            return _context.Users.FirstOrDefault(u => u.UserId == userId);
+            return _context.Users.Include(u => u.Role);
         }
 
+        public User GetUserById(int userId)
+        {
+            return _context.Users.Include(u => u.Role)
+                .SingleOrDefault(u => u.UserId == userId);
+        }
+
+        public void AddUser(User user)
+        {
+            user.Password = PasswordHelper.HashNewPassword(user.Password);
+            user.RegisterDate = DateTime.Now;
+            user.ActiveCode = Guid.NewGuid().ToString();
+            _context.Users.Add(user);
+            _context.SaveChanges();
+        }
+
+        public void EditUser(User user)
+        {
+            _context.Update(user);
+            _context.SaveChanges();
+        }
+
+        public void DeleteUser(int userId)
+        {
+            var user = GetUserById(userId);
+            _context.Remove(user);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<Role> GetAllRoles()
+        {
+            return _context.Roles;
+        }
+        #endregion
+
+        //public User GetUserById(int userId)
+        //{
+        //    return _context.Users.FirstOrDefault(u => u.UserId == userId);
+        //}
     }
 }
 
