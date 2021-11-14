@@ -5,7 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+<<<<<<< HEAD
 	  <PackageReference Include="kavenegar" Version="1.2.4" />
+=======
+=======
+>>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+<<<<<<< HEAD
+>>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
+=======
+>>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
     <ProjectReference Include="..\Keyhanatr.Data\Keyhanatr.Data.csproj" />
   </ItemGroup>
 

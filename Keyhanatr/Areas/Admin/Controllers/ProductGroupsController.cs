@@ -28,22 +28,21 @@ namespace Keyhanatr.Areas.Admin.Controllers
         }
 
         // GET: Admin/ProductGroups/Details/5
-        //public  IActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var productGroup =  _context.ProductGroups
-        //        .FirstOrDefaultAsync(m => m.GroupId == id);
-        //    if (productGroup == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var productGroup = _productServices.GetProductGroupById(id.Value);
+            if (productGroup == null)
+            {
+                return NotFound();
+            }
 
-        //    return View(productGroup);
-        //}
+            return View(productGroup);
+        }
 
         // GET: Admin/ProductGroups/Create
         public IActionResult Create()
@@ -124,8 +123,9 @@ namespace Keyhanatr.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public  IActionResult DeleteConfirmed(int id)
         {
-            var productGroup =  _productServices.GetProductGroupById(id);
-            _productServices.DeleteProductGroup(productGroup);
+            //var productGroup =  _productServices.GetProductGroupById(id);
+            //_productServices.DeleteProductGroup(productGroup);
+            _productServices.DeleteProductGroup(id);
             return RedirectToAction(nameof(Index));
         }
     }

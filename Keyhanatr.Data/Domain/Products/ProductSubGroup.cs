@@ -16,7 +16,7 @@ namespace Keyhanatr.Data.Domain.Products
 
 
         [Required]
-        public int ProductGroupId { get; set; }
+        public int GroupId { get; set; }
 
 
         [DisplayName("عنوان زیر گروه")]
@@ -27,7 +27,7 @@ namespace Keyhanatr.Data.Domain.Products
 
         #region Relations
 
-        [ForeignKey("ProductGroupId")]
+        [ForeignKey("GroupId")]
         public ProductGroup ProductGroup { get; set; }
 
 

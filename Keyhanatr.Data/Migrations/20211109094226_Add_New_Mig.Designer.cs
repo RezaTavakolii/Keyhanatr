@@ -4,14 +4,26 @@ using Keyhanatr.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-    partial class KeyhanatrContextModelSnapshot : ModelSnapshot
+<<<<<<< HEAD
+<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211109094226_Add_New_Mig.Designer.cs
+    [Migration("20211109094226_Add_New_Mig")]
+    partial class Add_New_Mig
+=======
+    [Migration("20211109094619_SomeChanges To Taste the Migrations")]
+    partial class SomeChangesToTastetheMigrations
+>>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f:Keyhanatr.Data/Migrations/20211109094619_SomeChanges To Taste the Migrations.Designer.cs
+=======
+    [Migration("20211109094226_Add_New_Mig")]
+    partial class Add_New_Mig
+>>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,14 +106,18 @@ namespace Keyhanatr.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-                    b.Property<int>("ProductGroupId")
+<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211109094226_Add_New_Mig.Designer.cs
+                    b.Property<int?>("DecimalPrice")
+                        .HasColumnType("int");
+
 =======
-                    b.Property<int>("GroupId")
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
+>>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f:Keyhanatr.Data/Migrations/20211109094619_SomeChanges To Taste the Migrations.Designer.cs
 =======
-                    b.Property<int>("GroupId")
+                    b.Property<int?>("DecimalPrice")
+                        .HasColumnType("int");
+
 >>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
+                    b.Property<int>("GroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("SubGroupTitle")
@@ -111,15 +127,7 @@ namespace Keyhanatr.Data.Migrations
 
                     b.HasKey("SubGroupId");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    b.HasIndex("ProductGroupId");
-=======
                     b.HasIndex("GroupId");
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
-=======
-                    b.HasIndex("GroupId");
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
 
                     b.ToTable("ProductSubGroups");
                 });
@@ -156,6 +164,11 @@ namespace Keyhanatr.Data.Migrations
                     b.Property<string>("ActiveCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -168,9 +181,6 @@ namespace Keyhanatr.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
-
-                    b.Property<int?>("Rate")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");
@@ -205,15 +215,7 @@ namespace Keyhanatr.Data.Migrations
                 {
                     b.HasOne("Keyhanatr.Data.Domain.Products.ProductGroup", "ProductGroup")
                         .WithMany("ProductSubGroups")
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .HasForeignKey("ProductGroupId")
-=======
                         .HasForeignKey("GroupId")
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
-=======
-                        .HasForeignKey("GroupId")
->>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

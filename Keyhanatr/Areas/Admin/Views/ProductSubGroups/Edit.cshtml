@@ -1,0 +1,38 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductSubGroup
+
+@{
+    ViewData["Title"] = "ویرایش زیرگروه";
+}
+
+<h1>ویرایش زیرگروه</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SubGroupId" />
+            <div class="form-group">
+                <label for="ProductGroupId" class="control-label">عنوان گروه اصلی را از لیست زیر انتخاب کنید:</label>
+                <select id="ProductGroupId" asp-for="GroupId" class="form-control" asp-items="ViewBag.ProductGroupId"></select>
+                <span asp-validation-for="GroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubGroupTitle" class="control-label"></label>
+                <input asp-for="SubGroupTitle" class="form-control" />
+                <span asp-validation-for="SubGroupTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ویرایش زیرگروه" class="btn btn-warning d-block w-100" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="form-group">
+    <a asp-action="Index">بازگشت به لیست زیرگروه ها</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

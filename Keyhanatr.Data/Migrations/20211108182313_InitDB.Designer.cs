@@ -10,8 +10,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
+<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211108182313_InitDB.Designer.cs
     [Migration("20211108182313_InitDB")]
     partial class InitDB
+=======
+    [Migration("20211109094619_SomeChanges To Taste the Migrations")]
+    partial class SomeChangesToTastetheMigrations
+>>>>>>> 22c6bc1d321c9e903ea9ef20618be9c12255727f:Keyhanatr.Data/Migrations/20211109094619_SomeChanges To Taste the Migrations.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,7 +100,7 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProductGroupId")
+                    b.Property<int>("GroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("SubGroupTitle")
@@ -105,7 +110,7 @@ namespace Keyhanatr.Data.Migrations
 
                     b.HasKey("SubGroupId");
 
-                    b.HasIndex("ProductGroupId");
+                    b.HasIndex("GroupId");
 
                     b.ToTable("ProductSubGroups");
                 });
@@ -191,7 +196,7 @@ namespace Keyhanatr.Data.Migrations
                 {
                     b.HasOne("Keyhanatr.Data.Domain.Products.ProductGroup", "ProductGroup")
                         .WithMany("ProductSubGroups")
-                        .HasForeignKey("ProductGroupId")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
