@@ -1,5 +1,6 @@
 ﻿using Keyhanatr.Data.Domain;
 using Keyhanatr.Data.Domain.Products;
+using Keyhanatr.Data.Domain.Slider;
 using Keyhanatr.Data.Domain.User;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,8 +23,9 @@ namespace Keyhanatr.Data.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductGroup> ProductGroups { get; set; }
         public DbSet<ProductSubGroup> ProductSubGroups { get; set; }
-        //public DbSet<Test> Tsets { get; set; }
-
+        public DbSet<Slider> Sliders { get; set; }
+        public DbSet<UserInfo> UserInfos { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         #region ModelBuilder
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,7 +37,6 @@ namespace Keyhanatr.Data.Context
             }
         }
         #endregion
+
     }
-
-
 }

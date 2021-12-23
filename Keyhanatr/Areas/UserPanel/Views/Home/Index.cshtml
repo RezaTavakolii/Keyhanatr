@@ -1,10 +1,165 @@
-﻿
-@{
+﻿@model Keyhanatr.Data.Domain.User.UserInfo
 
+@{
+    Layout = "_UserPanelLayout";
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+    <h6 class="fs-base text-light mb-0">جزئیات نمایه خود را در زیر به روز کنید:</h6><a asp-action="Logout" class="btn btn-primary btn-sm"><i class="ci-sign-out me-2"></i>خروج</a>
+</div>
+
+<form asp-action="Index" enctype="multipart/form-data" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="UserId" class="form-control" asp-items="ViewBag.UserId">
+
+    <div class="bg-secondary rounded-3 p-4 mb-4">
+        <div class="d-flex align-items-center">
+            <img class="rounded" src="img/shop/account/avatar.jpg" width="90" alt="سوزان گاردنر">
+            <div class="ps-3">
+                <input asp-for="ImageName" type="file" name="imgUp" class="btn btn-light btn-shadow btn-sm mb-2"><i class="ci-loading me-2"></i>انتخاب تصویر</input>
+                <div class="p mb-0 fs-ms text-muted">تصویر JPG ، GIF یا PNG را بارگذاری کنید. 300 *300 مورد نیاز است.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row gx-4 gy-3">
+        <div class="col-sm-6">
+            <label asp-for="Name" class="form-label">نام </label>
+            <input asp-for="Name" class="form-control" type="text">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="Family" class="form-label">نام خانوادگی</label>
+            <input asp-for="Family" class="form-control" type="text">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="Email" class="form-label">آدرس ایمیل</label>
+            <input asp-for="Email" class="form-control" type="email">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="PhoneDaftar" class="form-label">شماره تلفن</label>
+            <input asp-for="PhoneDaftar" class="form-control" type="text">
+        </div>
+        <div class="col-12">
+            <hr class="mt-2 mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div>
+                    <label class="form-check-label" for="subscribe_me">در صورت تمایل اطلاعات خود را تکمیل نمایید</label>
+                </div>
+                <button type="submit" value="Create" class="btn btn-primary mt-3 mt-sm-0">بروزرسانی پروفایل</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<!--<div class="page-title-overlap bg-dark pt-4">
+    <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                    <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>خانه</a></li>
+                    <li class="breadcrumb-item text-nowrap">
+                        <a href="#">حساب</a>
+                    </li>
+                    <li class="breadcrumb-item text-nowrap active" aria-current="page">اطلاعات پروفایل</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+            <h1 class="h3 text-light mb-0">اطلاعات پروفایل</h1>
+        </div>
+    </div>
+</div>
+<div class="container pb-5 mb-2 mb-md-4">
+    <div class="row">-->
+        <!-- Sidebar-->
+        <!--<aside class="col-lg-4 pt-4 pt-lg-0 pe-xl-5">
+            <div class="bg-white rounded-3 shadow-lg pt-1 mb-5 mb-lg-0">
+                <div class="d-md-flex justify-content-between align-items-center text-center text-md-start p-4">
+                    <div class="d-md-flex align-items-center">
+                        <div class="img-thumbnail rounded-circle position-relative flex-shrink-0 mx-auto mb-2 mx-md-0 mb-md-0" style="width: 6.375rem;"><span class="badge bg-warning position-absolute end-0 mt-n2" data-bs-toggle="tooltip" title="امتیاز">384</span><img class="rounded-circle" src="/img/shop/account/avatar.jpg" alt="@User.Identity.Name"></div>
+                        <div class="ps-md-3">
+                            <h3 class="fs-base mb-0">@User.Identity.Name</h3><span class="text-accent fs-sm">کاربر عادی</span>
+                        </div>
+                    </div><a class="btn btn-primary d-lg-none mb-2 mt-3 mt-md-0" href="#account-menu" data-bs-toggle="collapse" aria-expanded="false"><i class="ci-menu me-2"></i>منو</a>
+                </div>
+                <div class="d-lg-block collapse" id="account-menu">
+                    <div class="bg-secondary px-4 py-3">
+                        <h3 class="fs-sm mb-0 text-muted">داشبورد</h3>
+                    </div>
+                    <ul class="list-unstyled mb-0">
+                        <li class="border-bottom mb-0"><a a asp-controller="Home" asp-action="Order" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-bag opacity-60 me-2"></i>سفارشات<span class="fs-sm text-muted ms-auto">1</span></a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-wishlist.html"><i class="ci-heart opacity-60 me-2"></i>علاقه مندی<span class="fs-sm text-muted ms-auto">3</span></a></li>
+                        <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-tickets.html"><i class="ci-help opacity-60 me-2"></i>تیکت<span class="fs-sm text-muted ms-auto">1</span></a></li>
+                    </ul>
+                    <div class="bg-secondary px-4 py-3">
+                        <h3 class="fs-sm mb-0 text-muted">تنظیمات حساب</h3>
+                    </div>
+                    <ul class="list-unstyled mb-0">
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="account-profile.html"><i class="ci-user opacity-60 me-2"></i>اطلاعات پروفایل</a></li>
+                        <li class="border-bottom mb-0"><a asp-controller="Address" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-location opacity-60 me-2"></i>آدرس ها</a></li>
+                        <li class="mb-0"><a asp-controller="Home" asp-action="ChangePassword" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-card opacity-60 me-2"></i>تغییر کلمه عبور</a></li>
+                        <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-payment.html"><i class="ci-card opacity-60 me-2"></i>روش پرداخت</a></li>
+                        <li class="d-lg-none border-top mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>-->
+        <!-- Content  -->
+        <!--<section class="col-lg-8">
+            <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+                <h6 class="fs-base text-light mb-0">جزئیات نمایه خود را در زیر به روز کنید:</h6><a asp-action="Logout" class="btn btn-primary btn-sm"><i class="ci-sign-out me-2"></i>خروج</a>
+            </div>-->
+            <!-- Profile form-->
+            <!--<form asp-action="Index" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="UserId" class="form-control" asp-items="ViewBag.UserId">
+
+                <div class="bg-secondary rounded-3 p-4 mb-4">
+                    <div class="d-flex align-items-center">
+                        <img class="rounded" src="img/shop/account/avatar.jpg" width="90" alt="سوزان گاردنر">
+                        <div class="ps-3">
+                            
+                            <input asp-for="ImageName" type="file" name="imgUp" class="btn btn-light btn-shadow btn-sm mb-2"><i class="ci-loading me-2"></i>انتخاب تصویر</input>
+                            <div class="p mb-0 fs-ms text-muted">تصویر JPG ، GIF یا PNG را بارگذاری کنید. 300 *300 مورد نیاز است.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-4 gy-3">
+                    <div class="col-sm-6">
+                        <label asp-for="Name" class="form-label">نام </label>
+                        <input asp-for="Name" class="form-control" type="text">
+                    </div>
+                    <div class="col-sm-6">
+                        <label asp-for="Family" class="form-label">نام خانوادگی</label>
+                        <input asp-for="Family" class="form-control" type="text">
+                    </div>
+                    <div class="col-sm-6">
+                        <label asp-for="Email" class="form-label">آدرس ایمیل</label>
+                        <input asp-for="Email" class="form-control" type="email">
+                    </div>
+                    <div class="col-sm-6">
+                        <label asp-for="PhoneDaftar" class="form-label">شماره تلفن</label>
+                        <input asp-for="PhoneDaftar" class="form-control" type="text">
+                    </div>
+                    <div class="col-12">
+                        <hr class="mt-2 mb-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div>
+                                <label class="form-check-label" for="subscribe_me">در صورت تمایل اطلاعات خود را تکمیل نمایید</label>
+                            </div>
+                            <button type="submit" value="Create" class="btn btn-primary mt-3 mt-sm-0">بروزرسانی پروفایل</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </section>
+    </div>
+</div>-->
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

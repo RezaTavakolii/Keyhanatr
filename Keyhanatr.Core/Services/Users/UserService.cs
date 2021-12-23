@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Keyhanatr.Core.Interfaces.Message;
 using Keyhanatr.Core.Senders;
 using Keyhanatr.Data.ViewModel.Account;
+using System.Globalization;
 
 namespace Keyhanatr.Core.Services.Users
 {
@@ -20,6 +21,7 @@ namespace Keyhanatr.Core.Services.Users
     {
         private KeyhanatrContext _context;
         private IMessageSender _messageSender;
+        private PersianCalendar pc = new PersianCalendar();
         public UserService(KeyhanatrContext context, IMessageSender messageSender)
         {
             _context = context;
@@ -38,7 +40,8 @@ namespace Keyhanatr.Core.Services.Users
                 IsActive = false,
                 RoleId = 1,
                 Rate = 1,
-                RegisterDate = DateTime.Now,
+                RegisterDate = pc.GetYear(DateTime.Now).ToString("0000") + "/" + pc.GetMonth(DateTime.Now).ToString("00") +
+                             "/" + pc.GetDayOfMonth(DateTime.Now).ToString("00"),
                 Password = PasswordHelper.HashNewPassword(register.Password)
             };
             _context.Users.Add(newUser);
@@ -145,7 +148,8 @@ namespace Keyhanatr.Core.Services.Users
         public void AddUser(User user)
         {
             user.Password = PasswordHelper.HashNewPassword(user.Password);
-            user.RegisterDate = DateTime.Now;
+            user.RegisterDate = pc.GetYear(DateTime.Now).ToString("0000") + "/" + pc.GetMonth(DateTime.Now).ToString("00") +
+                             "/" + pc.GetDayOfMonth(DateTime.Now).ToString("00");
             user.ActiveCode = Guid.NewGuid().ToString();
             _context.Users.Add(user);
             _context.SaveChanges();

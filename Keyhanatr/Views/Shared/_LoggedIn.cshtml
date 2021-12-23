@@ -9,36 +9,27 @@
         <div class="dropdown-menu dropdown-menu-end">
             <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 15rem;">
                 <div @*style="height: 15rem;"*@ data-simplebar data-simplebar-auto-hide="false">
-                    <h5 class="widget-product-title pb-2 mt-3">
-                        <a href="/"><i class="ci-unlocked me-2 mt-n1"></i>@User.Identity.Name عزیز خوش آمدید<label></label></a>
+                    <h5 class="widget-product-title pb-2 mt-3 text-success ">
+                        <i class="ci-user me-2 mt-n1 alert-success"></i>@User.Identity.Name عزیز خوش آمدید<label></label>
                     </h5>
                     <hr />
-                   
                     <h5 class="widget-product-title pb-2 mt-2">
-                        <a href="/"><i class="ci-coin me-2 mt-n1"></i>کاربر عادی<label></label></a>
+                        <a asp-area="UserPanel" asp-controller="UserInfoes" asp-action="Create"><i class="ci-package me-2 mt-n1 alert-secondary"></i><label>مشاهده حساب کاربری</label></a>
                     </h5>
                     <hr />
-                    
+
                     <h5 class="widget-product-title pb-2 mt-2">
-                        <a asp-area="UserPanel" asp-controller="Home" asp-action="ChangePassword"><i class="ci-key me-2 mt-n1"></i><label>تغییر کلمه عبور</label></a>
+                        <a asp-area="UserPanel" asp-controller="Home" asp-action="ChangePassword"><i class="ci-key me-2 mt-n1 alert-primary"></i><label>تغییر کلمه عبور</label></a>
                     </h5>
                     <hr />
-                   
-                    <h5 class="widget-product-title pb-2 mt-2">
-                        <a asp-area="UserPanel" asp-controller="Home" asp-action="index"><i class="ci-package me-2 mt-n1"></i><label>مشاهده حساب کاربری</label></a>
-                    </h5>
-                    <hr />
-                    
                     @{
                         string role = User.FindFirstValue("RoleId").ToString();
                         if (role == "5")
                         {
-
                             <h5 class="widget-product-title pb-2 mt-2">
-                                <a asp-area="admin" asp-controller="Home" asp-action="Index"><i class="ci-add-document me-2 mt-n1"></i><label>پنل مدیریت سایت</label></a>
+                                <a asp-area="admin" asp-controller="Home" asp-action="Index"><i class="ci-add-document me-2 mt-n1 alert-info"></i><label>پنل مدیریت سایت</label></a>
                             </h5>
                             <hr />
-                            
                         }
                     }
 
@@ -48,7 +39,6 @@
         </div>
     </div>
 }
-
 else
 {
     <li class="nav-item">
