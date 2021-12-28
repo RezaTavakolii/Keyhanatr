@@ -19,6 +19,21 @@ namespace Keyhanatr.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Discount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Percent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Discounts");
+                });
+
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -31,15 +46,19 @@ namespace Keyhanatr.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(600)
-                        .HasColumnType("nvarchar(600)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ExistId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImageName")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductExist")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductGroupId")
                         .HasColumnType("int");
@@ -49,29 +68,138 @@ namespace Keyhanatr.Data.Migrations
 
                     b.Property<string>("ProductTitle")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ShortDescription")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<int?>("SalesCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SumSalesUntilNow")
+                        .HasColumnType("int");
+
                     b.Property<string>("Tags")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ProductId");
+
+                    b.HasIndex("ProductGroupId");
 
                     b.HasIndex("ProductSubGroupId");
 
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductColor", b =>
+                {
+                    b.Property<int>("ColorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ColorCode")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ColorName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ImageName")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("ProductExist")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ColorId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductColors");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductComment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductComments");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductFeature", b =>
+                {
+                    b.Property<int>("FeatureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FeatureTitle")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("FeatureId");
+
+                    b.ToTable("ProductFeatures");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductGallery", b =>
+                {
+                    b.Property<int>("GalleryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImageName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("GalleryId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductGalleries");
+                });
+
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductGroup", b =>
                 {
-                    b.Property<int>("GroupId")
+                    b.Property<int>("ProductGroupId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -81,9 +209,36 @@ namespace Keyhanatr.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("GroupId");
+                    b.HasKey("ProductGroupId");
 
                     b.ToTable("ProductGroups");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSelectedFeature", b =>
+                {
+                    b.Property<int>("SelectedFeatureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("SelectedFeatureId");
+
+                    b.HasIndex("FeatureId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductSelectedFeatures");
                 });
 
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSubGroup", b =>
@@ -93,7 +248,7 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("GroupId")
+                    b.Property<int>("ProductGroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("SubGroupTitle")
@@ -103,7 +258,7 @@ namespace Keyhanatr.Data.Migrations
 
                     b.HasKey("SubGroupId");
 
-                    b.HasIndex("GroupId");
+                    b.HasIndex("ProductGroupId");
 
                     b.ToTable("ProductSubGroups");
                 });
@@ -178,20 +333,88 @@ namespace Keyhanatr.Data.Migrations
 
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
                 {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.ProductGroup", "ProductGroup")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductGroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Keyhanatr.Data.Domain.Products.ProductSubGroup", "ProductSubGroup")
                         .WithMany("Products")
                         .HasForeignKey("ProductSubGroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.Navigation("ProductGroup");
+
                     b.Navigation("ProductSubGroup");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductColor", b =>
+                {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductComment", b =>
+                {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.Product", "Product")
+                        .WithMany("ProductComments")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Keyhanatr.Data.Domain.User.User", "User")
+                        .WithMany("ProductComments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductGallery", b =>
+                {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.Product", "Product")
+                        .WithMany("ProductGalleries")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSelectedFeature", b =>
+                {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.ProductFeature", "ProductFeature")
+                        .WithMany("ProductSelectedFeatures")
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Keyhanatr.Data.Domain.Products.Product", "Product")
+                        .WithMany("ProductSelectedFeatures")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ProductFeature");
                 });
 
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSubGroup", b =>
                 {
                     b.HasOne("Keyhanatr.Data.Domain.Products.ProductGroup", "ProductGroup")
                         .WithMany("ProductSubGroups")
-                        .HasForeignKey("GroupId")
+                        .HasForeignKey("ProductGroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -209,8 +432,26 @@ namespace Keyhanatr.Data.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
+                {
+                    b.Navigation("ProductColors");
+
+                    b.Navigation("ProductComments");
+
+                    b.Navigation("ProductGalleries");
+
+                    b.Navigation("ProductSelectedFeatures");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductFeature", b =>
+                {
+                    b.Navigation("ProductSelectedFeatures");
+                });
+
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductGroup", b =>
                 {
+                    b.Navigation("Products");
+
                     b.Navigation("ProductSubGroups");
                 });
 
@@ -222,6 +463,11 @@ namespace Keyhanatr.Data.Migrations
             modelBuilder.Entity("Keyhanatr.Data.Domain.User.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.User.User", b =>
+                {
+                    b.Navigation("ProductComments");
                 });
 #pragma warning restore 612, 618
         }

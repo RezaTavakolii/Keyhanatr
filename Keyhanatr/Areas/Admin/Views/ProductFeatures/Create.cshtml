@@ -1,0 +1,31 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductFeature
+
+@{
+    ViewData["Title"] = "صفحه ساخت ویژگی";
+}
+
+<h4> ایجاد ویژگی جدید</h4>
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3 pb-2">
+                    <label asp-for="FeatureTitle" class="control-label"></label>
+                    <input  asp-for="FeatureTitle" class="form-control" id="unp-product-name" />
+                    <p class="text-dark"><small>کلماتی مانند: رنگ،اندازه،تعداد ،وزن و... را میتوان بعنوان ویژگی وارد کرد.</small></p>
+                    <span asp-validation-for="FeatureTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ثبت ویژگی" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

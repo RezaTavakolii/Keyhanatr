@@ -4,6 +4,7 @@ using Keyhanatr.Data.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,11 @@ namespace Keyhanatr
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            ///////
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            });
             #region Authentication
 
             services.AddAuthentication(options =>
@@ -51,7 +57,6 @@ namespace Keyhanatr
             services.AddDbContext<KeyhanatrContext>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("Keyhanatr"));
-
             });
 
             #endregion
@@ -61,6 +66,11 @@ namespace Keyhanatr
             //services.AddScoped<IUserService, UserService>();
             //services.AddScoped<IMessageSender, MessageSender>();
             services.AddTransient<IProductServices,ProductServices>();
+            services.AddTransient<IProductFeatureServices, ProductFeatureServices>();
+            services.AddTransient<IProductSelectedFeature, ProductSelectedFeatureServices>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IProductGallery, ProductGallery>();
+            services.AddTransient<IProductColorServices, ProductColorServices>();
 
             #endregion
         }
@@ -78,6 +88,7 @@ namespace Keyhanatr
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseMvcWithDefaultRoute();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -90,7 +101,7 @@ namespace Keyhanatr
             {
                 endpoints.MapControllerRoute(
                name: "areas",
-               pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+               pattern: "{area:exists}/{controller=home}/{action=index}/{id?}"
             );
 
                 endpoints.MapControllerRoute(

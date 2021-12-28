@@ -1,0 +1,48 @@
+﻿
+@model Keyhanatr.Data.Domain.Products.ProductColor
+
+@{
+    ViewData["Title"] = "صفحه حذف رنگ";
+}
+
+<h4>حذف رنگ</h4>
+
+<h3>آیا از حذف رنگ انتخاب شده اطمینان دارید ؟</h3>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ColorName)
+                </dt>
+                <dd class="text-danger col-sm-10">
+                    @Html.DisplayFor(model => model.ColorName)
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ColorCode)
+                </dt>
+                <dd class="text-danger col-sm-10">
+                    @Html.DisplayFor(model => model.ColorCode)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ImageName)
+                </dt>
+                <dd class="text-danger col-sm-10">
+                    <img src="/Images/ProductThumbs/@Model.ImageName" alt="@Model.ColorName" />
+                </dd>
+            </dl>
+
+            <form asp-action="ConfirmedDelete">
+                <input type="hidden" name="id" value="@Model.ColorId" />
+                <input type="submit" value="حذف" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>
+

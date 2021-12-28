@@ -51,5 +51,8 @@ namespace Keyhanatr.Data.Domain.User
         //public int Rate { get; set; }
 
         public Role Role { get; set; }
+
+
+        public List<Products.ProductComment> ProductComments { get; set; }
     }
 }

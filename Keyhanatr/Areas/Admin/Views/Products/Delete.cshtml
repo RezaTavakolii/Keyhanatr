@@ -1,0 +1,99 @@
+﻿@model Keyhanatr.Data.Domain.Products.Product
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>صفحه حذف محصول</h1>
+@if (TempData["failure"] != null)
+{
+    <div class="alert alert-danger">
+        <h2>متاسفانه خطایی در زمان حذف محصول رخ داده است!</h2>
+        <h3>مجددا عملیات حذف را تکرار کنید..</h3>
+    </div>
+}
+
+<h3 class="text-danger"> آیا آز حذف "@Model.ProductTitle" اطمینان دارید؟ </h3>
+<div>
+    <hr />
+
+    <div class="container">
+        <div class="row col-md-10">
+            <table class="table table-striped">
+                <tr>
+                    <th>نام محصول</th>
+                    <td>@Model.ProductTitle</td>
+                </tr>
+                <tr>
+                    <th>عکس محصول</th>
+                    <td><img src="/Images/ProductThumbs/@Model.ImageName" alt="@Model.ProductTitle" /></td>
+                </tr>
+                <tr>
+                    <th>تاریخ درج</th>
+                    <td>@Model.CreateDate.ToShamsi()</td>
+                </tr>
+                <tr>
+                    <th>آخرین بروز رسانی</th>
+                    <td>
+                        @if (Model.UpdateDate == null)
+                        {
+                            @Model.CreateDate.ToShamsi()
+                        }
+                        else
+                        {
+                            @Model.UpdateDate.Value.ToShamsi()
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>برچسب ها</th>
+                    <td>@Model.Tags</td>
+                </tr>
+                <tr>
+                    <th>تعداد فروش محصول</th>
+                    <td>
+                        @if (Model.SalesCount == null)
+                        {
+                            int zero = 0;
+                            @zero
+                        }
+                        else
+                        {
+                            @Model.SalesCount
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>کل مبلغ دریافتی از این محصول</th>
+                    <td>
+                        @if (Model.SumSalesUntilNow==null)
+                        {
+                            int zero = 0;
+                            @zero
+                        }
+                        else
+                        {
+                            @Model.SumSalesUntilNow
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>گروه مرتبط با این محصول</th>
+                    <td>@Model.ProductGroup.GroupTitle</td>
+                </tr>
+                <tr>
+                    <th>زیر گروه مرتبط با این محصول</th>
+                    <td>@Model.ProductSubGroup.SubGroupTitle</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <a asp-action="ConfirmeDelete" asp-route-id="@Model.ProductId" class="btn btn-block  btn-danger">حذف</a>
+    </div>
+    <div class="form-group">
+        <a asp-action="Index">بازگشت به لیست محصولات</a>
+    </div>
+</div>

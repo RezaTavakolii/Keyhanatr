@@ -65,7 +65,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             var groups = _productServices.GetGroupsListItem();
-            ViewData["GroupId"] = new SelectList(groups, "Value", "Text",productSubGroup.GroupId);
+            ViewData["GroupId"] = new SelectList(groups, "Value", "Text",productSubGroup.ProductGroupId);
 
             return View(productSubGroup);
         }
@@ -84,7 +84,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
                 return NotFound();
             }
             var groups = _productServices.GetGroupsListItem();
-            ViewData["GroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.GroupId);
+            ViewData["ProductGroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.ProductGroupId);
             return View(productSubGroup);
         }
 
@@ -103,7 +103,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             var groups = _productServices.GetGroupsListItem();
-            ViewData["GroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.GroupId);
+            ViewData["GroupId"] = new SelectList(groups, "Value", "Text", productSubGroup.ProductGroupId);
             return View(productSubGroup);
         }
 
@@ -129,7 +129,8 @@ namespace Keyhanatr.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            
+            var productSubGroup = _productServices.GetProductSubGroupById(id);
+
             return RedirectToAction(nameof(Index));
         }
 

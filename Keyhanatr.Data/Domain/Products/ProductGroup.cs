@@ -11,7 +11,7 @@ namespace Keyhanatr.Data.Domain.Products
   public  class ProductGroup
     {
         [Key]
-        public int GroupId { get; set; }
+        public int ProductGroupId { get; set; }
 
         [DisplayName("عنوان گروه")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -21,6 +21,9 @@ namespace Keyhanatr.Data.Domain.Products
 
         #region Relations
         public List<ProductSubGroup> ProductSubGroups { get; set; }
+
+
+        public List<Product> Products { get; set; }
         #endregion
 
     }

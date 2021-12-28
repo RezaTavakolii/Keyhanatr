@@ -1,0 +1,34 @@
+﻿@model Tuple<List<Keyhanatr.Data.Domain.Products.ProductComment>, int>
+
+@foreach (var item in Model.Item1)
+{
+    if (item.IsAccepted == false)
+    {
+        if (User.Identity.IsAuthenticated && item.User.UserId == Model.Item2)
+        {
+            <div class="d-flex mb-3">
+                <div class="d-flex align-items-center me-4 pe-2">
+                    <img class="rounded-circle" src="/img/shop/reviews/01.jpg" width="50" alt="تصویر مربوط به @item.User.UserName">
+                    <div class="ps-3">
+                        <h6 class="fs-sm mb-0">@item.User.UserName</h6><span class="fs-ms text-muted">@item.CreateDate.ToShamsi()</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-danger fs-md mb-2">کامنت شما پس از تایید مدیر سایت، منتشر خواهد شد.</p>
+            <p class="fs-md mb-2">@item.Comment</p>
+        }
+    }
+    else
+    {
+        <div class="d-flex mb-3">
+            <div class="d-flex align-items-center me-4 pe-2">
+                <img class="rounded-circle" src="/img/shop/reviews/01.jpg" width="50" alt="تصویر مربوط به @item.User.UserName">
+                <div class="ps-3">
+                    <h6 class="fs-sm mb-0">@item.User.UserName</h6><span class="fs-ms text-muted">@item.CreateDate.ToShamsi()</span>
+                </div>
+            </div>
+        </div>
+        <p class="fs-md mb-2">@item.Comment</p>
+    }
+
+}

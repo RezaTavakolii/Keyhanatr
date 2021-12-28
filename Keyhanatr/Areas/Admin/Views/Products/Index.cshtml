@@ -1,0 +1,108 @@
+﻿@model Tuple<Keyhanatr.Core.DTOs.Products.ProductsViewModels.ShowProducts_VM, int>
+@{
+    ViewData["Title"] = "نمایش محصولات ادمین";
+    string sortType = ViewBag.SelectedSort;
+    string filter = ViewBag.Filter;
+}
+
+
+
+
+
+<form id="form" asp-action="Index" method="get">
+
+    @* We need search box in current View Razore so addedd it bellow as a partial*@
+    @section SearchBox{
+        <partial name="_SearchBox_Admin" />
+    }
+
+    @if (TempData["IsSuccess"] != null)
+    {
+        <div class="alert alert-success">
+            محصول شما با موفقیت حذف گردید.
+        </div>
+    }
+
+
+    <section class="col-lg-12 pt-lg-4 pb-4 mb-3">
+        <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+            <!-- Title-->
+            <div class="d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
+                <h2 class="h3 py-2 me-2 text-center text-sm-start">محصولات شما<span class="badge bg-faded-accent fs-sm text-body align-middle ms-2">@Model.Item2</span></h2>
+
+                <div class="py-2">
+                    <div class="d-flex flex-nowrap align-items-center pb-3">
+                        <label class="form-label fw-normal text-nowrap mb-0 me-2" for="sorting">مرتب سازی:</label>
+                        <select name="sortType" class="form-select form-select-sm me-2" id="sorting" asp-items="ViewBag.SelectLists"></select>
+                    </div>
+                </div>
+            </div>
+            <!-- Product-->
+            @foreach (var item in Model.Item1.Products)
+            {
+                <div class="d-block d-sm-flex align-items-center py-4 border-bottom">
+                    <a class="d-block mb-3 mb-sm-0 me-sm-4 ms-sm-0 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-3" src="/Images/ProductThumbs/@item.ImageName"></a>
+                    <div class="text-center text-sm-start">
+                        <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">@item.ProductTitle </a></h3>
+                        @*<div class="d-inline-block text-accent">1800<small>00</small></div>*@
+                        <div class="d-inline-block text-muted fs-ms border-start ms-2 ps-2">قیمت : @item.Price.ToString("N0") </div>
+                        @*<div class="d-inline-block text-muted fs-ms border-start ms-2 ps-2">تعداد موجودی: @((item.ExistNumber==null)?0: item.ExistNumber) </div>*@
+                        <div class="d-inline-block text-muted fs-ms border-start ms-2 ps-2">تعداد فروش: @((item.SalesCount==null)?0: item.SalesCount) </div>
+                        <div class="d-inline-block text-muted fs-ms border-start ms-2 ps-2">درامد:  <span class="fw-medium">@((item.SumSalesUntilNow==null)?0: item.SumSalesUntilNow) تومان</span></div>
+                        <div class=" d-flex justify-content-center justify-content-sm-start pt-3">
+
+                            <a asp-action="Edit" asp-route-id="@item.ProductId">
+                                ویرایش
+                            </a> |
+                            <a asp-action="Delete" asp-route-id="@item.ProductId">
+                                حذف
+                            </a> |
+                            <a asp-controller="ProductSelectedFeatures" asp-action="Index" asp-route-id="@item.ProductId">
+                                ویژگی ها
+                            </a>
+                            | <a asp-controller="ProductGalleries" asp-action="Index" asp-route-id="@item.ProductId">
+                                گالری ها
+                            </a>
+
+                            |<a asp-controller="ProductColors" asp-action="Index" asp-route-id="@item.ProductId">
+                                رنگ ها
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+        @if (Model.Item1.PageCount > 1)
+        {
+            <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/Admin/Products?pageId=@((Model.Item1.CurrentPage<=1)?1:Model.Item1.CurrentPage-1)&filter=@filter"><i class="ci-arrow-right me-2"></i>قبلی</a></li>
+                </ul>
+                <ul class="pagination">
+                    @for (int i = ViewBag.Start; i <= ViewBag.End; i++)
+                    {
+                        <li class="page-item d-none d-sm-block @((Model.Item1.CurrentPage==i)? "active":"") "><a class="page-link" href="/Admin/Products?pageId=@i&filter=@filter">@i</a></li>
+                    }
+                </ul>
+                <ul class="pagination">
+                    <li class="page-item "><a class="page-link " href="/Admin/Products?pageId=@((Model.Item1.CurrentPage>=Model.Item1.PageCount)?Model.Item1.PageCount:Model.Item1.CurrentPage+1)&filter=@filter" aria-label="Next">بعدی<i class="ci-arrow-left ms-2"></i></a></li>
+                </ul>
+            </nav>
+        }
+
+
+    </section>
+</form>
+
+
+@section Scripts{
+    <script>
+        $(".form-select").change(function () {
+            $("#form").submit();
+        });
+    </script>
+}

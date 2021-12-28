@@ -1,0 +1,39 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductSelectedFeature
+@{
+    ViewData["Title"] = "حذف ویژگی";
+}
+ <h2>آیا از حذف ویژگی <span class="text-accent text-danger">@Model.Value</span> اطمینان دارید ؟</h2> 
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.FeatureId)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ProductFeature.FeatureTitle)
+        </dd>
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Product.ProductTitle)
+        </dd>
+    </dl>
+    <div>
+        <form asp-action="DeleteConfirmed">
+            <input type="hidden" value="@Model.SelectedFeatureId" name="selectedFeatureId">
+            <input type="hidden" value="@Model.ProductId" name="productId">
+            <div class="form-group">
+                <input type="submit" value="حذف" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
