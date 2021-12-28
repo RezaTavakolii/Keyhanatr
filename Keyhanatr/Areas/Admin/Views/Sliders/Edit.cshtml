@@ -27,8 +27,16 @@
                             <input asp-for="Title" class="form-control" type="text" id="dashboard-ln">
                         </div>
                         <div class="col-sm-12">
+                            <label asp-for="Titr" class="form-label">تیتر اسلاید</label>
+                            <input asp-for="Titr" class="form-control" type="text" id="dashboard-ln">
+                        </div>
+                        <div class="col-sm-12">
                             <label asp-for="Text" class="form-label">متن اسلاید</label>
                             <input asp-for="Text" class="form-control">
+                        </div>
+                        <div class="col-sm-12">
+                            <label asp-for="BackColor" class="form-label">رنگ پس زمینه</label>
+                            <input asp-for="BackColor" class="form-control">
                         </div>
                         <div class="col-sm-12 mt-5">
                             <label asp-for="ImageName" class="form-label">انتخاب تصویر</label>
@@ -36,12 +44,12 @@
                             <img class="img-thumbnail" src="/SliderImages/@Model.ImageName" style="width: 150px" />
                         </div>
                         <!--<div class="col-sm-6">
-            <label asp-for="StartDate" class="form-label">تاریخ شروع</label>
-            <input type="text" name="stDate" class="form-control" DatePicker="1">
-        </div>
-        <div class="col-sm-6">
-            <label asp-for="EndDate" class="form-label">تاریخ پایان</label>
-            <input type="text" name="edDate" class="form-control" DatePicker="1">-->
+        <label asp-for="StartDate" class="form-label">تاریخ شروع</label>
+        <input type="text" name="stDate" class="form-control" DatePicker="1">
+    </div>
+    <div class="col-sm-6">
+        <label asp-for="EndDate" class="form-label">تاریخ پایان</label>
+        <input type="text" name="edDate" class="form-control" DatePicker="1">-->
                         @*<input asp-for="EndDate" name="edDate"  class="form-control">*@
                         <!--</div>-->
                         <div class="col-sm-6 form-check mt-5">

@@ -3,12 +3,18 @@
 @if (User.Identity.IsAuthenticated)
 
 {
-    <div class="navbar-tool dropdown ms-3">
-        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><i class="navbar-tool-icon ci-user"></i></a><a class="navbar-tool-text"><small>@User.Identity.Name</small></a>
+    <div class="navbar-tool navbar-nav dropdown ms-3">
+        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="#">
+            <i class="navbar-tool-icon ci-user"></i>
+        </a>
+        <a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown">
+            <small>@User.Identity.Name</small>
+        </a>
         <!-- Cart dropdown-->
         <div class="dropdown-menu dropdown-menu-end">
             <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 15rem;">
-                <div @*style="height: 15rem;"*@ data-simplebar data-simplebar-auto-hide="false">
+                <div data-simplebar data-simplebar-auto-hide="false">
+
                     <h5 class="widget-product-title pb-2 mt-3 text-success ">
                         <i class="ci-user me-2 mt-n1 alert-success"></i>@User.Identity.Name عزیز خوش آمدید<label></label>
                     </h5>
@@ -17,7 +23,6 @@
                         <a asp-area="UserPanel" asp-controller="UserInfoes" asp-action="Create"><i class="ci-package me-2 mt-n1 alert-secondary"></i><label>مشاهده حساب کاربری</label></a>
                     </h5>
                     <hr />
-
                     <h5 class="widget-product-title pb-2 mt-2">
                         <a asp-area="UserPanel" asp-controller="Home" asp-action="ChangePassword"><i class="ci-key me-2 mt-n1 alert-primary"></i><label>تغییر کلمه عبور</label></a>
                     </h5>
@@ -32,7 +37,6 @@
                             <hr />
                         }
                     }
-
                     <a asp-area="UserPanel" asp-controller="Home" asp-action="Logout" class="btn btn-primary btn-sm d-block w-100"><i class="ci-sign-out me-2 fa-power-off align-middle"></i>خروج از حساب</a>
                 </div>
             </div>

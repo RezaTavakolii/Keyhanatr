@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using Keyhanatr.Core.Services.Users;
 using Keyhanatr.Core.Senders;
 using Keyhanatr.Core.Interfaces.Message;
+using Keyhanatr.Core.Interfaces.Sliders;
+using Keyhanatr.Core.Services.Sliders;
 
 namespace Keyhanatr
 {
@@ -65,6 +67,7 @@ namespace Keyhanatr
             services.AddScoped<IMessageSender, MessageSender>();
             services.AddTransient<IProductServices,ProductServices>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISliderServices, SliderService>();
             #endregion
         }
 

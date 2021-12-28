@@ -16,9 +16,17 @@ namespace Keyhanatr.Data.Domain.Slider
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Title { get; set; }
 
+        [Display(Name = "تیتر اسلاید")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string Titr { get; set; }
+
         [Display(Name = "متن")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Text { get; set; }
+
+        [Display(Name = "رنگ پس زمینه")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string BackColor { get; set; }
 
         [Display(Name = "تصویر")]
         public string ImageName { get; set; }

@@ -56,7 +56,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SlideID,Title,Text,ImageName,IsActive")] Slider slider, IFormFile imgUp)
+        public async Task<IActionResult> Create([Bind("SlideID,Title,Titr,Text,BackColor,ImageName,IsActive")] Slider slider, IFormFile imgUp)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SlideID,Title,Text,ImageName,IsActive")] Slider slider, IFormFile imgUp)
+        public async Task<IActionResult> Edit(int id, [Bind("SlideID,Title,Titr,Text,BackColor,ImageName,IsActive")] Slider slider, IFormFile imgUp)
         {
             if (id != slider.SlideID)
             {
