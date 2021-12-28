@@ -12,7 +12,12 @@ namespace Keyhanatr.Data.Migrations
     [DbContext(typeof(KeyhanatrContext))]
     [Migration("20211113163106_someChanges_In_Product.cs")]
     partial class someChanges_In_Productcs
-    {
+//=======
+//    [Migration("20211114113130_init2")]
+//    partial class init2
+//>>>>>>> 9823016fcc90932fdd40d767e2638b946c739b01:Keyhanatr.Data/Migrations/20211114113130_init2.Designer.cs
+{
+
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
@@ -90,6 +95,7 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+//<<<<<<< HEAD:Keyhanatr.Data/Migrations/20211113163106_someChanges_In_Product.cs.Designer.cs
                     b.Property<int>("ProductGroupId")
                         .HasColumnType("int");
 
@@ -137,11 +143,6 @@ namespace Keyhanatr.Data.Migrations
                     b.Property<string>("ActiveCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -154,6 +155,9 @@ namespace Keyhanatr.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<int?>("Rate")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");

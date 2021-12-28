@@ -33,23 +33,24 @@ namespace Keyhanatr.Data.Domain.User
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
         public string Password { get; set; }
 
-
-        [Display(Name = "تاریخ ثبت نام")]
-        public DateTime RegisterDate { get; set; }
+        [Display(Name = "تاریخ عضویت")]
+        [Required(ErrorMessage = "نباید بدون مقدار باشد")]
+        [MaxLength(10, ErrorMessage = "مقدار {0} نباید بیش تر از {1} کاراکتر باشد")]
+        public string RegisterDate { get; set; }
 
         [Display(Name = "کد فعال سازی")]
         public string ActiveCode { get; set; }
 
         [Display(Name = "فعال / غیر فعال")]
         public bool IsActive { get; set; }
+        public Nullable<int> Rate { get; set; }
 
-        [Display(Name = "کلمه عبور")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(500, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
-        public string Address { get; set; }
+        #region Relations
+        public List<Address> Addresses { get; set; }
+        #endregion
 
-        //public int Rate { get; set; }
 
+        [ForeignKey("RoleId")]
         public Role Role { get; set; }
 
 

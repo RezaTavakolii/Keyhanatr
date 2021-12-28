@@ -1,0 +1,61 @@
+﻿@model Keyhanatr.Data.Domain.User.UserInfo
+
+@{
+    Layout = "_UserPanelLayout";
+    ViewData["Title"] = "EditProfile";
+}
+
+<div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+    <h6 class="fs-base text-light mb-0"> اطلاعات خود را در زیر وارد کنید : </h6><a asp-action="LogOut" class="btn btn-primary btn-sm"><i class="ci-sign-out me-2"></i>خروج</a>
+</div>
+
+<form asp-action="Create" class="needs-validation" enctype="multipart/form-data" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @*<input type="hidden" asp-for="UserInfoID" />*@
+    <input type="hidden" asp-for="UserId" class="form-control" asp-items="ViewBag.userId">
+
+    <div class="bg-secondary rounded-3 p-4 mb-4">
+        <div class="d-flex align-items-center">
+            @*<img class="rounded" src="img/shop/account/avatar.jpg" width="90" alt="سوزان گاردنر">*@
+            <div class="ps-3">
+                <label asp-for="ImageName" class="form-label">نام </label>
+                <input asp-for="ImageName" type="file" name="imgUp" class="btn btn-light btn-shadow btn-sm mb-2">@*<i class="ci-loading me-2"></i>انتخاب تصویر</input>*@
+                <div class="p mb-0 fs-ms text-muted">تصویر JPG ، GIF یا PNG را بارگذاری کنید. 300 *300 مورد نیاز است.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row gx-4 gy-3">
+        <div class="col-sm-6">
+            <label asp-for="Name" class="form-label">نام </label>
+            <input asp-for="Name" class="form-control" type="text">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="Family" class="form-label">نام خانوادگی</label>
+            <input asp-for="Family" class="form-control" type="text">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="Email" class="form-label">آدرس ایمیل</label>
+            <input asp-for="Email" class="form-control" type="text" required>
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="PhoneDaftar" class="form-label"> تلفن</label>
+            <input asp-for="PhoneDaftar" class="form-control" type="text" required>
+        </div>
+
+        <div class="col-12">
+            <hr class="mt-2 mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                @*<div>
+                        <a asp-action="Index">بازگشت به لیست</a>
+                    </div>*@
+                <button class="btn btn-primary mt-3 mt-sm-0" type="submit">ویرایش</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

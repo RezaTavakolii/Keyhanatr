@@ -1,0 +1,60 @@
+﻿@model Keyhanatr.Data.Domain.User.UserInfo
+
+@{
+    Layout = "_UserPanelLayout";
+    ViewData["Title"] = "EditProfile";
+}
+
+<div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+    <h6 class="fs-base text-light mb-0">جزئیات نمایه خود را در زیر به روز کنید:</h6><a asp-action="Logout" class="btn btn-primary btn-sm"><i class="ci-sign-out me-2"></i>خروج</a>
+</div>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="UserInfoID" />
+    <input type="hidden" asp-for="UserId" class="form-control" asp-items="ViewBag.UserId">
+    <input type="hidden" asp-for="ImageName"/>
+
+    <div class="bg-secondary rounded-3 p-4 mb-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="d-flex align-items-center">
+            <div class="ps-3">
+                <label asp-for="ImageName" class="form-label"><i class="ci-loading me-2"></i>انتخاب تصویر</label>
+                <input type="file" name="imgUp" class="btn btn-light btn-shadow btn-sm mb-2">
+                <img class="rounded" src="/UserInfoImages/@Model.ImageName" width="90" alt="@User.Identity.Name">
+                <div class="p mb-0 fs-ms text-muted">تصویر JPG ، GIF یا PNG را بارگذاری کنید. 300 *300 مورد نیاز است.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row gx-4 gy-3">
+        <div class="col-sm-6">
+            <label asp-for="Name" class="form-label">نام </label>
+            <input asp-for="Name" class="form-control" type="text">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="Family" class="form-label">نام خانوادگی</label>
+            <input asp-for="Family" class="form-control" type="text">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="Email" class="form-label">آدرس ایمیل</label>
+            <input asp-for="Email" class="form-control" type="email">
+        </div>
+        <div class="col-sm-6">
+            <label asp-for="PhoneDaftar" class="form-label">شماره تلفن</label>
+            <input asp-for="PhoneDaftar" class="form-control" type="text">
+        </div>
+        <div class="col-12">
+            <hr class="mt-2 mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div>
+                    <label class="form-check-label" for="subscribe_me">در صورت تمایل اطلاعات خود را تکمیل نمایید</label>
+                </div>
+                <button type="submit" value="Create" class="btn btn-primary mt-3 mt-sm-0">بروزرسانی پروفایل</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

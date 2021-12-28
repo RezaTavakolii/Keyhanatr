@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-    [Migration("20211110231219_new")]
-    partial class @new
+    [Migration("20211114112957_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,11 +132,6 @@ namespace Keyhanatr.Data.Migrations
                     b.Property<string>("ActiveCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -149,6 +144,9 @@ namespace Keyhanatr.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<int?>("Rate")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");

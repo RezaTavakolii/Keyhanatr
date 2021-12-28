@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Keyhanatr.Data.Domain.User.Address>
+@{
+    ViewData["Title"] = "Address";
+    Layout = "~/Areas/UserPanel/Views/Shared/_UserPanelLayout.cshtml";
+}
+
+
+<div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+    <h6 class="fs-base text-light mb-0">لیست آدرسهای ثبت شده شما:</h6><a class="btn btn-primary btn-sm" asp-action="Logout"><i class="ci-sign-out me-2"></i>خروج</a>
+</div>
+<!-- Addresses list-->
+<div class="table-responsive fs-md">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Company)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Ostan)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Shahr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adress)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CodePosti)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Mobile)
+                    </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>*@
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="py-3 align-middle">@item.Name @item.Family</td>
+                    <td class="py-3 align-middle">@item.Ostan</td>
+                    <td class="py-3 align-middle">@item.Shahr</td>
+                    <td class="py-3 align-middle">@item.Adress</td>
+                    <td class="py-3 align-middle">
+                        <a asp-action="Edit" asp-route-id="@item.AddressID" class="nav-link-style me-2" data-bs-toggle="tooltip" title="ویرایش"><i class="ci-edit"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.AddressID" class="nav-link-style me-2" data-bs-toggle="tooltip" title="درباره"><i class="ci-list"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.AddressID" class="nav-link-style text-danger" data-bs-toggle="tooltip" title="حذف">
+                            <div class="ci-trash"></div>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="text-sm-end pt-4"><a asp-action="Create" class="btn btn-primary">آدرس جدید</a></div>
+

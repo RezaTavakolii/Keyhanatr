@@ -216,7 +216,6 @@
     </div>
     <!-- Navbar 3 Level (Light)-->
     @RenderSection("navbar", false)
-
     <!-- Hero slider-->
     @RenderSection("slider", false)
 
@@ -224,30 +223,27 @@
 
     <!-- Popular categories-->
     @RenderSection("popularcategories", false)
-
     <!-- Products grid (محصولات پرطرفدار)-->
     @RenderSection("products", false)
     <br />
     <br />
-
     <!-- Banners-->
     @RenderSection("banners", false)
-
     <!-- Featured category (Hoodie)-->
     @RenderSection("featurecategory", false)
-
     <!-- با مارک خرید کنید-->
     @RenderSection("brands", false)
-
     <!-- Blog + Instagram info cards-->
     @RenderSection("bloginsta", false)
-
     <!-- Footer-->
     @RenderSection("footer", false)
-
     <!-- Toolbar for handheld devices (Default)-->
     <div class="handheld-toolbar">
-        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">علاقه مندی</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">منو</span></a><a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">25600</span></a></div>
+        <div class="d-table table-layout-fixed w-100">
+            <a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">علاقه مندی</span></a>
+            <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">منو</span></a>
+            <a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">25600</span></a>
+        </div>
     </div>
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
@@ -267,10 +263,7 @@
     <script src="/js/theme.min.js"></script>
 </body>
 </html>
-
-
-
-
+@*@await RenderSectionAsync("Scripts", required: false)*@
 
 @await RenderSectionAsync("Scripts", required: false)
 <title>@ViewData["Title"] - Keyhanatr</title>

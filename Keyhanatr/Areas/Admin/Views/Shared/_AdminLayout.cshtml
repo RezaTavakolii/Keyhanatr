@@ -1,6 +1,13 @@
 ﻿@using Keyhanatr.Core.Interfaces.Products
 @inject IProductServices productServices 
 <!DOCTYPE html>
+@{
+    string role = User.FindFirstValue("RoleId").ToString();
+    if (role != "5")
+    {
+        Context.Response.Redirect("/Login");
+    }
+}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,142 +20,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="/image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="/image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="/vendor/simplebar/dist/simplebar.min.css" />
-    <link rel="stylesheet" media="screen" href="/vendor/tiny-slider/dist/tiny-slider.css" />
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css" />
+    <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css" />
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="/css/theme.min.css">
     <link href="~/css/CustomStyles.css" rel="stylesheet" />
     <!-- Google Tag Manager-->
-
+    @RenderSection("Styles", false)
 </head>
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
-    <!-- Google Tag Manager (noscript)-->
-    <!-- Sign in / sign up modal-->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary">
-                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>ورود</a></li>
-                        <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>ثبت نام</a></li>
-                    </ul>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
-                        <div class="mb-3">
-                            <label class="form-label" for="si-email">آدرس ایمیل</label>
-                            <input class="form-control" type="email" id="si-email" placeholder="Setin@gmail.com" required>
-                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="si-password">پسورد</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="si-password" required>
-                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
-                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mb-3 d-flex flex-wrap justify-content-between">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="si-remember">
-                                <label class="form-check-label" for="si-remember">مرا به خاطر بسپار</label>
-                            </div><a class="fs-sm" href="#">فراموشی رمز؟</a>
-                        </div>
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ورود</button>
-                    </form>
-                    <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
-                        <div class="mb-3">
-                            <label class="form-label" for="su-name">نام</label>
-                            <input class="form-control" type="text" id="su-name" placeholder="ستین" required>
-                            <div class="invalid-feedback">لطفا نام را وارد کنید</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="su-email">آدرس ایمیل</label>
-                            <input class="form-control" type="email" id="su-email" placeholder="Setin@gmail.com" required>
-                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="su-password">پسورد</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="su-password" required>
-                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
-                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="su-password-confirm">تکرار پسورد</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="su-password-confirm" required>
-                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
-                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ثبت نام</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- روش پرداخت را اضافه کنید-->
-    <form class="needs-validation modal fade" method="post" id="add-payment" tabindex="-1" novalidate>
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">یک روش پرداخت اضافه کنید</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" id="paypal" name="payment-method">
-                        <label class="form-check-label" for="paypal">پی پال<img class="d-inline-block align-middle ms-2" src="/img/card-paypal.png" width="39" alt="PayPal"></label>
-                    </div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" id="card" name="payment-method" checked>
-                        <label class="form-check-label" for="card">کارت اعتباری/نقدی<img class="d-inline-block align-middle ms-2" src="/img/cards.png" width="187" alt="Credit card"></label>
-                    </div>
-                    <div class="row g-3 mb-2">
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" name="number" placeholder="شماره کارت" required>
-                            <div class="invalid-feedback">لطفا شماره کارت را پر کنید!</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" name="name" placeholder="نام و نام خانوادگی" required>
-                            <div class="invalid-feedback">لطفاً نام را روی کارت قید کنید!</div>
-                        </div>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="expiry" placeholder="ماه/سال" required>
-                            <div class="invalid-feedback">لطفا تاریخ انقضا کارت را ارائه دهید!</div>
-                        </div>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" name="cvc" placeholder="سی وی سی" required>
-                            <div class="invalid-feedback">لطفا کد CVC کارت را ارائه دهید!</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary d-block w-100" type="submit">این کارت را ثبت کنید</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <!-- Navbar Marketplace-->
+    
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="bg-light shadow-sm navbar-sticky">
         <div class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand d-none d-sm-block flex-shrink-0 me-4 order-lg-1" href="index.html"><img src="/img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="/img/logo-icon.png" width="74" alt="Cartzilla"></a>
+                <a class="navbar-brand d-none d-sm-block flex-shrink-0 me-4 order-lg-1" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
                 <!-- Toolbar-->
                 <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox">
@@ -160,7 +54,7 @@
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-heart"></i></div>
                     </a>*@
                     <div class="navbar-tool dropdown ms-2">
-                        <a class="navbar-tool-icon-box border dropdown-toggle" href="dashboard-sales.html"><img src="/img/marketplace/account/avatar-sm.png" width="32" alt="گروه ستین"></a><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>امتیاز</small>137500</a>
+                        <a class="navbar-tool-icon-box border dropdown-toggle" href="dashboard-sales.html"><img src="img/marketplace/account/avatar-sm.png" width="32" alt="گروه ستین"></a><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>امتیاز</small>137500</a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <div style="min-width: 14rem;">
                                 <h6 class="dropdown-header">حساب کاربری</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-settings.html"><i class="ci-settings opacity-60 me-2"></i>تنظیمات</a><a class="dropdown-item d-flex align-items-center" href="dashboard-purchases.html"><i class="ci-basket opacity-60 me-2"></i>خرید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-favorites.html"><i class="ci-heart opacity-60 me-2"></i>علاقه مندی<span class="fs-xs text-muted ms-auto">4</span></a>
@@ -300,7 +194,7 @@
     <div class="page-title-overlap bg-accent pt-4">
         <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
             <div class="d-flex align-items-center pb-3">
-                <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="/img/marketplace/account/avatar.png" alt="گروه ستین"></div>
+                <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="img/marketplace/account/avatar.png" alt="گروه ستین"></div>
                 <div class="ps-3">
                     <h3 class="text-light fs-lg mb-0">گروه ستین</h3><span class="d-block text-light fs-ms opacity-60 py-1">عضویت از تیر 1400 </span>
                 </div>
@@ -347,6 +241,9 @@
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/Products/Create"><i class="ci-cloud-upload opacity-60 me-2"></i>محصول جدید</a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه ها </a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductSubGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>زیر گروه ها </a></li>
+                                <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Users" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>کاربران </a></li>
+                                <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Sliders" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>اسلایدر</a></li>
+                                
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a></li>
                                 <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a></li>
                             </ul>
@@ -366,7 +263,7 @@
         <div class="container pt-2 pb-3">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-4">
-                    <div class="text-nowrap mb-3"><a class="d-inline-block align-middle mt-n2 me-2" href="#"><img class="d-block" src="/img/footer-logo-light.png" width="117" alt="Cartzilla"></a><span class="d-inline-block align-middle h5 fw-light text-white mb-0">بازار</span></div>
+                    <div class="text-nowrap mb-3"><a class="d-inline-block align-middle mt-n2 me-2" href="#"><img class="d-block" src="img/footer-logo-light.png" width="117" alt="Cartzilla"></a><span class="d-inline-block align-middle h5 fw-light text-white mb-0">بازار</span></div>
                     <p class="fs-sm text-white opacity-70 pb-1">موارد با کیفیت بالا که توسط جامعه جهانی ما ایجاد شده است.</p>
                     <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">65,478 </span><span class="fw-normal text-white">محصولات</span></h6>
                     <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">2,521 </span><span class="fw-normal text-white">کاربران</span></h6>
@@ -461,7 +358,6 @@
             </div>
         </div>
     </footer>
-    @RenderBody()
     <!-- Toolbar for handheld devices (Marketplace)-->
     <div class="handheld-toolbar">
         <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="dashboard-favorites.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">علاقه مندی</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">منو</span></a><a class="d-table-cell handheld-toolbar-item" href="marketplace-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">3</span></span><span class="handheld-toolbar-label">5600</span></a></div>
@@ -478,6 +374,6 @@
     <script src="/js/jquery.validate.unobtrusive.js"></script>
     @RenderSection("Scripts", false)
     <!-- Main theme script-->
-    <script src="/js/theme.min.js"></script>
+    <script src="js/theme.min.js"></script>
 </body>
 </html>

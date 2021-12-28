@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Address";
+    Layout = "~/Areas/UserPanel/Views/Shared/_UserPanelLayout.cshtml";
+}
+
+<form class="needs-validation modal fade" method="post" id="add-address" tabindex="-1" novalidate>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">آدرس جدیدی اضافه کنید</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row gx-4 gy-3">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-fn">نام کوچک</label>
+                        <input class="form-control" type="text" id="address-fn" required>
+                        <div class="invalid-feedback">لطفاً نام کوچک خود را پر کنید</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-ln">نام خانوادگی</label>
+                        <input class="form-control" type="text" id="address-ln" required>
+                        <div class="invalid-feedback">لطفا نام خانوادگی خود را پر کنید</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-company">شرکت</label>
+                        <input class="form-control" type="text" id="address-company">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-country">کشور</label>
+                        <select class="form-select" id="address-country" required>
+                            <option value="">انتخاب کشور</option>
+                            <option value="fr">ایران</option>
+
+                        </select>
+                        <div class="invalid-feedback">لطفاً کشور خود را انتخاب کنید!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-city">شهر</label>
+                        <input class="form-control" type="text" id="address-city" required>
+                        <div class="invalid-feedback">لطفاً شهر خود را پر کنید!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-line1">آدرس</label>
+                        <input class="form-control" type="text" id="address-line1" required>
+                        <div class="invalid-feedback">لطفا آدرس خود را پر کنید</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-line2">آدرس دوم</label>
+                        <input class="form-control" type="text" id="address-line2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="address-zip">کد پستی</label>
+                        <input class="form-control" type="text" id="address-zip" required>
+                        <div class="invalid-feedback">لطفا کد پستی خود را اضافه کنید</div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="address-primary">
+                            <label class="form-check-label" for="address-primary">این آدرس را مقدماتی قرار دهید</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">بستن</button>
+                <button class="btn btn-primary btn-shadow" type="submit">اضافه کردن</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+    <h6 class="fs-base text-light mb-0">لیست آدرسهای ثبت شده شما:</h6><a class="btn btn-primary btn-sm" href="account-signin.html"><i class="ci-sign-out me-2"></i>خروج</a>
+</div>
+<!-- Addresses list-->
+<div class="table-responsive fs-md">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>نشانی</th>
+                <th>اقدامات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="py-3 align-middle">ایران-یزد<span class="align-middle badge bg-info ms-2">اصلی</span></td>
+                <td class="py-3 align-middle">
+                    <a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="ویرایش"><i class="ci-edit"></i></a><a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="حذف">
+                        <div class="ci-trash"></div>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-3 align-middle">ایران-یزد</td>
+                <td class="py-3 align-middle">
+                    <a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="ویرایش"><i class="ci-edit"></i></a><a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="حذف">
+                        <div class="ci-trash"></div>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-3 align-middle">ایران-یزد</td>
+                <td class="py-3 align-middle">
+                    <a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="ویرایش"><i class="ci-edit"></i></a><a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="حذف">
+                        <div class="ci-trash"></div>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="text-sm-end pt-4"><a class="btn btn-primary" href="#add-address" data-bs-toggle="modal">آدرس جدید</a></div>
+
+
+

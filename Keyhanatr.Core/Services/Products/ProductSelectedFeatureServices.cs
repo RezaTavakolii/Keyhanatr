@@ -18,56 +18,101 @@ namespace Keyhanatr.Core.Services.Products
         {
             _context = context;
         }
+
         public void AddSelectedFeature(ProductSelectedFeature selectedFeature)
         {
-            _context.ProductSelectedFeatures.Add(selectedFeature);
-            SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void DeleteSelectedFeature(int selectedFeatureId)
         {
-            var selectedFeature = GetSelectedFeatureById(selectedFeatureId);
-            _context.ProductSelectedFeatures.Remove(selectedFeature);
-            SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void EditSelectedFeature(ProductSelectedFeature selectedFeature)
         {
-            _context.ProductSelectedFeatures.Update(selectedFeature);
-            SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<Data.Domain.Products.ProductFeature> GetAllFeatures()
+        public IEnumerable<ProductFeature> GetAllFeatures()
         {
-            return _context.ProductFeatures.Include(s => s.ProductSelectedFeatures);
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Product> GetAllProducts()
         {
-            return _context.Products.Include(s => s.ProductSelectedFeatures);
+            throw new NotImplementedException();
         }
 
         public IEnumerable<ProductSelectedFeature> GetAllSelectedFeatures()
         {
-            return _context.ProductSelectedFeatures.Include(p => p.Product).Include(f =>
-                 f.ProductFeature);
+            throw new NotImplementedException();
         }
 
         public Product GetProductById(int productId)
         {
-            return _context.Products.Find(productId);
+            throw new NotImplementedException();
         }
 
         public ProductSelectedFeature GetSelectedFeatureById(int selectedFeatureId)
         {
-            return _context.ProductSelectedFeatures.Include(p => p.Product)
-                .Include(f => f.ProductFeature).FirstOrDefault(s =>
-                  s.SelectedFeatureId == selectedFeatureId);
+            throw new NotImplementedException();
         }
 
         public void SaveChanges()
         {
-            _context.SaveChanges();
+            throw new NotImplementedException();
         }
+        //public void AddSelectedFeature(ProductSelectedFeature selectedFeature)
+        //{
+        //    _context.ProductSelectedFeatures.Add(selectedFeature);
+        //    SaveChanges();
+        //}
+
+        //public void DeleteSelectedFeature(int selectedFeatureId)
+        //{
+        //    var selectedFeature = GetSelectedFeatureById(selectedFeatureId);
+        //    _context.ProductSelectedFeatures.Remove(selectedFeature);
+        //    SaveChanges();
+        //}
+
+        //public void EditSelectedFeature(ProductSelectedFeature selectedFeature)
+        //{
+        //    _context.ProductSelectedFeatures.Update(selectedFeature);
+        //    SaveChanges();
+        //}
+
+        //public IEnumerable<Data.Domain.Products.ProductFeature> GetAllFeatures()
+        //{
+        //    return _context.ProductFeatures.Include(s => s.ProductSelectedFeatures);
+        //}
+
+        //public IEnumerable<Product> GetAllProducts()
+        //{
+        //    return _context.Products.Include(s => s.ProductSelectedFeatures);
+        //}
+
+        //public IEnumerable<ProductSelectedFeature> GetAllSelectedFeatures()
+        //{
+        //    return _context.ProductSelectedFeatures.Include(p => p.Product).Include(f =>
+        //         f.ProductFeature);
+        //}
+
+        //public Product GetProductById(int productId)
+        //{
+        //    return _context.Products.Find(productId);
+        //}
+
+        //public ProductSelectedFeature GetSelectedFeatureById(int selectedFeatureId)
+        //{
+        //    return _context.ProductSelectedFeatures.Include(p => p.Product)
+        //        .Include(f => f.ProductFeature).FirstOrDefault(s =>
+        //          s.SelectedFeatureId == selectedFeatureId);
+        //}
+
+        //public void SaveChanges()
+        //{
+        //    _context.SaveChanges();
+        //}
     }
 }

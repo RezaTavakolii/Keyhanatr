@@ -1,0 +1,56 @@
+﻿@using System.Security.Claims
+
+@if (User.Identity.IsAuthenticated)
+
+{
+    <div class="navbar-tool dropdown ms-3">
+        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><i class="navbar-tool-icon ci-user"></i></a><a class="navbar-tool-text"><small>@User.Identity.Name</small></a>
+        <!-- Cart dropdown-->
+        <div class="dropdown-menu dropdown-menu-end">
+            <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 15rem;">
+                <div @*style="height: 15rem;"*@ data-simplebar data-simplebar-auto-hide="false">
+                    <h5 class="widget-product-title pb-2 mt-3 text-success ">
+                        <i class="ci-user me-2 mt-n1 alert-success"></i>@User.Identity.Name عزیز خوش آمدید<label></label>
+                    </h5>
+                    <hr />
+                    <h5 class="widget-product-title pb-2 mt-2">
+                        <a asp-area="UserPanel" asp-controller="UserInfoes" asp-action="Create"><i class="ci-package me-2 mt-n1 alert-secondary"></i><label>مشاهده حساب کاربری</label></a>
+                    </h5>
+                    <hr />
+
+                    <h5 class="widget-product-title pb-2 mt-2">
+                        <a asp-area="UserPanel" asp-controller="Home" asp-action="ChangePassword"><i class="ci-key me-2 mt-n1 alert-primary"></i><label>تغییر کلمه عبور</label></a>
+                    </h5>
+                    <hr />
+                    @{
+                        string role = User.FindFirstValue("RoleId").ToString();
+                        if (role == "5")
+                        {
+                            <h5 class="widget-product-title pb-2 mt-2">
+                                <a asp-area="admin" asp-controller="Home" asp-action="Index"><i class="ci-add-document me-2 mt-n1 alert-info"></i><label>پنل مدیریت سایت</label></a>
+                            </h5>
+                            <hr />
+                        }
+                    }
+
+                    <a asp-area="UserPanel" asp-controller="Home" asp-action="Logout" class="btn btn-primary btn-sm d-block w-100"><i class="ci-sign-out me-2 fa-power-off align-middle"></i>خروج از حساب</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <li class="nav-item">
+        <a asp-controller="Account" asp-action="Login" class="nav-link fw-medium">
+            <i class="ci-unlocked me-2 mt-n1"></i>ورود
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a asp-controller="Account" asp-action="Register" class="nav-link fw-medium">
+            <i class="ci-user me-2 mt-n1"></i>ثبت نام
+        </a>
+    </li>
+}
+

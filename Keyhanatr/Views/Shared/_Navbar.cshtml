@@ -5,16 +5,16 @@
             <div class="topbar-text dropdown d-md-none">
                 <a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown">لینک ها</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="tel:00331697720"><i class="ci-support text-muted me-2"></i>09162352304</a></li>
+                    <li><a class="dropdown-item" href="tel:00331697720"><i class="ci-support text-muted me-2"></i>09127894496</a></li>
                     <li><a class="dropdown-item" href="order-tracking.html"><i class="ci-location text-muted me-2"></i>رهیگیری سفارش</a></li>
                 </ul>
             </div>
-            <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="ci-support"></i><span class="text-muted me-1">پشتیبانی</span><a class="topbar-link" href="tel:00331697720">09162352304</a></div>
+            <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="ci-support"></i><span class="text-muted me-1">پشتیبانی</span><a class="topbar-link" href="tel:00331697720">09127894496</a></div>
             <div class="tns-carousel tns-controls-static d-none d-md-block">
                 <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}">
-                    <div class="topbar-text">ارسال رایگان با سفارش بیش از 200 </div>
-                    <div class="topbar-text">ما ظرف 30 روز پول برمی گردانیم</div>
-                    <div class="topbar-text">دوستانه 24/7 پشتیبانی مشتری</div>
+                    <div class="topbar-text">به فروشگاه اینترنتی کیهان عطر خوش آمدید</div>
+                    <div class="topbar-text">ما محصولات با کیفیت و با برند معتبر ارائه می دهیم</div>
+                    <div class="topbar-text">ارسال کالا به همه نقاط کشور در کمترین زمان</div>
                 </div>
             </div>
             <div class="ms-3 text-nowrap">
@@ -34,10 +34,13 @@
                         <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="/img/flags/de.png" width="20" alt="آلمان">آلمان</a></li>
                         <li><a class="dropdown-item" href="#"><img class="me-2" src="/img/flags/it.png" width="20" alt="ایتالیا">ایتالیا</a></li>
                     </ul>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
+
+    <!--modal login-->
+    
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <div class="navbar-sticky bg-light">
         <div class="navbar navbar-expand-lg navbar-light">
@@ -50,12 +53,17 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#">
                         <span class="navbar-tool-tooltip">منو</span>
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div>
-                    </a><a class="navbar-tool d-none d-lg-flex" href="account-wishlist.html">
+                    </a>
+                    @*<a class="navbar-tool d-none d-lg-flex" href="account-wishlist.html">
                         <span class="navbar-tool-tooltip">علاقه مندی</span>
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-heart"></i></div>
-                    </a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
-                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
-                        <div class="navbar-tool-text ms-n3"><small>سلام وارد شوید</small>حساب من</div>
+                    </a>*@
+                    <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#" data-bs-toggle="modal">
+                        <div class="navbar-tool-text ms-n3">
+                            <ul class="navbar-nav" >
+                                <partial name="_LoggedIn"/>
+                            </ul>
+                        </div>
                     </a>
                     <div class="navbar-tool dropdown ms-3">
                         <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>سبدخرید</small>25600</a>
@@ -121,6 +129,7 @@
                         <i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
                         <input class="form-control rounded-start" type="text" placeholder="جستجو برای محصول">
                     </div>
+                    
                     <!-- Departments menu-->
                     <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
                         <li class="nav-item dropdown">
@@ -435,9 +444,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link"><i class='icon bx bxs-dashboard'></i><label>پنل مدیریت سایت</label></a>
-                        </li>
+
                     </ul>
                 </div>
             </div>

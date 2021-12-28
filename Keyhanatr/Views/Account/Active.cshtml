@@ -1,0 +1,42 @@
+﻿@model Keyhanatr.Data.ViewModel.Account.ActiveViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "کد فعالسازی";
+}
+<div class="container py-4 py-lg-5 my-4">
+    <div class="row">
+        <div class="col-md-6 offset-lg-3">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <h4 class="h4 mb-3" style="text-align:center;">فعالسازی حساب کاربری</h4>
+                    <p class="fs-sm text-muted mb-4" style="text-align:center;">برای فعالسازی حساب کاربری خود کد پیامک شده را وارد نمایید</p>
+                    <div class="card py-2 mt-4">
+                        <form asp-action="Active" class="card-body needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label asp-for="ActiveCode" class="form-label">کد فعالسازی</label>
+                                <input asp-for="ActiveCode" class="form-control" type="text" required>
+                                <span asp-validation-for="ActiveCode" class="text-danger"></span>
+                            </div>
+                            <button class="btn btn-primary" type="submit">فعالسازی</button>
+                        </form>
+                    </div>
+                    <br />
+                    <div class="row gx-4 gy-3">
+                        <div class="col-12 text-end">
+                            <a class="btn btn-secondary" href="/"><i class="ci-home me-2 ms-n1"></i>صفحه اصلی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
