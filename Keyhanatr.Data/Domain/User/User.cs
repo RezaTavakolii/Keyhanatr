@@ -38,6 +38,8 @@ namespace Keyhanatr.Data.Domain.User
         [MaxLength(10, ErrorMessage = "مقدار {0} نباید بیش تر از {1} کاراکتر باشد")]
         public string RegisterDate { get; set; }
 
+        
+
         [Display(Name = "کد فعال سازی")]
         public string ActiveCode { get; set; }
 
@@ -48,12 +50,11 @@ namespace Keyhanatr.Data.Domain.User
         #region Relations
         public List<Address> Addresses { get; set; }
         #endregion
-
-
-        [ForeignKey("RoleId")]
+        #region Relations
         public Role Role { get; set; }
+        #endregion
 
 
-        public List<Products.ProductComment> ProductComments { get; set; }
+
     }
 }

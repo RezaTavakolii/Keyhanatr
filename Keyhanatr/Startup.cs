@@ -39,6 +39,7 @@ namespace Keyhanatr
             {
                 options.EnableEndpointRouting = false;
             });
+
             #region Authentication
 
             services.AddAuthentication(options =>
@@ -74,6 +75,7 @@ namespace Keyhanatr
             services.AddTransient<IProductGallery, ProductGallery>();
             services.AddTransient<IProductColorServices, ProductColorServices>();
 
+            services.AddScoped<IUserService, UserService>();
             #endregion
         }
 

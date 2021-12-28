@@ -31,6 +31,8 @@ namespace Keyhanatr.Data.Context
         public DbSet<Slider> Sliders { get; set; }
         //public DbSet<Test> Tsets { get; set; }
 
+        public DbSet<UserInfo> UserInfos { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         #region ModelBuilder
         protected override void OnModelCreating(ModelBuilder modelBuilder)

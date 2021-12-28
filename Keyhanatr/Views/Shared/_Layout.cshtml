@@ -219,8 +219,6 @@
     <!-- Hero slider-->
     @RenderSection("slider", false)
 
-    @RenderBody()
-
     <!-- Popular categories-->
     @RenderSection("popularcategories", false)
     <!-- Products grid (محصولات پرطرفدار)-->
@@ -266,4 +264,5 @@
 @*@await RenderSectionAsync("Scripts", required: false)*@
 
 @await RenderSectionAsync("Scripts", required: false)
-<title>@ViewData["Title"] - Keyhanatr</title>
+@RenderBody()
+<title>@ViewData["Title"] - Keyhanatr</title><title>@ViewData["Title"] - Keyhanatr</title>
