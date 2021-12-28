@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="EfConfigurationProvider.Core" Version="0.6.2" />
 		<PackageReference Include="kavenegar" Version="1.2.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.2.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
@@ -11,6 +12,7 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.0.0-preview8.19405.7" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
 		  <PrivateAssets>all</PrivateAssets>

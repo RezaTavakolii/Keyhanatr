@@ -62,6 +62,9 @@ namespace Keyhanatr.Data.Domain.Products
         [Display(Name = "تعدادفروش محصول")]
         public int? SalesCount { get; set; }
 
+        [Display(Name = "تعدادفروش محصول")]
+        public int? ToSalesCount { get; set; }
+
 
 
         [Display(Name = "مقدار کل دریافتی از محصول")]

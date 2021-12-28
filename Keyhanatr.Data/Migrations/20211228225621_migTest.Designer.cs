@@ -4,14 +4,16 @@ using Keyhanatr.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-    partial class KeyhanatrContextModelSnapshot : ModelSnapshot
+    [Migration("20211228225621_migTest")]
+    partial class migTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +68,7 @@ namespace Keyhanatr.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ToSalesCount")
+                    b.Property<int?>("TwoooooSalesCount")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")

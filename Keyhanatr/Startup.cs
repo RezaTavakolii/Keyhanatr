@@ -68,7 +68,7 @@ namespace Keyhanatr
 
             #region IoC
             services.AddScoped<IMessageSender, MessageSender>();
-            services.AddTransient<IProductServices,ProductServices>();
+            services.AddTransient<IProductServices, ProductServices>();
             services.AddTransient<IProductFeatureServices, ProductFeatureServices>();
             services.AddTransient<IProductSelectedFeature, ProductSelectedFeatureServices>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -108,9 +108,10 @@ namespace Keyhanatr
                pattern: "{area:exists}/{controller=home}/{action=index}/{id?}"
             );
 
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                //    endpoints.MapControllerRoute(
+                //        name: "default",
+                //        pattern: "{controller=Home}/{action=Index}/{id?}");
+                //});
             });
         }
     }

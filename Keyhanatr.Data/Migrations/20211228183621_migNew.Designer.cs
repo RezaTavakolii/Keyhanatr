@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-    [Migration("20211228084013_addNew")]
-    partial class addNew
+    [Migration("20211228183621_migNew")]
+    partial class migNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

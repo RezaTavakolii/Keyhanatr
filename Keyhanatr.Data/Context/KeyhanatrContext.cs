@@ -34,6 +34,8 @@ namespace Keyhanatr.Data.Context
         public DbSet<UserInfo> UserInfos { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
+
+
         #region ModelBuilder
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
