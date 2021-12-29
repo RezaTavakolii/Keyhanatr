@@ -82,6 +82,12 @@ namespace Keyhanatr
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //// Very Important
+            using (var scope =
+                app.ApplicationServices.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<KeyhanatrContext>())
+                context.Database.Migrate();
+            //////
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -108,11 +114,11 @@ namespace Keyhanatr
                pattern: "{area:exists}/{controller=home}/{action=index}/{id?}"
             );
 
-                //    endpoints.MapControllerRoute(
-                //        name: "default",
-                //        pattern: "{controller=Home}/{action=Index}/{id?}");
-                //});
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+      
         }
     }
 }

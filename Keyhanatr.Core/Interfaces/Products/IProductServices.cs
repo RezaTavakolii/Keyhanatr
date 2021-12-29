@@ -70,6 +70,15 @@ namespace Keyhanatr.Core.Interfaces.Products
         bool DeleteProduct(int productId);
 
 
+        /////for NavGroups
+        //for Index.cshtml
+        List<ProductNavGroup> GetAllNavGroups();
+
+
+        //for Create.cshtml
+        
+
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///Outside Admin

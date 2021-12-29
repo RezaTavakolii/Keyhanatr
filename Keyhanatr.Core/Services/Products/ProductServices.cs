@@ -19,9 +19,9 @@ namespace Keyhanatr.Core.Services.Products
 {
     public class ProductServices : IProductServices
     {
-       public IHttpContextAccessor _accessor;
+        public IHttpContextAccessor _accessor;
         private KeyhanatrContext _context;
-        public ProductServices(KeyhanatrContext context,IHttpContextAccessor accessor)
+        public ProductServices(KeyhanatrContext context, IHttpContextAccessor accessor)
         {
             _context = context;
             _accessor = accessor;
@@ -273,17 +273,27 @@ namespace Keyhanatr.Core.Services.Products
         #endregion
 
         #region Comments
-       
+
 
         Tuple<List<ProductComment>, int> IProductServices.GetAllCommentsByProductId(int productId)
         {
             Claim identifierClaim = _accessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
             int currentUserId = int.Parse(identifierClaim.Value);
 
-            var comments = _context.ProductComments.Include(u=>u.User)
-                .Include(p=> p.Product).Where(p=> p.ProductId==productId).ToList();
+            var comments = _context.ProductComments.Include(u => u.User)
+                .Include(p => p.Product).Where(p => p.ProductId == productId).ToList();
 
-           return Tuple.Create(comments, currentUserId);
+            return Tuple.Create(comments, currentUserId);
+        }
+
+
+        #endregion
+
+
+        #region NavGroups
+        public List<ProductNavGroup> GetAllNavGroups()
+        {
+            return _context.ProductNavGroups.ToList();
         }
         #endregion
     }
