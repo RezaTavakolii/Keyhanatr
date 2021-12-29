@@ -1,0 +1,30 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductGallery
+@{
+    ViewData["Title"] = "ساخت گالری";
+}
+<h2>ساخت گالری</h2>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Create" enctype="multipart/form-data" method="POST">
+                <div class="form-group">
+                    <label asp-for="ProductId" class="control-label"></label>
+                    <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                </div>
+                <div>
+                    <label for="#pic">
+                        انتخاب تصویر/تصاویر :
+                    </label>
+                    <div class="form-group">
+                        <input id="pic" type="file" name="imgUp" multiple />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ساخت گالری" class="btn btn-outline-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

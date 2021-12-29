@@ -1,12 +1,14 @@
-﻿@using System.Security.Claims
-
+﻿@using Keyhanatr.Core.Interfaces.Products
+@using System.Security.Claims;
+@inject IProductServices productServices ;
 <!DOCTYPE html>
 @{
-    string role = User.FindFirstValue("RoleId").ToString();
-    if (role != "5")
-    {
-        Context.Response.Redirect("/Login");
-    }
+//string role = User.FindFirstValue("RoleId").ToString();
+//if (role != "5")
+//{
+//    Context.Response.Redirect("/Login");
+//}
+
 }
 <html lang="en">
 <head>
@@ -27,8 +29,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css" />
-    <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css" />
+    <link rel="stylesheet" media="screen" href="/vendor/simplebar/dist/simplebar.min.css" />
+    <link rel="stylesheet" media="screen" href="/vendor/tiny-slider/dist/tiny-slider.css" />
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="/css/theme.min.css">
     <link href="~/css/CustomStyles.css" rel="stylesheet" />
@@ -37,7 +39,7 @@
 </head>
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
-    
+
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="bg-light shadow-sm navbar-sticky">
         <div class="navbar navbar-expand-lg navbar-light">
@@ -47,30 +49,33 @@
                 <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox">
                         <span class="navbar-tool-tooltip">جستجو</span>
-                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div>
-                    </a><a class="navbar-tool d-none d-lg-flex" href="dashboard-favorites.html">
-                        <span class="navbar-tool-tooltip">علاقه مندی</span>
-                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-heart"></i></div>
-                    </a>
-                    <div class="navbar-tool dropdown ms-2">
-                        <a class="navbar-tool-icon-box border dropdown-toggle" href="dashboard-sales.html"><img src="img/marketplace/account/avatar-sm.png" width="32" alt="گروه ستین"></a><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>امتیاز</small>137500</a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <div style="min-width: 14rem;">
-                                <h6 class="dropdown-header">حساب کاربری</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-settings.html"><i class="ci-settings opacity-60 me-2"></i>تنظیمات</a><a class="dropdown-item d-flex align-items-center" href="dashboard-purchases.html"><i class="ci-basket opacity-60 me-2"></i>خرید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-favorites.html"><i class="ci-heart opacity-60 me-2"></i>علاقه مندی<span class="fs-xs text-muted ms-auto">4</span></a>
-                                <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header">داشبورد فروشنده</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-sales.html"><i class="ci-dollar opacity-60 me-2"></i>فروش<span class="fs-xs text-muted ms-auto">137500</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-add-new-product.html"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه جدید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item d-flex align-items-center" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a>
+
+                        @RenderSection("SearchBox", false)
+                        @*</a><a class="navbar-tool d-none d-lg-flex" href="dashboard-favorites.html">
+                                <span class="navbar-tool-tooltip">علاقه مندی</span>
+                                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-heart"></i></div>
+                            </a>*@
+                        <div class="navbar-tool dropdown ms-2">
+                            <a class="navbar-tool-icon-box border dropdown-toggle" href="dashboard-sales.html"><img src="img/marketplace/account/avatar-sm.png" width="32" alt="گروه ستین"></a><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>امتیاز</small>137500</a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div style="min-width: 14rem;">
+                                    <h6 class="dropdown-header">حساب کاربری</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-settings.html"><i class="ci-settings opacity-60 me-2"></i>تنظیمات</a><a class="dropdown-item d-flex align-items-center" href="dashboard-purchases.html"><i class="ci-basket opacity-60 me-2"></i>خرید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-favorites.html"><i class="ci-heart opacity-60 me-2"></i>علاقه مندی<span class="fs-xs text-muted ms-auto">4</span></a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">داشبورد فروشنده</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-sales.html"><i class="ci-dollar opacity-60 me-2"></i>فروش<span class="fs-xs text-muted ms-auto">137500</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-add-new-product.html"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه جدید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a>
+                                    <div class="dropdown-divider"></div><a class="dropdown-item d-flex align-items-center" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="marketplace-cart.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon ci-cart"></i></a></div>
+                        <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="marketplace-cart.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon ci-cart"></i></a></div>
                 </div>
                 <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
                     <!-- Search-->
-                    <div class="input-group d-lg-none my-3">
-                        <i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
-                        <input class="form-control rounded-start" type="text" placeholder="جستجو کنید...">
-                    </div>
+                    <form asp-controller="Products" asp-action="Index" method="get">
+                        <div class="input-group d-lg-none my-3">
+                            <i class="btn ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
+                            <input name="filter" class="form-control rounded-start" type="text" placeholder="جستجو کنید...">
+                        </div>
+                    </form>
                     <!-- Categories dropdown-->
                     <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
                         <li class="nav-item dropdown">
@@ -176,10 +181,13 @@
         <div class="search-box collapse" id="searchBox">
             <div class="card pt-2 pb-4 border-0 rounded-0">
                 <div class="container">
-                    <div class="input-group">
-                        <i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
-                        <input class="form-control rounded-start" type="text" placeholder="جستجو کنید...">
-                    </div>
+                    <form action="/Admin/Products" method="get">
+                        <div class="input-group">
+                            <i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
+                            <input name="filter" class="form-control rounded-start" type="text" placeholder="جستجو کنید...">
+                            <input class=" btn btn-outline-success" type="submit" value="بگرد">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -231,13 +239,14 @@
                             </div>
                             <ul class="list-unstyled mb-0">
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-sales.html"><i class="ci-dollar opacity-60 me-2"></i>فروش<span class="fs-sm text-muted ms-auto">137500</span></a></li>
-                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-sm text-muted ms-auto">5</span></a></li>
-                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-add-new-product.html"><i class="ci-cloud-upload opacity-60 me-2"></i>محصول جدید</a></li>
+                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/Products"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-sm text-muted ms-auto">@productServices.GetProductCount()</span></a></li>
+                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/Products/Create"><i class="ci-cloud-upload opacity-60 me-2"></i>محصول جدید</a></li>
+                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductNavGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه های ناوبری </a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه ها </a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductSubGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>زیر گروه ها </a></li>
                                 <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Users" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>کاربران </a></li>
                                 <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Sliders" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>اسلایدر</a></li>
-                                
+
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a></li>
                                 <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a></li>
                             </ul>
@@ -362,8 +371,12 @@
     <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
     <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
     @RenderSection("Scripts", false)
     <!-- Main theme script-->
-    <script src="js/theme.min.js"></script>
+    <script src="/js/theme.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,82 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductColor
+
+@{
+    ViewData["Title"] = "ویرایش";
+}
+
+<h1>ویرایش رنگ</h1>
+<hr />
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ColorId" />
+    <input type="hidden" asp-for="ProductId" />
+    <input type="hidden" asp-for="ImageName" />
+    <section class="col-lg-12 pt-lg-4 pb-4 mb-3">
+        <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+            @if (ViewBag.IsNullExist != null)
+            {
+                <div class="alert alert-danger">
+                    <div><strong>به دلیل وارد نکردن فیلد 'تعداد موجودی'، تعداد موجودی 'صفر' در نظرگرفته شده است.</strong></div>
+                    <div>در صورت تایید، می توانید گزینه "ویرایش رنگ رادر پایین صفحه فشار دهید!" </div>
+                </div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
+                <h3 class="h3 py-2 me-2 text-center text-sm-start">ویرایش رنگ برای محصول: "@ViewBag.ProductTitle"</h3>
+            </div>
+
+            <div class="mb-3 pb-2">
+                <label class="form-label" asp-for="@Model.ColorName">عنوان رنگ</label>
+                <input class="form-control" asp-for="@Model.ColorName" id="unp-product-name">
+                <div class="form-text">حداکثر 100 حرف هیچ L یا شکلک مجاز نیست.</div>
+                <span asp-validation-for="@Model.ColorName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 pb-2">
+                <label class="form-label" asp-for="@Model.ColorCode">کد رنگ</label>
+                <input class="form-control" asp-for="@Model.ColorCode" id="unp-product-name">
+                <div class="form-text">حداکثر 100 حرف هیچ L یا شکلک مجاز نیست.</div>
+                <span asp-validation-for="@Model.ColorCode" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 pb-2">
+                <label class="form-label" for="ProductExist">تعداد موجودی</label>
+                <input class="form-control" name="productExist" value="@Model.ProductExist" id="ProductExist">
+            </div>
+            @if (ViewBag.IsNullExist != null)
+            {
+                    <div class="ci-help text-danger"><strong>به دلیل وارد نکردن فیلد 'تعداد موجودی'، تعداد موجودی 'صفر' در نظرگرفته شده است.</strong></div>
+            }
+            @if (ViewBag.NonNumericExist == true)
+            {
+                <div class="ci-help text-danger"><strong>لطفا عدد 'تعداد موجودی' را درست وارد کنید.</strong></div>
+            }
+
+            <div class="mb-3 pb-2">
+                <label class="form-label" for="ImageName"> رنگ پس زمینه فعلی:</label>
+                <img id="ImageName" src="/Images/ProductThumbs/@Model.ImageName" alt=" @Model.ImageName" />
+            </div>
+
+            <div class="file-drop-area mb-3">
+                <div class="file-drop-icon ci-cloud-upload"></div><span class="file-drop-message">برای بارگذاری تصویر صفحه از محصول ، آن را بکشید و رها کنید</span>
+                <input class="file-drop-input" type="file" name="imgUp">
+                <button class="file-drop-btn btn btn-primary btn-sm mb-2" type="button">یا پرونده را انتخاب کنید</button>
+                <div class="form-text">1000 x 800px اندازه ایده آل برای نمایشگرهای با وضوح بالا</div>
+            </div>
+            @if (ViewBag.IsNotImage != null)
+            {
+                <div class="form-text text-danger"><span>لطفا از فرمت درستی برای انتخاب تصویر اسنفاده کنید.</span></div>
+            }
+            <button class="btn btn-warning d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>ویرایش رنگ</button>
+        </div>
+    </section>
+</form>
+<div>
+    <a asp-action="Index" asp-route-id="@Model.ProductId">برو به صفحه رنگ های این محصول</a>
+</div>
+<div>
+    <a asp-controller="Products" asp-action="Index">برو به صفحه محصولات</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,716 @@
+﻿@model Keyhanatr.Data.Domain.Products.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var features = new List<Keyhanatr.Data.Domain.Products.ProductFeature>();
+    foreach (var item in Model.ProductSelectedFeatures)
+    {
+        features.Add(item.ProductFeature);
+    }
+
+    var selectedFeatures = Model.ProductSelectedFeatures;
+
+}
+@section navbar{
+    <partial name="_Navbar.cshtml" />
+}
+
+
+<div class="page-title-overlap bg-dark pt-4">
+    <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                    <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>@Model.ProductGroup.GroupTitle</a></li>
+                    <li class="breadcrumb-item text-nowrap">
+                        <a href="#">@Model.ProductSubGroup.SubGroupTitle</a>
+                    </li>
+                    <li class="breadcrumb-item text-nowrap active" aria-current="page">@Model.ProductTitle</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+            <h1 class="h3 text-light mb-0">@Model.ProductTitle</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Gallery + details-->
+    <div class="bg-light shadow-lg rounded-3 px-4 py-3 mb-5">
+        <div class="px-lg-3">
+            <div class="row">
+                <!-- گالری محصولات-->
+                <div class="col-lg-7 pe-lg-0 pt-lg-4">
+                    <div class="product-gallery">
+                        <div class="product-gallery-preview order-sm-2">
+                            <div class="product-gallery-preview-item active" id="first">
+                                <img class="image-zoom" src="/Images/ProductImages/@Model.ImageName" data-zoom="/Images/ProductImages/@Model.ImageName" alt="Product image">
+                                <div class="image-zoom-pane"></div>
+                            </div>
+                            @if (Model.ProductGalleries.Any())
+                            {
+                                int i = 1;
+                                foreach (var item in Model.ProductGalleries)
+                                {
+                                    <div class="product-gallery-preview-item" id="pic_@i">
+                                        <img class="image-zoom" src="/Images/ProductImages/@item.ImageName" data-zoom="/Images/ProductImages/@item.ImageName" alt="@Model.ProductTitle">
+                                        <div class="image-zoom-pane"></div>
+                                    </div>
+                                    i++;
+                                }
+                            }
+                        </div>
+                        <div class="product-gallery-thumblist order-sm-1">
+                            <a class="product-gallery-thumblist-item active" href="#first"><img src="/Images/ProductImages/@Model.ImageName" alt="@Model.ProductTitle"></a>
+                            @if (Model.ProductGalleries.Any())
+                            {
+                                int i = 1;
+                                foreach (var item in Model.ProductGalleries)
+                                {
+                                    <a class="product-gallery-thumblist-item active" href="#pic_@i"><img src="/Images/ProductImages/@item.ImageName" alt="@Model.ProductTitle"></a>
+                                    i++;
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- جزئیات محصول-->
+                <div class="col-lg-5 pt-4 pt-lg-0">
+                    <div class="product-details ms-auto pb-3">
+
+                        <div class="mb-3">
+                            <span class="h3 fw-normal text-accent me-1">@Model.Price.ToString("N0")</span>
+                            <del class="text-muted fs-lg me-3">250<small>00</small></del><span class="badge bg-danger badge-shadow align-middle mt-n2">فروش</span>
+                        </div>
+                        @if (Model.ProductColors.Any())
+                        {
+                            <div class="mb-3 colorInfo">
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="mb-3">
+                                <div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">موجودی :</span><span class="text-muted">@((Model.ProductExist==null)?0:Model.ProductExist)</span></div>
+                            </div>
+                        }
+                        @if (Model.ProductColors.Any())
+                        {
+                            @*<div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">رنگ:</span><span class="text-muted" id="colorValue"></span></div>
+                                <div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">کدرنگ:</span><span class="text-muted" id="colorCode"></span></div>*@
+                            <div class="checkBox position-relative me-n4 mb-3">
+                                @{int j = 1;
+                                }
+                                @foreach (var item in Model.ProductColors)
+                                {
+
+                                    <div onclick="doActiveRadioButton('color_@j')" id="div_color_@j" class="productColor form-check form-option form-check-inline mb-2">
+                                        <input @((j == 1) ? "checked" : "") class="test form-check-input" type="radio" name="color" id="color_@j" data-bs-label="colorOption" value="@item.ColorId">
+                                        <label class="form-option-label rounded-circle" for="color1"><span class="form-option-color rounded-circle" style="background-image: url(/Images/ProductThumbs/@item.ImageName)"></span></label>
+                                    </div>
+
+                                    j++;
+                                }
+                                @*<div onclick="doActiveRadioButton('color2')" class="form-check form-option form-check-inline mb-2">
+                                        <input class="test form-check-input" type="radio" name="color" id="color2" data-bs-label="colorOption" value="سبز">
+                                        <label class="form-option-label rounded-circle" for="color2"><span class="form-option-color rounded-circle" style="background-image: url(/img/ProductColors/green1.jpg)"></span></label>
+                                    </div>
+                                    <div onclick="doActiveRadioButton('color3')" class="form-check form-option form-check-inline mb-2">
+                                        <input class="test form-check-input" type="radio" name="color" id="color3" data-bs-label="colorOption" value="سفید/تیره">
+                                        <label class="form-option-label rounded-circle" for="color3"><span class="form-option-color rounded-circle" style="background-image: url(/img/shop/single/color-opt-3.png)"></span></label>
+                                    </div>*@
+                                <div class="product-badge product-available mt-n1"><i class="ci-security-check"></i>ویژگی محصول</div>
+                            </div>
+                        }
+                        <form class="mb-grid-gutter" method="post">
+                            <div class="mb-3 d-flex align-items-center">
+                                <button @((Model.ProductExist == null || Model.ProductExist == 0 || !Model.ProductColors.Any() || Model.ProductColors.Sum(e => e.ProductExist) == 0) ? "disabled" : "") class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>اضافه کردن به سبدخرید</button>
+                            </div>
+                        </form>
+                        <!-- Product panels-->
+                        <div class="accordion mb-4" id="productPanels">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header"><a class="accordion-button" href="#productInfo" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="productInfo"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>اطلاعات محصول</a></h3>
+                                <div class="accordion-collapse collapse show" id="productInfo" data-bs-parent="#productPanels">
+                                    <div class="accordion-body">
+                                        <h6 class="fs-sm mb-2">ویژگی ها</h6>
+                                        <ul class="fs-sm ps-4">
+                                            @foreach (var feature in features.Distinct())
+                                            {
+                                                var selectedRelatedToThisFeature = string.Join(" - ", selectedFeatures.Where(f => f.FeatureId == feature.FeatureId).Select(t => t.Value));
+                                                <li>@feature.FeatureTitle: @selectedRelatedToThisFeature </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header"><a class="accordion-button collapsed" href="#shippingOptions" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="shippingOptions"><i class="ci-delivery text-muted lead align-middle mt-n1 me-2"></i>گزینه های ارسال</a></h3>
+                                <div class="accordion-collapse collapse" id="shippingOptions" data-bs-parent="#productPanels">
+                                    <div class="accordion-body fs-sm">
+                                        <div class="d-flex justify-content-between border-bottom pb-2">
+                                            <div>
+                                                <div class="fw-semibold text-dark">پیک</div>
+                                                <div class="fs-sm text-muted">4-6 روز</div>
+                                            </div>
+                                            <div>26050</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-bottom py-2">
+                                            <div>
+                                                <div class="fw-semibold text-dark">پیک</div>
+                                                <div class="fs-sm text-muted">4-6 روز</div>
+                                            </div>
+                                            <div>11000</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-bottom py-2">
+                                            <div>
+                                                <div class="fw-semibold text-dark">پیک</div>
+                                                <div class="fs-sm text-muted">4-6 روز</div>
+                                            </div>
+                                            <div>338500</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-bottom py-2">
+                                            <div>
+                                                <div class="fw-semibold text-dark">پست حمل</div>
+                                                <div class="fs-sm text-muted">4-6 روز</div>
+                                            </div>
+                                            <div>180000</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between pt-2">
+                                            <div>
+                                                <div class="fw-semibold text-dark">پیک</div>
+                                                <div class="fs-sm text-muted">—</div>
+                                            </div>
+                                            <div>000</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header"><a class="accordion-button collapsed" href="#localStore" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="localStore"><i class="ci-location text-muted fs-lg align-middle mt-n1 me-2"></i>در فروشگاه محلی پیدا کنید</a></h3>
+                                <div class="accordion-collapse collapse" id="localStore" data-bs-parent="#productPanels">
+                                    <div class="accordion-body">
+                                        <select class="form-select">
+                                            <option value="">انتخاب کشور</option>
+                                            <option value="Argentina">بلژیک</option>
+                                            <option value="Belgium">فرانسه</option>
+                                            <option value="France">ایتالیا</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sharing-->
+                        <label class="form-label d-inline-block align-middle my-2 me-3">اشتراک:</label><a class="btn-share btn-twitter me-2 my-2" href="#"><i class="ci-twitter"></i>توییتر</a><a class="btn-share btn-instagram me-2 my-2" href="#"><i class="ci-instagram"></i>اینستاگرام</a><a class="btn-share btn-facebook my-2" href="#"><i class="ci-facebook"></i>فیسبوک</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- توضیحات محصول section 1-->
+    <div class="row align-items-center py-md-3">
+        <div class="col-lg-5 col-md-6 offset-lg-1 order-md-2"><img class="d-block rounded-3" src="/Images/ProductImages/@Model.ImageName" alt="تصویر مربوط به " @Model.ProductTitle ""></div>
+        <div class="col-lg-4 col-md-6 offset-lg-1 py-4 order-md-1">
+            <h2 class="h3 mb-4 pb-2">درباره این محصول بیش تر بدانیم</h2>
+            <p class="fs-sm text-muted pb-2">@Html.Raw(Model.Description)</p>
+        </div>
+    </div>
+    <!-- توضیحات محصول section 2-->
+
+    <hr />
+
+    <div class="row pt-4">
+        <!-- Reviews list-->
+        <div class="col-md-7">
+            <!-- Review-->
+            <div class="product-review pb-4 mb-4 border-bottom">
+                <div class="d-flex mb-3">
+                    <div class="d-flex align-items-center me-4 pe-2">
+                        <img class="rounded-circle" src="/img/shop/reviews/01.jpg" width="50" alt="رافائل مارکز">
+                        <div class="ps-3">
+                            <h6 class="fs-sm mb-0">رافائل مارکز</h6><span class="fs-ms text-muted">26 تیر 1400</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="fs-md mb-2">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-outline-accent" type="button"><i class="ci-reload me-2"></i>بیشتر دیدن</button>
+            </div>
+        </div>
+        <!-- Leave review form-->
+        <div class="col-md-5 mt-2 pt-4 mt-md-0 pt-md-0">
+            <div class="bg-secondary py-grid-gutter px-grid-gutter rounded-3">
+                <h3 class="h4 pb-2">یک بررسی بنویسید</h3>
+                <form class="needs-validation" method="post" novalidate="">
+                    <div class="mb-3">
+                        <label class="form-label" for="review-name">نام شما<span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" required="" id="review-name">
+                        <div class="invalid-feedback">نام را وارد کنید</div><small class="form-text text-muted">در نظر نمایش داده می شود</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="review-email">ایمیل شما<span class="text-danger">*</span></label>
+                        <input class="form-control" type="email" required="" id="review-email">
+                        <div class="invalid-feedback">آدرس ایمیل را وارد کنید</div><small class="form-text text-muted">فقط احراز هویت - شما را اسپم نمی کنیم.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="review-rating">امتیاز<span class="text-danger">*</span></label>
+                        <select class="form-select" required="" id="review-rating">
+                            <option value="">انتخاب امتیاز</option>
+                            <option value="5">5 ستاره</option>
+                            <option value="4">4 ستاره</option>
+                            <option value="3">3 ستاره</option>
+                            <option value="2">2 ستاره</option>
+                            <option value="1">1 ستاره</option>
+                        </select>
+                        <div class="invalid-feedback">لطفا امتیاز را انتخاب کنید</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="review-text">نظر<span class="text-danger">*</span></label>
+                        <textarea id="txtComment" class="form-control" rows="6" required="" id="review-text"></textarea>
+                        <div class="invalid-feedback"> یک بررسی بنویسید!</div><small class="form-text text-muted">نظر شما باید حداقل 50 نویسه باشد.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="review-pros">مثبت</label>
+                        <textarea class="form-control" rows="2" placeholder="با ویرگول جدا شده است" id="review-pros"></textarea>
+                    </div>
+                    <div class="mb-3 mb-4">
+                        <label class="form-label" for="review-cons">منفی</label>
+                        <textarea class="form-control" rows="2" placeholder="با ویرگول جدا شده است" id="review-cons"></textarea>
+                    </div>
+                    <button onclick="AddComment(@Model.ProductId)" class="btn btn-primary btn-shadow d-block w-100" type="submit">ارسال یک بررسی</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5 my-md-3">
+        <h2 class="h3 text-center pb-4">ممکن است دوست داشته باشید</h2>
+        <div class="tns-carousel tns-controls-static tns-controls-outside ltr">
+            <div class="tns-outer" id="tns3-ow">
+                <div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button" data-controls="prev" tabindex="-1" aria-controls="tns3"><i class="ci-arrow-right"></i></button><button type="button" data-controls="next" tabindex="-1" aria-controls="tns3"><i class="ci-arrow-left"></i></button></div><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">9 to 12</span>  of 5</div><div id="tns3-mw" class="tns-ovh">
+                    <div class="tns-inner" id="tns3-iw">
+                        <div class="tns-carousel-inner  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: true, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}" dir="rtl" id="tns3" style="transition-duration: 0s; transform: translate3d(-38.0952%, 0px, 0px);">
+                            <div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/22.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/23.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/24.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">250<small>00</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/20.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price"><span class="text-accent">240<small>99</small></span></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/21.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">260<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/22.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/23.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/24.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">250<small>00</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div class="tns-item tns-slide-active" id="tns3-item0">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/20.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price"><span class="text-accent">240<small>99</small></span></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div class="tns-item tns-slide-active" id="tns3-item1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/21.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">260<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div class="tns-item tns-slide-active" id="tns3-item2">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/22.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div class="tns-item tns-slide-active" id="tns3-item3">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/23.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product-->
+                            <div class="tns-item" id="tns3-item4" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/24.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">250<small>00</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/20.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price"><span class="text-accent">240<small>99</small></span></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/21.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">260<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/22.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/23.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/24.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">250<small>00</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/20.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price"><span class="text-accent">240<small>99</small></span></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/21.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">260<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                <div class="card product-card card-static rtl">
+                                    <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="اضافه کردن به علاقه مندی" aria-label="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/22.jpg" alt="Product"></a>
+                                    <div class="card-body py-2">
+                                        <a class="product-meta d-block fs-xs pb-1" href="#">تجهیزات جانبی</a>
+                                        <h3 class="product-title fs-sm"><a href="#">کلاه دار</a></h3>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product-price text-accent">240<small>99</small></div>
+                                            <div class="star-rating">
+                                                <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts{
+        <script src="/js/theme.min.js"></script>
+    }*@
+@section footer{
+    <partial name="_Footer.cshtml" />
+}
+@section Scripts{
+
+    <script>
+        $(function () {
+            var id = 9;
+            var checkedId = $('.productColor input[type="radio"]:checked').val();
+            console.log(checkedId);
+            console.log(checkedId);
+            console.log(checkedId);
+            console.log(checkedId);
+            console.log(checkedId);
+            var k = document.querySelector("#div_" + id + " label");
+            console.log(k);
+            console.log(checkedId);
+
+            var radioId = document.querySelector('.productColor input[type ="radio"]:checked').value;
+            console.log(radioId);
+            //var c = document.querySelector("#colorCode");
+            //c.innerHTML = "green!";
+
+            $(".colorInfo").load("/Products/_GetColorInfo/" + radioId);
+
+
+        });
+
+        function ShowComment() {
+            $('.product-review').load("/Products/_ShowComments/@Model.ProductId");
+        };
+        function AddComment(productId) {
+            var comment = $("#txtComment").val();
+
+            $.ajax({
+                url: "/Products/AddComment",
+                type: "get",
+                data: { productId: productId, comment: comment, parentId: parentId }
+            }).done(function () {
+                ShowComment();
+                $("#txtComment").val("");
+            });
+        }
+    </script>
+
+    <script>
+        function doActiveRadioButton(id) {
+            var slides = document.querySelectorAll(".productColor input");
+            console.log(slides.length);
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].removeAttribute("checked");
+            }
+            console.log(id);
+            //var s = document.getElementById(id);
+            //s.setAttribute("checked", "checked");
+
+            var s = document.querySelector("#div_" + id + " input");
+            s.setAttribute("checked", "checked");
+
+            var g = document.querySelectorAll(".productColor label");
+            for (var i = 0; i < g.length; i++) {
+                g[i].style.border = "1px solid #e3e9ef";
+            }
+
+            var d = document.querySelector("#div_" + id + " label");
+            d.style.border = "1px solid #fe696a";
+
+
+            // in this case I have to use line793 instead of 792 because I din't need to look for input[type ="radio"]:checked, so this
+            //solved my issue :)))))
+            //var radioId = document.querySelector('.productColor input[type ="radio"]:checked').value;
+            var radioId = document.querySelector("#div_" + id + " input").value;
+            console.log(radioId);
+            console.log(radioId);
+            console.log(radioId);
+            console.log(radioId);
+            //var c = document.querySelector("#colorCode");
+            //c.innerHTML = "green!";
+
+
+
+            //var radioId = "";
+            //const productColorInput = document.querySelector('.productColor input[type="radio"]');
+            //for (var i = 0; i < productColorInput.length; i++) {
+            //    if (productColorInput[i].checked === true) {
+            //        radioId = productColorInput.value;
+            //        console.log(radioId);
+            //        console.log(radioId);
+            //        console.log(radioId);
+            //    }
+            //}
+
+
+            $(".colorInfo").load("/Products/_GetColorInfo/" + radioId);
+
+
+        }
+
+    </script>
+
+}
+

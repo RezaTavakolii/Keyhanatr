@@ -1,0 +1,31 @@
+﻿
+@model Keyhanatr.Data.Domain.Products.ProductFeature
+
+@{
+    ViewData["Title"] = "صفحه حذف ویژگی";
+}
+
+<h4>حذف ویژگی</h4>
+
+<h3>آیا از حذف ویژگی انتخاب شده اطمینان دارید ؟</h3>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FeatureTitle)
+                </dt>
+                <dd class="text-danger col-sm-10">
+                    @Html.DisplayFor(model => model.FeatureTitle)
+                </dd>
+            </dl>
+
+            <form asp-action="ConfirmedDelete">
+                <input type="hidden" name="id" value="@Model.FeatureId" />
+                <input type="submit" value="حذف" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>
+

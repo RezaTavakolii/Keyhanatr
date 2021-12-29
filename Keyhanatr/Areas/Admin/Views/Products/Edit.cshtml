@@ -1,0 +1,147 @@
+﻿@model Keyhanatr.Data.Domain.Products.Product
+@{
+    ViewData["Title"] = "ویرایش محصول";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ProductId" />
+    <input type="hidden" asp-for="ImageName" />
+    <input type="hidden" asp-for="CreateDate" />
+    <section class="col-lg-12 pt-lg-4 pb-4 mb-3">
+        <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+            @if (ViewBag.IsFormatIncorrect != null)
+            {
+                <div class="alert alert-danger"><span>لطفا تصویر را بافرمت مناسب (jpg,png, ...) انتخاب کنید</span></div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
+                <h2 class="h3 py-2 me-2 text-center text-sm-start">ویرایش محصول</h2>
+            </div>
+
+            <div class="form-group">
+                <label for="ProductGroupId" class="control-label">عنوان گروه اصلی را از لیست زیر انتخاب کنید:</label>
+                <select id="ProductGroupId" asp-for="ProductGroupId" class="form-select me-2" asp-items="ViewBag.ProductGroupId"></select>
+                <span asp-validation-for="ProductGroupId" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label for="Product_ProductSubGroupId">زیرگروه را انتخاب کنید:</label>
+                <select id="Product_ProductSubGroupId" asp-for="@Model.ProductSubGroupId" class="form-select me-2" asp-items="@(ViewData["ProductSubGroupId"] as SelectList)"></select>
+            </div>
+
+
+
+            <div class="mb-3 pb-2">
+                <label class="form-label" asp-for="@Model.ProductTitle">نام محصول</label>
+                <input class="form-control" asp-for="@Model.ProductTitle" id="unp-product-name">
+                <div class="form-text">حداکثر 100 حرف هیچ L یا شکلک مجاز نیست.</div>
+                <span asp-validation-for="@Model.ProductTitle" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="img"> تصویر فعلی محصول :</label>
+                </div>
+                <div class="form-group">
+                    <img id="img" src="/Images/ProductImages/@Model.ImageName" />
+                </div>
+            </div>
+
+            <div class="file-drop-area mb-3">
+                <label>انتخاب تصویر جدید :</label>
+                <div class="file-drop-icon ci-cloud-upload"></div><span class="file-drop-message">برای بارگذاری تصویر صفحه از محصول ، آن را بکشید و رها کنید</span>
+                <input class="file-drop-input" type="file" name="imgUp">
+                <button class="file-drop-btn btn btn-primary btn-sm mb-2" type="button">یا پرونده را انتخاب کنید</button>
+                <div class="form-text">1000 x 800px اندازه ایده آل برای نمایشگرهای با وضوح بالا</div>
+            </div>
+            @if (ViewBag.IsFormatIncorrect != null)
+            {
+                <div class="form-text text-danger"><span>لطفا تصویر را بافرمت مناسب (jpg,png, ...) انتخاب کنید</span></div>
+            }
+            <div class="mb-3 py-2">
+                <label class="form-label" for="unp-product-description">توضیحات محصول</label>
+                <textarea asp-for="@Model.Description" class="form-control" rows="6" id="product-description"></textarea>
+                <div class="bg-secondary p-3 fs-ms rounded-bottom"><span class="d-inline-block fw-medium me-2 my-1">پشتیبانی می کند:</span><em class="d-inline-block border-end pe-2 me-2 my-1">*کج*</em><strong class="d-inline-block border-end pe-2 me-2 my-1">**برجسته**</strong><span class="d-inline-block border-end pe-2 me-2 my-1">- لیست</span><span class="d-inline-block border-end pe-2 me-2 my-1">##سربرگ##</span><span class="d-inline-block">--- افقی</span></div>
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12 mb-6">
+                    <label class="form-label" for="unp-standard-price">قیمت استاندارد</label>
+                    <div class="input-group">
+                        <input asp-for="@Model.Price" class="form-control" type="text" id="unp-standard-price">
+                        <span asp-validation-for="@Model.Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-text">قیمت محصول بر حسب تومان اعمال خواهد شد.</div>
+                </div>
+                <div class="mb-3 pb-2">
+                    <label class="form-label" for="ProductExist">تعداد موجودی</label>
+                    <input class="form-control" name="productExist" value="@Model.ProductExist" id="ProductExist">
+                    <div class="ci-help text-danger"><small>چنان چه محصول شما نیاز به رنگبندی دارد، این فیلد را رها کرده و عددی وارد نکنید*</small></div>
+
+                </div>
+
+                @if (ViewBag.NonNumericExist == true)
+                {
+                    <div class="ci-help text-danger"><strong>لطفا عدد 'تعداد موجودی' را درست وارد کنید.</strong></div>
+                }
+
+            </div>
+            <div class="mb-3 py-2">
+                <label class="form-label" for="unp-product-tags">برچسب های محصول</label>
+                <textarea asp-for="Tags" placeholder="عطرمردانه-جدید-اسپرت" class="form-control" rows="4" id="unp-product-tags"></textarea>
+                <div class="form-text">حداکثر 10 کلمه کلیدی که مورد شما را توصیف می کنند. همه برچسب ها باید با حروف کوچک و با خط فاصله یا همان (-) از هم جدا شوند.</div>
+                <span asp-validation-for="@Model.Tags" class="text-danger"></span>
+            </div>
+            <button class="btn btn-warning d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>ویرایش محصول</button>
+        </div>
+    </section>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    //$(function () {
+    //    var productSubGroups = "";
+    //    var groupId = $("#ProductGroupId").val();
+    //    $.getJSON("/Admin/Products/GetSubGroups_Json/" + groupId, function (res) {
+    //        $.each(res, function () {
+    //            productSubGroups += '<option value="' + this.value + '">' + this.text + '</option>';
+    //        });
+
+    //        $("#Product_ProductSubGroupId").html(productSubGroups);
+    //    });
+
+    //})
+</script>
+
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace('product-description', {
+            customConfig: '/js/Config.js'
+        });
+
+    </script>
+
+    <script>
+        $("#ProductGroupId").change(function () {
+            var productSubGroups = "";
+            var groupId = $("#ProductGroupId").val();
+            $.getJSON("/Admin/Products/GetSubGroups_Json/" + groupId, function (res) {
+                $.each(res, function () {
+                    productSubGroups += '<option value="' + this.value + '">' + this.text + '</option>';
+                });
+
+                $("#Product_ProductSubGroupId").html(productSubGroups);
+            });
+        });
+    </script>
+
+
+}
+

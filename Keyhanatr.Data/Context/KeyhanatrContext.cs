@@ -23,9 +23,19 @@ namespace Keyhanatr.Data.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductGroup> ProductGroups { get; set; }
         public DbSet<ProductSubGroup> ProductSubGroups { get; set; }
+        public DbSet<ProductGallery> ProductGalleries { get; set; }
+        public DbSet<ProductComment> ProductComments { get; set; }
+        public DbSet<ProductColor> ProductColors { get; set; }
+        public DbSet<ProductFeature> ProductFeatures { get; set; }
+        public DbSet<ProductSelectedFeature> ProductSelectedFeatures { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<ProductNavGroup> ProductNavGroups { get; set; }
+        //public DbSet<Test> Tsets { get; set; }
+
         public DbSet<UserInfo> UserInfos { get; set; }
         public DbSet<Address> Addresses { get; set; }
+
+
 
         #region ModelBuilder
         protected override void OnModelCreating(ModelBuilder modelBuilder)

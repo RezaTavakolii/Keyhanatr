@@ -1,0 +1,36 @@
+﻿@model List<Keyhanatr.Data.Domain.Products.ProductNavGroup>
+<h1>لیست گروه های ناوبری</h1>
+
+<p>
+    <a asp-action="Create">ساخت گروه ناوبری </a>
+</p>
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                       عنوان گروه ناوبری
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NavTitle)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.NavGroupId">ویرایش</a> |
+                            <a asp-action="Details" asp-route-id="@item.NavGroupId">جزییات</a> |
+                            <a asp-action="Delete" asp-route-id="@item.NavGroupId">حذف</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

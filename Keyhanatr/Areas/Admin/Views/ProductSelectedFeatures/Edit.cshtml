@@ -1,0 +1,37 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductSelectedFeature
+@{
+    ViewData["Title"] = "ویرایش ویژگی";
+}
+<h2>ویرایش ویژگی </h2>
+<hr>
+<div class="row">
+    <form asp-action="Edit" method="Post">
+        <div class="col-md-8">
+            <div asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" asp-for="SelectedFeatureId" />
+            <div class="form-group">
+                <label asp-for="ProductId" class="control-label"></label>
+                <select asp-for="ProductId" asp-items="ViewBag.ProductId" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeatureId" class="control-label"></label>
+                <select asp-for="FeatureId" asp-items="ViewBag.FeatureId" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Value" class="control-label"></label>
+                <input asp-for="Value" class="form-control" />
+                <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ویرایش ویژگی" class="btn btn-warning" />
+                <a asp-action="Delete" asp-route-id="@Model.FeatureId" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -3,17 +3,222 @@
 <head>
     <meta charset="utf-8">
     <title>Cartzilla | فروشگاه مد</title>
-    <partial name="_RefrencesHead" />
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cartzilla - Bootstrap تجارت الکترونیکی Template">
+    <meta name="keywords" content="bootstrap, shop, تجارت الکترونیکی, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="گروه ستین">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
+
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="/vendor/simplebar/dist/simplebar.min.css" />
+    <link rel="stylesheet" media="screen" href="/vendor/tiny-slider/dist/tiny-slider.css" />
+    <link rel="stylesheet" media="screen" href="/vendor/drift-zoom/dist/drift-basic.min.css" />
+    <link rel="stylesheet" media="screen" href="/vendor/lightgallery.js/dist/css/lightgallery.min.css" />
+    <link media="screen" href="/css/CustomStyles.css" rel="stylesheet" />
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="/css/theme.min.css">
+    <!-- Google Tag Manager-->
+
 </head>
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
+    <!-- Google Tag Manager (noscript)-->
+    <!-- Sign in / sign up modal-->
 
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>ورود</a></li>
+                        <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>ثبت نام</a></li>
+                    </ul>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body tab-content py-4">
+                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+                        <div class="mb-3">
+                            <label class="form-label" for="si-email">آدرس ایمیل</label>
+                            <input class="form-control" type="email" id="si-email" placeholder="Setin@gmail.com" required>
+                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="si-password">پسورد</label>
+                            <div class="password-toggle">
+                                <input class="form-control" type="password" id="si-password" required>
+                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
+                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex flex-wrap justify-content-between">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="si-remember">
+                                <label class="form-check-label" for="si-remember">مرا به خاطر بسپار</label>
+                            </div><a class="fs-sm" href="#">فراموشی رمز؟</a>
+                        </div>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ورود</button>
+                    </form>
+                    <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+                        <div class="mb-3">
+                            <label class="form-label" for="su-name">نام</label>
+                            <input class="form-control" type="text" id="su-name" placeholder="ستین" required>
+                            <div class="invalid-feedback">لطفا نام را وارد کنید</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="su-email">آدرس ایمیل</label>
+                            <input class="form-control" type="email" id="su-email" placeholder="Setin@gmail.com" required>
+                            <div class="invalid-feedback">لطفا آدر س ایمیل را وارد کنید</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="su-password">پسورد</label>
+                            <div class="password-toggle">
+                                <input class="form-control" type="password" id="su-password" required>
+                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
+                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="su-password-confirm">تکرار پسورد</label>
+                            <div class="password-toggle">
+                                <input class="form-control" type="password" id="su-password-confirm" required>
+                                <label class="password-toggle-btn" aria-label="نمایش/پنهان کردن">
+                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ثبت نام</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- مشاهده Modal-->
-    <partial name="_modalquick" />
+    <div class="modal-quick-view modal fade" id="quick-view" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title product-title"><a href="shop-single-v1.html" data-bs-toggle="tooltip" data-bs-placement="left" title="دیدن محصول">هودی اسپرت<i class="ci-arrow-left  fs-lg ms-2"></i></a></h4>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- گالری محصولات-->
+                        <div class="col-lg-7 pe-lg-0">
+                            <div class="product-gallery">
+                                <div class="product-gallery-preview order-sm-2">
+                                    <div class="product-gallery-preview-item active" id="first">
+                                        <img class="image-zoom" src="/img/shop/single/gallery/01.jpg" data-zoom="/img/shop/single/gallery/01.jpg" alt="Product image">
+                                        <div class="image-zoom-pane"></div>
+                                    </div>
+                                    <div class="product-gallery-preview-item" id="second">
+                                        <img class="image-zoom" src="/img/shop/single/gallery/02.jpg" data-zoom="/img/shop/single/gallery/02.jpg" alt="Product image">
+                                        <div class="image-zoom-pane"></div>
+                                    </div>
+                                    <div class="product-gallery-preview-item" id="third">
+                                        <img class="image-zoom" src="/img/shop/single/gallery/03.jpg" data-zoom="/img/shop/single/gallery/03.jpg" alt="Product image">
+                                        <div class="image-zoom-pane"></div>
+                                    </div>
+                                    <div class="product-gallery-preview-item" id="fourth">
+                                        <img class="image-zoom" src="/img/shop/single/gallery/04.jpg" data-zoom="/img/shop/single/gallery/04.jpg" alt="Product image">
+                                        <div class="image-zoom-pane"></div>
+                                    </div>
+                                </div>
+                                <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="/img/shop/single/gallery/th01.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="/img/shop/single/gallery/th02.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="/img/shop/single/gallery/th03.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="/img/shop/single/gallery/th04.jpg" alt="Product thumb"></a></div>
+                            </div>
+                        </div>
+                        <!-- جزئیات محصول-->
+                        <div class="col-lg-5 pt-4 pt-lg-0 image-zoom-pane">
+                            <div class="product-details ms-auto pb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <a href="shop-single-v1.html#reviews">
+                                        <div class="star-rating">
+                                            <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                        </div><span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1">74 نظر</span>
+                                    </a>
+                                    <button class="btn-wishlist" type="button" data-bs-toggle="tooltip" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="h3 fw-normal text-accent me-1">1800<small>99</small></span>
+                                    <del class="text-muted fs-lg me-3">250<small>00</small></del><span class="badge bg-danger badge-shadow align-middle mt-n2">فروش</span>
+                                </div>
+                                <div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">رنگ:</span><span class="text-muted" id="colorOptionText">قرمز/تاریک</span></div>
+                                <div class="position-relative me-n4 mb-3">
+                                    <div class="form-check form-option form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="color" id="color1" data-bs-label="colorOptionText" value="قرمز/تاریک" checked>
+                                        <label class="form-option-label rounded-circle" for="color1"><span class="form-option-color rounded-circle" style="background-image: url(/img/shop/single/color-opt-1.png)"></span></label>
+                                    </div>
+                                    <div class="form-check form-option form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="color" id="color2" data-bs-label="colorOptionText" value="سفید/سیاه">
+                                        <label class="form-option-label rounded-circle" for="color2"><span class="form-option-color rounded-circle" style="background-image: url(/img/shop/single/color-opt-2.png)"></span></label>
+                                    </div>
+                                    <div class="form-check form-option form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="color" id="color3" data-bs-label="colorOptionText" value="سفید/سیاه">
+                                        <label class="form-option-label rounded-circle" for="color3"><span class="form-option-color rounded-circle" style="background-image: url(/img/shop/single/color-opt-3.png)"></span></label>
+                                    </div>
+                                    <div class="product-badge product-available mt-n1"><i class="ci-security-check"></i>ویژگی محصول</div>
+                                </div>
+                                <form class="mb-grid-gutter">
+                                    <div class="mb-3">
+                                        <label class="fw-medium pb-1" for="product-size">سایز</label>
+                                        <select class="form-select" required id="product-size">
+                                            <option value="">انتخاب سایز</option>
+                                            <option value="xs">XS</option>
+                                            <option value="s">S</option>
+                                            <option value="m">M</option>
+                                            <option value="l">L</option>
+                                            <option value="xl">XL</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <select class="form-select me-3" style="width: 5rem;">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>اضافه کردن به سبدخرید</button>
+                                    </div>
+                                </form>
+                                <h5 class="h6 mb-3 pb-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>اطلاعات محصول</h5>
+                                <h6 class="fs-sm mb-2">حالت</h6>
+                                <ul class="fs-sm ps-4">
+                                    <li>بالا</li>
+                                </ul>
+                                <h6 class="fs-sm mb-2">ترکیب بندی</h6>
+                                <ul class="fs-sm ps-4">
+                                    <li>دنده الاستیک: پنبه 95 </li>
+                                    <li>پوشش: پنبه 100</li>
+                                    <li>پنبه 80٪ ، پلی استر 20٪</li>
+                                </ul>
+                                <h6 class="fs-sm mb-2">هنری</h6>
+                                <ul class="fs-sm ps-4 mb-0">
+                                    <li>183260098</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Navbar 3 Level (Light)-->
     @RenderSection("navbar", false)
     <!-- Hero slider-->
     @RenderSection("slider", false)
+
     <!-- Popular categories-->
     @RenderSection("popularcategories", false)
     <!-- Products grid (محصولات پرطرفدار)-->
@@ -39,12 +244,26 @@
             <a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">25600</span></a>
         </div>
     </div>
-    <!-- Back To Top Button-->
-    <a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
-    @RenderSection("Scripts", false)
-    <partial name="RefrenceJs" />
-    @RenderBody()
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="/vendor/drift-zoom/dist/Drift.min.js"></script>
+    <script src="/vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
+    <script src="/vendor/lg-video.js/dist/lg-video.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+
+    <!-- Main theme script-->
+    <script src="/js/theme.min.js"></script>
 </body>
 </html>
 @*@await RenderSectionAsync("Scripts", required: false)*@
 
+@await RenderSectionAsync("Scripts", required: false)
+@RenderBody()
+<title>@ViewData["Title"] - Keyhanatr</title><title>@ViewData["Title"] - Keyhanatr</title>

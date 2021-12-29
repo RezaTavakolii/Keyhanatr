@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Keyhanatr.Data.Domain.Products.ProductColor>
+@{
+    ViewData["Title"] = "رنگ های محصول";
+}
+
+<h1>رنگ های مربوط به: "@ViewBag.ProductTitle"</h1>
+<div class="form-group">
+    <a class="btn btn-outline-success" asp-action="Create" asp-route-id="@ViewBag.ProductId">ساخت رنگ جدید</a>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>عنوان رنگ</th>
+                    <th>کد رنگ</th>
+                    <th> پس زمینه رنگ</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ColorName</td>
+                        <td>@item.ColorCode</td>
+                        <td><img src="/Images/ProductThumbs/@item.ImageName" alt="@item.ColorName" /></td>
+                        <td>
+                            <a href="/Admin/ProductColors/Edit/@item.ColorId">ویرایش</a>|
+                            <a href="/Admin/ProductColors/Delete/@item.ColorId">حذف</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
