@@ -13,9 +13,9 @@ namespace Keyhanatr.Data.Domain.Products
         public int NavGroupId { get; set; }
 
 
-        [Display(Name = "")]
+        [Display(Name = "عنوان گروه ناوبری")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(ErrorMessage = "{0} نمیتواند بیش تر از {1}کاراکتر باشد")]
+        [MaxLength(100,ErrorMessage = "{0} نمیتواند بیش تر از {1}کاراکتر باشد")]
         public string NavTitle { get; set; }
 
         #region Relations

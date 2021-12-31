@@ -31,6 +31,9 @@ namespace Keyhanatr.Core.Interfaces.Products
         void DeleteProductGroup(int productGroupId);
 
 
+        List<SelectListItem> GetListOfNavGroups();
+
+
         ////For ProductSubGroupServices
         ///
 
@@ -44,7 +47,10 @@ namespace Keyhanatr.Core.Interfaces.Products
         List<SelectListItem> GetGroupsListItem();// also used in Product Controller inside Create Method
         void AddProductSubGroup(ProductSubGroup productSubGroup);
         void EditProductSubGroup(ProductSubGroup productSubGroup);
+
+        //for Delete.cshtml
         void DeleteProductSubGroupById(int productSubGroupId);
+
 
 
         ////for ProductsController.cs
@@ -76,6 +82,17 @@ namespace Keyhanatr.Core.Interfaces.Products
 
 
         //for Create.cshtml
+        void AddNavGroup(ProductNavGroup navGroup);
+
+        //for details.cshtml
+        ProductNavGroup GetNavGroupById(int navGroupId);
+
+        //for Edit.cshtml
+        void EditNavGroup(ProductNavGroup navGroup);
+
+        //for Delete.cshtml
+        void DeleteNavGroupById(int navGroupId);
+
         
 
 
@@ -87,5 +104,6 @@ namespace Keyhanatr.Core.Interfaces.Products
         //for Products.cs
         //for comments
         Tuple<List<ProductComment>,int> GetAllCommentsByProductId(int productId);
+
     }
 }

@@ -23,8 +23,8 @@
             @Html.DisplayFor(model => model.ProductGroup.GroupTitle)
         </dd>
     </dl>
-
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="DeleteConfirmed" asp-route-id="@Model.SubGroupId">حذف</a>
-        <a asp-action="Index">Back to List</a>
+    <div class="form-group">
+        <a class="btn btn-danger" asp-action="DeleteConfirmed" asp-route-id="@Model.SubGroupId">حذف</a>
+    </div>
+        <a asp-action="Index">بازگشت به لیست زیر گروه ها</a>
 </div>

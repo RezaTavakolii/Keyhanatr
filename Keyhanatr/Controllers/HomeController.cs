@@ -12,6 +12,7 @@ namespace Keyhanatr.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly KeyhanatrContext _context;
         public HomeController(KeyhanatrContext context)
         {
@@ -27,6 +28,8 @@ namespace Keyhanatr.Controllers
             DateTime dt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             return View(_context.Sliders.Where(s => s.IsActive));
         }
+
+        
 
     }
 }

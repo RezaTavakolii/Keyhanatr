@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "گروه جدید";
+    var navGroups = ViewData["NavGroups"] as SelectList;
 }
 
 <h1>ایجاد گروه جدید برای بخش "Nav Bar"</h1>
@@ -11,15 +12,34 @@
 <div class="row">
     <div class="row">
         <div class="col-md-8">
-            <form asp-action="Create">
+            <form asp-action="Create" method="post">
                 <div class="mb-3 pb-2">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label class="form-label" asp-for="GroupTitle"></label>
-                        <input class="form-control" asp-for="GroupTitle" />
-                        <div class="form-text">حداکثر 100 حرف هیچ L یا شکلک مجاز نیست.</div>
-                        <span asp-validation-for="GroupTitle" class="text-danger"></span>
-                    </div>
+
+                    @if (navGroups.Any())
+                    {
+                        <div class="form-group">
+                            <label for="Product_ProductSubGroupId">گروه ناوبری را انتخاب کنید:</label>
+                            <select id="Product_ProductSubGroupId" asp-for="@Model.ProductNavGroupId" class="form-select me-2" asp-items="@(ViewData["NavGroups"] as SelectList)"></select>
+                            <span asp-validation-for="ProductNavGroupId" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            <p>شما باید حداقل یک آیتم برای گروه ناوبری ایجاد کنید!</p>
+                            <p>میتوانید از لینک زیر، جهت ساخت یک گروه ناوبری جدید استفاده کنید:</p>
+                            <p class="text-accent text-success"><a href="/Admin/ProductNavGroups/Create">لینک را فشار دهید</a></p>
+                        </div>
+                        <div class="form-group">
+                            
+                            <label for="Product_ProductSubGroupId">زیرگروه را انتخاب کنید:</label>
+                            <select id="Product_ProductSubGroupId" asp-for="@Model.ProductNavGroupId" class="form-select me-2" asp-items="@(ViewData["NavGroups"] as SelectList)">
+                                <option>گروه ناوبری یافت نشد! </option>
+                            </select>
+                            <span asp-validation-for="ProductNavGroupId" class="text-danger"></span>
+                        </div>
+                    }
                     <div class="form-group">
                         <label class="form-label" asp-for="GroupTitle"></label>
                         <input class="form-control" asp-for="GroupTitle" />

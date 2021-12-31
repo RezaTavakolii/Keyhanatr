@@ -47,6 +47,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
         // GET: Admin/ProductGroups/Create
         public IActionResult Create()
         {
+            ViewData["NavGroups"] = new SelectList(_productServices.GetListOfNavGroups(),"Value","Text");
             return View();
         }
 
@@ -55,10 +56,11 @@ namespace Keyhanatr.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("GroupId,GroupTitle")] ProductGroup productGroup)
+        public IActionResult Create([Bind("GroupId,GroupTitle,ProductNavGroupId")] ProductGroup productGroup)
         {
             if (ModelState.IsValid)
             {
+                ViewData["NavGroups"] = new SelectList(_productServices.GetListOfNavGroups(), "Value", "Text");
                 _productServices.AddProductGroup(productGroup);
                 return RedirectToAction(nameof(Index));
             }
@@ -78,24 +80,24 @@ namespace Keyhanatr.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["NavGroups"] = new SelectList(_productServices.GetListOfNavGroups(), "Value", "Text",productGroup.ProductNavGroupId);
             return View(productGroup);
         }
 
         // POST: Admin/ProductGroups/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // To protect from overposting attacks, enable the specific properties you want to bind to
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind("GroupId,GroupTitle")] ProductGroup productGroup)
+        
+        public IActionResult Edit( ProductGroup productGroup)
         {
-           
-
             if (ModelState.IsValid)
             {
 
                 _productServices.EditProductGroup(productGroup);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["NavGroups"] = new SelectList(_productServices.GetListOfNavGroups(), "Value", "Text", productGroup.ProductNavGroupId);
             return View(productGroup);
         }
 
@@ -114,7 +116,6 @@ namespace Keyhanatr.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             return View(productGroup);
         }
 
@@ -127,6 +128,15 @@ namespace Keyhanatr.Areas.Admin.Controllers
             //_productServices.DeleteProductGroup(productGroup);
             _productServices.DeleteProductGroup(id);
             return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult GetNavGroups(int NavGroupId) {
+            List<SelectListItem> navGroups = new List<SelectListItem>();
+            navGroups.AddRange((IEnumerable<SelectListItem>)_productServices.GetListOfNavGroups());
+
+
+            return Json("");
         }
     }
 }

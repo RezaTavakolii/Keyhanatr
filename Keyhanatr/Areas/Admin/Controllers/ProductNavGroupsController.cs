@@ -27,19 +27,97 @@ namespace Keyhanatr.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/ProductGroups/Create
+        //POST: Admin/ProductGroups/Create
+        //To protect from overposting attacks, enable the specific properties you want to bind to.
+        //For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ProductNavGroup navGroup)
+        {
+            if (ModelState.IsValid)
+            {
+                _productService.AddNavGroup(navGroup);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(navGroup);
+        }
+
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var navGroup = _productService.GetNavGroupById(id.Value);
+            if (navGroup == null)
+            {
+                return NotFound();
+            }
+
+            return View(navGroup);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var navGroup = _productService.GetNavGroupById(id.Value);
+            if (navGroup == null)
+            {
+                return NotFound();
+            }
+            return View(navGroup);
+        }
+
+        // POST: Admin/ProductGroups/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        public IActionResult Edit(ProductNavGroup navGroup)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                _productService.EditNavGroup(navGroup);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(navGroup);
+        }
+
+
+        ////// GET: Admin/ProductGroups/Delete/5
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var navGroup = _productService.GetNavGroupById(id.Value);
+
+            if (navGroup == null)
+            {
+                return NotFound();
+            }
+
+            return View(navGroup);
+        }
+
+        //// POST: Admin/ProductGroups/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        //public IActionResult Create( ProductNavGroup navGroup)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _productServices.AddProductGroup(productGroup);
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(productGroup);
-        //}
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _productService.DeleteNavGroupById(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

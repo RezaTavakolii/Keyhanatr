@@ -62,8 +62,9 @@ namespace Keyhanatr.Core.Services.Products
         public void DeleteProductGroup(int productGroupId)
         {
             ProductGroup group = _context.ProductGroups.Include(s => s.ProductSubGroups)
-                .FirstOrDefault(g => g.ProductGroupId == productGroupId);
+               .ThenInclude(p=>p.Products).FirstOrDefault(g => g.ProductGroupId == productGroupId);
 
+            group.ProductSubGroups.ForEach(s=>s.Products.ForEach(p=> DeleteProduct(p.ProductId)));
             foreach (var sub in group.ProductSubGroups)
             {
                 _context.ProductSubGroups.Remove(sub);
@@ -109,7 +110,8 @@ namespace Keyhanatr.Core.Services.Products
         public void DeleteProductSubGroupById(int productSubGroupId)
         {
             ProductSubGroup subGroup = _context.ProductSubGroups
-                .FirstOrDefault(sg => sg.SubGroupId == productSubGroupId);
+               .Include(p=>p.Products).FirstOrDefault(sg => sg.SubGroupId == productSubGroupId);
+            subGroup.Products.ForEach(p=> DeleteProduct(p.ProductId));
             _context.ProductSubGroups.Remove(subGroup);
             _context.SaveChanges();
         }
@@ -295,6 +297,52 @@ namespace Keyhanatr.Core.Services.Products
         {
             return _context.ProductNavGroups.ToList();
         }
+
+        public void AddNavGroup(ProductNavGroup navGroup)
+        {
+            _context.ProductNavGroups.Add(navGroup);
+            _context.SaveChanges();
+        }
+
+        public ProductNavGroup GetNavGroupById(int navGroupId)
+        {
+            return _context.ProductNavGroups.FirstOrDefault(n => n.NavGroupId == navGroupId);
+        }
+
+        public void EditNavGroup(ProductNavGroup navGroup)
+        {
+            _context.ProductNavGroups.Update(navGroup);
+            _context.SaveChanges();
+        }
+
+        public void DeleteNavGroupById(int navGroupId)
+        {
+            var navGroup = _context.ProductNavGroups.Include(g => g.ProductGroups)
+                .ThenInclude(s => s.ProductSubGroups).ThenInclude(p=>p.Products).FirstOrDefault(n => n.NavGroupId == navGroupId);
+            navGroup.ProductGroups.ForEach(g=> g.ProductSubGroups.ForEach(s=> s.Products.ForEach(p=> DeleteProduct(p.ProductId))));
+            foreach (var item in navGroup.ProductGroups)
+            {
+                item.ProductSubGroups.ForEach(s => _context.ProductSubGroups.Remove(s));
+            }
+            foreach (var item in navGroup.ProductGroups)
+            {
+                _context.ProductGroups.Remove(item);
+            }
+            _context.ProductNavGroups.Remove(navGroup);
+            _context.SaveChanges();
+        }
+        
+        //it is used for ProductGroups to get the NavGroups if They are exist
+        public List<SelectListItem> GetListOfNavGroups()
+        {
+            return _context.ProductNavGroups.Select(nav => new SelectListItem()
+            {
+                Text = nav.NavTitle,
+                Value = nav.NavGroupId.ToString()
+            }).ToList();
+        }
+
+        
         #endregion
     }
 }
