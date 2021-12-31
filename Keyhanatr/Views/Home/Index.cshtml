@@ -8,20 +8,26 @@
     <partial name="_Navbar" />
 }
 
-@section slider
-{
-    @await Component.InvokeAsync("Slider")
-}
+
 
 @section popularcategories
 {
     <partial name="_PopularCategpries" />
 }
+@section slider
+{
+    @await Component.InvokeAsync("Slider")
+}
 
 @section products
 {
-    <partial name="_Products" />
+    @await Component.InvokeAsync("Product")
 }
+
+@*@section products
+    {
+        <partial name="_Products" />
+    }*@
 
 @section banners
 {

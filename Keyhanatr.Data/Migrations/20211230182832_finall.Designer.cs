@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-    [Migration("20211228183621_migNew")]
-    partial class migNew
+    [Migration("20211230182832_finall")]
+    partial class finall
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,6 +67,9 @@ namespace Keyhanatr.Data.Migrations
                     b.Property<string>("Tags")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ToSalesCount")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -196,9 +199,30 @@ namespace Keyhanatr.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("ProductNavGroupId")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductGroupId");
 
+                    b.HasIndex("ProductNavGroupId");
+
                     b.ToTable("ProductGroups");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductNavGroup", b =>
+                {
+                    b.Property<int>("NavGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NavTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NavGroupId");
+
+                    b.ToTable("ProductNavGroups");
                 });
 
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSelectedFeature", b =>
@@ -257,6 +281,10 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BackColor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
@@ -268,6 +296,10 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Titr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -489,6 +521,17 @@ namespace Keyhanatr.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductGroup", b =>
+                {
+                    b.HasOne("Keyhanatr.Data.Domain.Products.ProductNavGroup", "ProductNavGroup")
+                        .WithMany("ProductGroups")
+                        .HasForeignKey("ProductNavGroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ProductNavGroup");
+                });
+
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSelectedFeature", b =>
                 {
                     b.HasOne("Keyhanatr.Data.Domain.Products.ProductFeature", "ProductFeature")
@@ -573,6 +616,11 @@ namespace Keyhanatr.Data.Migrations
                     b.Navigation("Products");
 
                     b.Navigation("ProductSubGroups");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductNavGroup", b =>
+                {
+                    b.Navigation("ProductGroups");
                 });
 
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.ProductSubGroup", b =>

@@ -27,12 +27,10 @@ namespace Keyhanatr.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/ProductGroups/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        //public IActionResult Create( ProductNavGroup navGroup)
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Create(ProductNavGroup navGroup)
         //{
         //    if (ModelState.IsValid)
         //    {
@@ -41,5 +39,5 @@ namespace Keyhanatr.Areas.Admin.Controllers
         //    }
         //    return View(productGroup);
         //}
-    }
+    } 
 }

@@ -21,7 +21,7 @@ namespace Keyhanatr.Core.Interfaces.Products
        
 
         List<ProductGroup> GetAllProducts();
-
+        List<Product> GetProducts();
         void AddProductGroup(ProductGroup productGroup);
 
         void EditProductGroup(ProductGroup productGroup);

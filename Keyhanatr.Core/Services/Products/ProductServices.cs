@@ -35,7 +35,10 @@ namespace Keyhanatr.Core.Services.Products
         }
         #endregion
 
-
+        public List<Product> GetProducts()
+        {
+            return _context.Products.ToList();
+        }
         #region Product Groups
         public List<ProductGroup> GetAllProducts()
         {
@@ -295,6 +298,8 @@ namespace Keyhanatr.Core.Services.Products
         {
             return _context.ProductNavGroups.ToList();
         }
+
+        
         #endregion
     }
 }

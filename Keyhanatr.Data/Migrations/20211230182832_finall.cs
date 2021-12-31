@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Keyhanatr.Data.Migrations
 {
-    public partial class migNew : Migration
+    public partial class finall : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,47 +21,95 @@ namespace Keyhanatr.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductNavGroups",
+                columns: table => new
+                {
+                    NavGroupId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NavTitle = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductNavGroups", x => x.NavGroupId);
+                });
+
+            //migrationBuilder.CreateTable(
+            //    name: "Roles",
+            //    columns: table => new
+            //    {
+            //        RoleId = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        RoleTitle = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+            //        RoleName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Roles", x => x.RoleId);
+            //    });
+
+            //migrationBuilder.CreateTable(
+            //    name: "Sliders",
+            //    columns: table => new
+            //    {
+            //        SlideID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Titr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        BackColor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        IsActive = table.Column<bool>(type: "bit", nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Sliders", x => x.SlideID);
+            //    });
+
+            migrationBuilder.CreateTable(
                 name: "ProductGroups",
                 columns: table => new
                 {
                     ProductGroupId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductNavGroupId = table.Column<int>(type: "int", nullable: false),
                     GroupTitle = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProductGroups", x => x.ProductGroupId);
+                    table.ForeignKey(
+                        name: "FK_ProductGroups_ProductNavGroups_ProductNavGroupId",
+                        column: x => x.ProductNavGroupId,
+                        principalTable: "ProductNavGroups",
+                        principalColumn: "NavGroupId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Roles",
-                columns: table => new
-                {
-                    RoleId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleTitle = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    RoleName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Roles", x => x.RoleId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Sliders",
-                columns: table => new
-                {
-                    SlideID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sliders", x => x.SlideID);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "Users",
+            //    columns: table => new
+            //    {
+            //        UserId = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        RoleId = table.Column<int>(type: "int", nullable: false),
+            //        UserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+            //        Mobile = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
+            //        Password = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+            //        RegisterDate = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+            //        ActiveCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        IsActive = table.Column<bool>(type: "bit", nullable: false),
+            //        Rate = table.Column<int>(type: "int", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Users", x => x.UserId);
+            //        table.ForeignKey(
+            //            name: "FK_Users_Roles_RoleId",
+            //            column: x => x.RoleId,
+            //            principalTable: "Roles",
+            //            principalColumn: "RoleId",
+            //            onDelete: ReferentialAction.Restrict);
+            //    });
 
             migrationBuilder.CreateTable(
                 name: "ProductSubGroups",
@@ -83,31 +131,56 @@ namespace Keyhanatr.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Mobile = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    RegisterDate = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    ActiveCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    Rate = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_Users_Roles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Roles",
-                        principalColumn: "RoleId",
-                        onDelete: ReferentialAction.Restrict);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "Addresses",
+            //    columns: table => new
+            //    {
+            //        AddressID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        UserId = table.Column<int>(type: "int", nullable: false),
+            //        Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Family = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Company = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Ostan = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Shahr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        CodePosti = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+            //        Mobile = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Addresses", x => x.AddressID);
+            //        table.ForeignKey(
+            //            name: "FK_Addresses_Users_UserId",
+            //            column: x => x.UserId,
+            //            principalTable: "Users",
+            //            principalColumn: "UserId",
+            //            onDelete: ReferentialAction.Restrict);
+            //    });
+
+            //migrationBuilder.CreateTable(
+            //    name: "UserInfos",
+            //    columns: table => new
+            //    {
+            //        UserInfoID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        UserId = table.Column<int>(type: "int", nullable: false),
+            //        Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Family = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        ImageName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+            //        Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        PhoneDaftar = table.Column<string>(type: "nvarchar(max)", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_UserInfos", x => x.UserInfoID);
+            //        table.ForeignKey(
+            //            name: "FK_UserInfos_Users_UserId",
+            //            column: x => x.UserId,
+            //            principalTable: "Users",
+            //            principalColumn: "UserId",
+            //            onDelete: ReferentialAction.Restrict);
+            //    });
 
             migrationBuilder.CreateTable(
                 name: "Products",
@@ -127,6 +200,7 @@ namespace Keyhanatr.Data.Migrations
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ProductExist = table.Column<int>(type: "int", nullable: true),
                     SalesCount = table.Column<int>(type: "int", nullable: true),
+                    ToSalesCount = table.Column<int>(type: "int", nullable: true),
                     SumSalesUntilNow = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -143,57 +217,6 @@ namespace Keyhanatr.Data.Migrations
                         column: x => x.ProductSubGroupId,
                         principalTable: "ProductSubGroups",
                         principalColumn: "SubGroupId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    AddressID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Family = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Company = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Ostan = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Shahr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CodePosti = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Mobile = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.AddressID);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserInfos",
-                columns: table => new
-                {
-                    UserInfoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Family = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneDaftar = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserInfos", x => x.UserInfoID);
-                    table.ForeignKey(
-                        name: "FK_UserInfos_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -296,10 +319,10 @@ namespace Keyhanatr.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_UserId",
-                table: "Addresses",
-                column: "UserId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Addresses_UserId",
+            //    table: "Addresses",
+            //    column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductColors_ProductId",
@@ -320,6 +343,11 @@ namespace Keyhanatr.Data.Migrations
                 name: "IX_ProductGalleries_ProductId",
                 table: "ProductGalleries",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductGroups_ProductNavGroupId",
+                table: "ProductGroups",
+                column: "ProductNavGroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductGroupId",
@@ -346,15 +374,15 @@ namespace Keyhanatr.Data.Migrations
                 table: "ProductSubGroups",
                 column: "ProductGroupId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_UserInfos_UserId",
-                table: "UserInfos",
-                column: "UserId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_UserInfos_UserId",
+            //    table: "UserInfos",
+            //    column: "UserId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_RoleId",
-                table: "Users",
-                column: "RoleId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Users_RoleId",
+            //    table: "Users",
+            //    column: "RoleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -397,6 +425,9 @@ namespace Keyhanatr.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductGroups");
+
+            migrationBuilder.DropTable(
+                name: "ProductNavGroups");
         }
     }
 }

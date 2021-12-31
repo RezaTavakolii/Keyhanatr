@@ -110,7 +110,6 @@ namespace Keyhanatr.Controllers
                 var claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Name,user.UserName),
-                   
                     new Claim(ClaimTypes.NameIdentifier,user.UserId.ToString()),
                     new Claim("RoleId",user.RoleId.ToString()),
                    

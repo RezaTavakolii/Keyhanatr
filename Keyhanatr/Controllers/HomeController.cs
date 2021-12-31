@@ -24,7 +24,6 @@ namespace Keyhanatr.Controllers
         }
         public ActionResult Slider()
         {
-            DateTime dt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             return View(_context.Sliders.Where(s => s.IsActive));
         }
 

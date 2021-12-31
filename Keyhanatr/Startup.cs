@@ -36,7 +36,7 @@ namespace Keyhanatr
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            ///////
+            
             services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;
