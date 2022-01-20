@@ -4,20 +4,43 @@ using Keyhanatr.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Keyhanatr.Data.Migrations
 {
     [DbContext(typeof(KeyhanatrContext))]
-    partial class KeyhanatrContextModelSnapshot : ModelSnapshot
+    [Migration("20220102030711_mig_Correct_Discounts.cs")]
+    partial class mig_Correct_Discountscs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Discount", b =>
+                {
+                    b.Property<int>("DiscountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PercentValue")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("DiscountId");
+
+                    b.ToTable("Discounts");
+                });
 
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
                 {
@@ -216,13 +239,6 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BackColor")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NavTitle")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -289,10 +305,6 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BackColor")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
@@ -304,10 +316,6 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Titr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -469,36 +477,6 @@ namespace Keyhanatr.Data.Migrations
                     b.ToTable("UserInfos");
                 });
 
-            modelBuilder.Entity("Keyhanatr.Data.Domain.Order.Order", b =>
-                {
-                    b.HasOne("Keyhanatr.Data.Domain.User.User", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Keyhanatr.Data.Domain.Order.OrderDetail", b =>
-                {
-                    b.HasOne("Keyhanatr.Data.Domain.Order.Order", "Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Keyhanatr.Data.Domain.Products.Product", "Product")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
                 {
                     b.HasOne("Keyhanatr.Data.Domain.Products.Discount", "Discount")
@@ -640,10 +618,13 @@ namespace Keyhanatr.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Discount", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Product", b =>
                 {
-                    b.Navigation("OrderDetails");
-
                     b.Navigation("ProductColors");
 
                     b.Navigation("ProductComments");
@@ -683,8 +664,6 @@ namespace Keyhanatr.Data.Migrations
             modelBuilder.Entity("Keyhanatr.Data.Domain.User.User", b =>
                 {
                     b.Navigation("Addresses");
-
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

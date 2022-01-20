@@ -41,7 +41,7 @@
     <!-- با مارک خرید کنید-->
     @RenderSection("brands", false)
     <!-- Blog + Instagram info cards-->
-    @*@RenderSection("bloginsta", false)*@
+    @RenderSection("bloginsta", false)
     <!-- Footer-->
 
     @RenderSection("footer", false)
@@ -79,3 +79,6 @@
 
 
 
+@await RenderSectionAsync("Scripts", required: false)
+@RenderBody()
+<title>@ViewData["Title"] - Keyhanatr</title><title>@ViewData["Title"] - Keyhanatr</title>

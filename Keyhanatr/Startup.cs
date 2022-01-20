@@ -18,12 +18,6 @@ using System.Threading.Tasks;
 using Keyhanatr.Core.Services.Users;
 using Keyhanatr.Core.Senders;
 using Keyhanatr.Core.Interfaces.Message;
-using Keyhanatr.Core.Interfaces.Sliders;
-using Keyhanatr.Core.Services.Sliders;
-using Keyhanatr.Core.Interfaces.Brands;
-using Keyhanatr.Core.Services.Brands;
-using Keyhanatr.Core.Interfaces.Orders;
-using Keyhanatr.Core.Services.Orders;
 
 namespace Keyhanatr
 {
@@ -83,9 +77,6 @@ namespace Keyhanatr
             services.AddTransient<IProductColorServices, ProductColorServices>();
 
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ISliderServices, SliderService>();
-            services.AddScoped<IBrandService, BrandServices>();
-            services.AddScoped<IShopingCardService, ShopingCardService>();
             #endregion
         }
 

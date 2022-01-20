@@ -1,0 +1,61 @@
+﻿@model Keyhanatr.Data.Domain.Products.Discount
+@{
+    ViewData["Title"] = "صفحه تخفیف";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="form-group">
+    <a class="btn btn-primary" asp-action="Create" asp-route-id="@ViewBag.ProductId">اعمال تخفیف جدید</a>
+
+</div>
+<h1>تخفیف اعمال شده برای محصول: "@ViewBag.ProductTitle"</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PercentValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PercentValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+
+            @*
+                        the below type is incorrect when checking if some Nullable DateTime column is null or not,
+                        We aren't allowed to to use "Value" after "StartDate" !
+                 @if (Model != null && Model.StartDate.Value !=null)
+                {
+                    @Model.StartDate.Value.ToShamsi()
+                }
+            *@
+
+            @if (Model != null && Model.StartDate != null)
+            {
+                @Model.StartDate.Value.ToShamsi()
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model != null && Model.EndDate != null)
+            {
+                @Model.EndDate.Value.ToShamsi()
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Model != null)
+    {
+        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@ViewBag.ProductId">ویرایش</a>
+    }
+    @if (Model != null)
+    {
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@ViewBag.ProductId">حذف</a>
+    }
+    
+</div>

@@ -15,14 +15,15 @@ namespace Keyhanatr.Data.Domain.Products
         public int ProductId { get; set; }
 
 
-
-
         [Required]
         public int ProductGroupId { get; set; }
 
 
         [Required]
         public int ProductSubGroupId { get; set; }
+
+
+        public int? DiscountId { get; set; }
 
         [Display(Name ="قیمت")]
         [Required(ErrorMessage ="لطفا {0} را وارد کنید")]
@@ -92,6 +93,8 @@ namespace Keyhanatr.Data.Domain.Products
 
         public List<OrderDetail> OrderDetails { get; set; }
 
+        [ForeignKey("DiscountId")]
+        public Discount Discount { get; set; }
 
         #endregion
 
