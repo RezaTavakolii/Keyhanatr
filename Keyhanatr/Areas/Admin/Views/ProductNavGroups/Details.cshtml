@@ -1,0 +1,23 @@
+﻿@model Keyhanatr.Data.Domain.Products.ProductNavGroup
+
+@{
+    ViewData["Title"] = " جزییات گروه ناوبری";
+}
+
+<h1>جزییات گروه ناوبری</h1>
+
+<div class="form-group">
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.NavTitle) :
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.NavTitle)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NavGroupId">ویرایش</a> |
+    <a asp-action="Index">بازگشت به لیست گروه های ناوبری</a>
+</div>

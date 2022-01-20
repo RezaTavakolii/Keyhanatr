@@ -14,7 +14,6 @@ namespace Keyhanatr.Data.Domain.Products
         public int ProductId { get; set; }
 
 
-        public int? ExistId { get; set; }
 
 
         [Required]

@@ -12,6 +12,7 @@ namespace Keyhanatr.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly KeyhanatrContext _context;
         public HomeController(KeyhanatrContext context)
         {
@@ -26,6 +27,8 @@ namespace Keyhanatr.Controllers
         {
             return View(_context.Sliders.Where(s => s.IsActive));
         }
+
+        
 
     }
 }

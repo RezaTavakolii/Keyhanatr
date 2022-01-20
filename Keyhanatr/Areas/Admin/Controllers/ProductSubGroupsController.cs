@@ -125,11 +125,10 @@ namespace Keyhanatr.Areas.Admin.Controllers
         }
 
         //// POST: Admin/ProductSubGroups/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        
         public IActionResult DeleteConfirmed(int id)
         {
-            var productSubGroup = _productServices.GetProductSubGroupById(id);
+            _productServices.DeleteProductSubGroupById(id);
 
             return RedirectToAction(nameof(Index));
         }
