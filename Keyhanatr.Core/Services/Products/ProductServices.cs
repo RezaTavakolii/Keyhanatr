@@ -295,7 +295,8 @@ namespace Keyhanatr.Core.Services.Products
         #region NavGroups
         public List<ProductNavGroup> GetAllNavGroups()
         {
-            return _context.ProductNavGroups.ToList();
+            return _context.ProductNavGroups.Include(g=>g.ProductGroups)
+                .ThenInclude(s=>s.ProductSubGroups).ToList();
         }
 
         public void AddNavGroup(ProductNavGroup navGroup)

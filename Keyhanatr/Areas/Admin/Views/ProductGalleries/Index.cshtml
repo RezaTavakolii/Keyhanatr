@@ -1,11 +1,13 @@
 ﻿@model List<Keyhanatr.Data.Domain.Products.ProductGallery>
 @{
     ViewData["Title"] = "لیست گالری ها";
+    var productId = ViewData["id"];
+    var productTitle = ViewData["ProductTitle"];
 }
-<h2>لیست گالری های مربوط به محصول : @ViewBag.ProductTitle</h2>
+<h2>لیست گالری های مربوط به محصول : @productTitle</h2>
 <hr>
 <div class="form-group">
-    <a class="btn btn-outline-success"  href="/Admin/ProductGalleries/Create">ساخت گالری جدید</a>
+    <a class="btn btn-outline-success"  href="/Admin/ProductGalleries/Create/@productId">ساخت گالری جدید</a>
 </div>
 <hr />
 <div class="container">
@@ -15,8 +17,8 @@
             {
                 <div class="col-md-3" id="img_@item.GalleryId">
                     <img src="~/Images/ProductImages/@item.ImageName" width="100%" height="160px" />
-                    <a onclick="DeleteGallery(@item.GalleryId)" class="btn btn-block btn-danger">
-                        <i class="glyphicon glyphicon-trash"></i>
+                    <a onclick="DeleteGallery(@item.GalleryId)" class="btn d-block btn-danger">
+                        حذف
                     </a>
                 </div>
             }

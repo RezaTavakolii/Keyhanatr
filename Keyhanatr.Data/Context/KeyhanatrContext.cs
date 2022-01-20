@@ -30,8 +30,8 @@ namespace Keyhanatr.Data.Context
         public DbSet<ProductSelectedFeature> ProductSelectedFeatures { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<ProductNavGroup> ProductNavGroups { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
       
-        //public DbSet<Test> Tsets { get; set; }
 
         public DbSet<UserInfo> UserInfos { get; set; }
         public DbSet<Address> Addresses { get; set; }

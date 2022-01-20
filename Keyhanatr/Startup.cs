@@ -18,6 +18,8 @@ using System.Threading.Tasks;
 using Keyhanatr.Core.Services.Users;
 using Keyhanatr.Core.Senders;
 using Keyhanatr.Core.Interfaces.Message;
+using Keyhanatr.Core.Interfaces.Discounts;
+using Keyhanatr.Core.Services.Discounts;
 
 namespace Keyhanatr
 {
@@ -67,15 +69,7 @@ namespace Keyhanatr
             #endregion
 
             #region IoC
-            services.AddScoped<IMessageSender, MessageSender>();
-            services.AddTransient<IProductServices, ProductServices>();
-            services.AddTransient<IProductFeatureServices, ProductFeatureServices>();
-            services.AddTransient<IProductSelectedFeature, ProductSelectedFeatureServices>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient<IProductGallery, ProductGallery>();
-            services.AddTransient<IProductColorServices, ProductColorServices>();
-
-            services.AddScoped<IUserService, UserService>();
+            Ioc.IocFunctions(services);
             #endregion
         }
 

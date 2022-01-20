@@ -25,17 +25,19 @@ namespace Keyhanatr.Areas.Admin.Controllers
 
         public IActionResult Index(int id)
         {
-            ViewBag.ProductTitle = _galleryService.GetProductById(id).ProductTitle;
+            ViewData["id"] = id;
+            ViewData["ProductTitle"] = _galleryService.GetProductById(id).ProductTitle;
             var galeries = _galleryService.GetGalleryByProductId(id).ToList();
             return View(galeries);
         }
 
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["ProductId"] = new SelectList(_galleryService.GetAllProducts(),
-                "ProductId", "ProductTitle");
-            return View();
+            var productId = Convert.ToString(id);
+            ViewData["ProductId"] = new SelectList(_galleryService.GetAllProducts().Where(g=>g.ProductId==id),
+              "ProductId", "ProductTitle");
+            return View(new ProductGallery() { ProductId=id});
         }
         [HttpPost]
         public IActionResult Create(ProductGallery gallery, IFormFile[] imgUp)
@@ -64,7 +66,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
             //If we don't have Any Images, we will stay in current view
             else
             {
-                ViewData["ProductId"] = new SelectList(_galleryService.GetAllProducts(),
+                ViewData["ProductId"] = new SelectList(_galleryService.GetAllProducts().Where(g=>g.ProductId==gallery.ProductId),
                     "ProductId", "ProductTitle", gallery.ProductId);
                 return View(gallery);
             }

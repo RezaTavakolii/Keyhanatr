@@ -1,4 +1,10 @@
-﻿<header class="shadow-sm">
+﻿@using Keyhanatr.Core.Interfaces.Products
+@{
+    @inject IProductServices _productServices;
+    var navGroups = _productServices.GetAllNavGroups();
+
+}
+<header class="shadow-sm">
     <!-- Topbar-->
     <div class="topbar topbar-dark bg-dark">
         <div class="container">
@@ -120,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2" >
+        <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <!-- Search-->
@@ -133,160 +139,43 @@
                     <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown"><i class="ci-view-grid me-2"></i>بخش ها</a>
-                            <div class="dropdown-menu px-2 pb-4">
-                                <div class="d-flex flex-wrap flex-sm-nowrap">
-                                    <div class="mega-dropdown-column pt-3 pt-sm-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/01.jpg" alt="Clothing"></a>
-                                            <h6 class="fs-base mb-2">تن پوش</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">لباس زنانه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">لباس مردانه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">لباس بچگانه</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/02.jpg" alt="Shoes"></a>
-                                            <h6 class="fs-base mb-2">کفش</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کفش زنانه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کفش مردانه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کفش بچگانه</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/03.jpg" alt="Gadgets"></a>
-                                            <h6 class="fs-base mb-2">گجت ها</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">تلفن های هوشمند و تبلت ها</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">اسباب های پوشیدنی</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">خوانندگان کتاب های الکترونیکی</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-wrap flex-sm-nowrap">
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/04.jpg" alt="Furniture"></a>
-                                            <h6 class="fs-base mb-2">مبلمان و دکور</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">مبلمان منزل</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">مبلمان اداری</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">روشنایی و دکوراسیون</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/05.jpg" alt="تجهیزات جانبی"></a>
-                                            <h6 class="fs-base mb-2">تجهیزات جانبی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کلاه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">عینک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کیف</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/06.jpg" alt="سرگرمی"></a>
-                                            <h6 class="fs-base mb-2">سرگرمی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">اسباب بازی های کودک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">بازی های ویدیویی</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">در فضای باز / کمپینگ</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </li>
                     </ul>
                     <!-- Primary menu-->
 
                     <ul class="navbar-nav " style="width:100%">
 
-
-                        @for (int i = 0; i < 7; i++)
+                        @foreach (var nav in navGroups)
                         {
-                            <li class="nav-item dropdown">
 
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">فروشگاه</a>
-                                <div class="dropdown-menu p-0">
-                                    <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">لایه های فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">فروشگاه-نوار سمت راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-rs.html">فروشگاه-نوار سمت چپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ft.html">فروشگاه-فیلتر بالا</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ls.html">لیست فروشگاه-منو راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-rs.html">لیست فروشگاه-منوچپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ft.html">لیست فروشگاه-فیلتر بالا</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">بازار</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-single.html">تک صفحه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-vendor.html">چند فروشنده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">صفحات فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-categories.html">دسته بندی فروشگاه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v1.html">محصول 1</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v2.html">محصول 2 </a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-details.html">بررسی-جزئیات</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-shipping.html">بررسی-حمل و نقل</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-payment.html">بررسی-پرداخت</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-review.html">بررسی-مشاهده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-complete.html">بررسی-کامل شدن</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="order-tracking.html">رهیگیری سفارش</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="comparison.html">مقایسه محصول</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">ارگانیک</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-catalog.html">کاتالوگ محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">تحویل غذا</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-cart.html">سبد خرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-checkout.html">بررسی و پرداخت</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">@nav.NavTitle</a> @*NavGroup  TODO NavId*@
+
+                                @if (nav.ProductGroups.Any())
+                                {
+                                    <ul class="dropdown-menu">
+                                        @foreach (var group in nav.ProductGroups)
+                                        {
+
+                                            <li class="dropdown">
+                                                <a class="dropdown-item @((group.ProductSubGroups.Any())?"dropdown-toggle":"")" href="#" data-bs-toggle="dropdown">@group.GroupTitle</a> @*Group TODO GroupId*@
+                                                @if (group.ProductSubGroups.Any())
+                                                {
+                                                    <ul class="dropdown-menu">
+                                                        @foreach (var sub in group.ProductSubGroups)
+                                                        {
+                                                            <li><a class="dropdown-item" href="account-orders.html">@sub.SubGroupTitle</a></li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </li>
+                                        }
+                                    </ul>
+                                }
 
                             </li>
                         }
-
-
-
                     </ul>
 
 

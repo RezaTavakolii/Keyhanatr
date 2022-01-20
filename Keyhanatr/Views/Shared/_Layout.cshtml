@@ -233,6 +233,7 @@
     @RenderSection("brands", false)
     <!-- Blog + Instagram info cards-->
     @RenderSection("bloginsta", false)
+    @RenderBody()
     <!-- Footer-->
     @RenderSection("footer", false)
     <!-- Toolbar for handheld devices (Default)-->
@@ -264,5 +265,10 @@
 @*@await RenderSectionAsync("Scripts", required: false)*@
 
 @await RenderSectionAsync("Scripts", required: false)
-@RenderBody()
+
 <title>@ViewData["Title"] - Keyhanatr</title><title>@ViewData["Title"] - Keyhanatr</title>
+<script>
+    $(function () {
+        $.get("/Admin/Discount/DeleteExpiredDiscounts");
+    });
+</script>

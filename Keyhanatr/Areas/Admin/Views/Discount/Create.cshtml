@@ -1,0 +1,53 @@
+﻿@model Keyhanatr.Data.Domain.Products.Discount
+
+@{
+    ViewData["Title"] = "ایجاد تخفیف";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>ایجاد تخفیف</h1>
+
+<h4>اعمال تخفیف برای محصول : "@ViewBag.ProductTitle"</h4>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Create" method="post">
+                <input type="hidden" name="PId" value="@ViewBag.ProductId" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="#PercentValue" class="control-label">عدد تخفیف را وارد کنید : </label>
+                    <input id="PercentValue" asp-for="PercentValue" class="form-control" />
+                    <span asp-validation-for="PercentValue" class="text-danger"></span>
+                    <div class="ci-help text-accent text-danger">به هیچ عنوان از علامت "%" استفاده نکنید! عددی که شما در این فیلد وارد می کنید، خود به خود بصورت درصد محاسبه خواهد شد.</div>
+                </div>
+                <div class="form-group">
+                    <label for="startDate" class="control-label">تاریخ شروع :</label>
+                    <input id="startDate" name="startDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="endDate" class="control-label">تاریخ پایان :</label>
+                    <input id="endDate" name="endDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="اعمال تخفیف" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+        <link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.common.min.css" rel="stylesheet" />
+        <link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.default.min.css" rel="stylesheet" />
+
+        <script src="/js/kendo.all.min.js"></script>
+        <script>
+            // create DatePicker from input HTML element
+            $("#startDate").kendoDatePicker();
+        $("#endDate").kendoDatePicker();
+        </script>
+}

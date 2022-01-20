@@ -1,0 +1,53 @@
+﻿@model Keyhanatr.Data.Domain.Products.Discount
+
+@{
+    ViewData["Title"] = "حذف تخفیف";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3> آیا آز حذف تخفیف برای محصول "<span class="text-danger">@ViewBag.ProductTitle</span>" اطمینان دارید؟ </h3>
+<hr />
+<div class="container">
+    <div class="row col-md-10">
+        <table class="table table-striped">
+            <tr>
+                <th>مقدار تخفیف</th>
+                <td>@Model.PercentValue</td>
+            </tr>
+            <tr>
+                <th>تاریخ شروع تخفیف</th>
+                @if (Model.StartDate != null)
+                {
+                    <td>@Model.StartDate.Value.ToShamsi()</td>
+                }
+                else
+                {
+                    <td>ندارد</td>
+                }
+            </tr>
+            <tr>
+                <th>تاریخ پایان تخفیف</th>
+                @if (Model.EndDate != null)
+                {
+                    <td>@Model.EndDate.Value.ToShamsi()</td>
+                }
+                else
+                {
+                    <td>ندارد</td>
+                }
+            </tr>
+        </table>
+        <div class="row" style=" margin: 0px; padding: 0px; ">
+            <a asp-action="ConfirmeDelete" asp-route-id="@ViewBag.ProductId" class="btn btn-danger">حذف</a>
+        </div>
+        
+    </div>
+</div>
+
+
+<div class="row" style=" margin: 0px;">
+    <div class="form-group">
+        <a asp-action="Index" asp-route-id="@ViewBag.ProductId">بازگشت به صفحه تخفیف محصول</a>
+    </div>
+</div>
