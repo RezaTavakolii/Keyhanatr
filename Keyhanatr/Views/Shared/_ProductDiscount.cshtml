@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<Keyhanatr.Data.Domain.Products.Product>
+
+
+
+
+<section class="ps-lg-4 pe-lg-3 pt-4">
+    <div class="px-3 pt-2 container" style="background-color: #ef394e ">
+        <section class="pt-3 pt-md-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
+                <h2 class="h3 mb-0 pt-3 text-light me-3">محصولات پر تخفیف</h2>
+                <div class="pt-3"><a class="btn btn-outline-accent btn-sm" href="grocery-catalog.html">محصولات بیشتر<i class="ci-arrow-left  ms-1 me-n1"></i></a></div>
+            </div>
+            <div class="tns-carousel tns-controls-static tns-controls-outside tns-nav-enabled pt-2 ltr">
+                <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;gutter&quot;: 16, &quot;controls&quot;: true, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1}, &quot;480&quot;:{&quot;items&quot;:2}, &quot;720&quot;:{&quot;items&quot;:3}, &quot;991&quot;:{&quot;items&quot;:2}, &quot;1140&quot;:{&quot;items&quot;:3}, &quot;1300&quot;:{&quot;items&quot;:4}, &quot;1500&quot;:{&quot;items&quot;:5}}}">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="mb-4">
+                            <div class="card product-card card-static pb-3 rtl ">
+                                <span class="badge bg-success badge-shadow">فروش</span>
+                                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="/Single/@item.ProductId"><img src="/Images/ProductImages/@item.ImageName" style="height:200px;" title="@item.ProductTitle" alt="@item.Tags"></a>
+                                <div class="card-body py-2">
+
+                                    <h3 class="product-title fs-sm text-truncate"><a href="/Single/@item.ProductId">@item.ProductTitle</a></h3>
+                                    <div class="product-price">
+                                        @item.Price.ToString("N0") <small>تومان</small>
+                                        <del class="fs-sm text-muted">@*20<small>99</small>*@</del>
+                                    </div>
+                                </div>
+                                <div class="product-floating-btn">
+                                    <button onclick="ShoppingCart(@item.ProductId)" class="btn btn-primary btn-shadow btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+        <div></div>
+    </div>
+</section>

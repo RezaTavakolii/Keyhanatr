@@ -1,0 +1,34 @@
+﻿@model Keyhanatr.Core.DTOs.Products.GroupsProductsViewModel
+
+
+@foreach (var navgroup in Model.productNavGroups)
+{
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ProductNavGroups/@navgroup.NavGroupId/@navgroup.NavTitle" data-bs-toggle="dropdown">@navgroup.NavTitle</a>
+        @if (Model.ProductGroups.Any(s => s.ProductNavGroupId == navgroup.NavGroupId))
+        {
+            <div class="dropdown-menu p-0">
+                <div class="d-flex flex-wrap flex-sm-nowrap px-2">
+                    @foreach (var group in Model.ProductGroups.Where(s => s.ProductNavGroupId == navgroup.NavGroupId))
+                    {
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
+                            <div class="widget widget-links mb-4">
+                                <h6 class="fs-base mb-2 "><a href="/Group/@group.ProductGroupId/@group.GroupTitle">@group.GroupTitle</a></h6>
+                                <hr />
+                                @if (Model.ProductSubGroups.Any(s => s.ProductGroupId == group.ProductGroupId))
+                                {
+                                    <ul class="widget-list mt-3">
+                                        @foreach (var subgroup in Model.ProductSubGroups.Where(s => s.ProductGroupId == group.ProductGroupId))
+                                        {
+                                            <li class="widget-list-item"><a class="widget-list-link" href="/SubGroup/@subgroup.SubGroupId/@subgroup.SubGroupTitle">@subgroup.SubGroupTitle</a></li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </li>
+}

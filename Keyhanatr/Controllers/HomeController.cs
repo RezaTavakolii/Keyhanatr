@@ -1,4 +1,6 @@
-﻿using Keyhanatr.Data.Context;
+﻿using Keyhanatr.Core.Interfaces.Products;
+using Keyhanatr.Core.Interfaces.Sliders;
+using Keyhanatr.Data.Context;
 using Keyhanatr.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,22 +15,19 @@ namespace Keyhanatr.Controllers
     public class HomeController : Controller
     {
 
-        private readonly KeyhanatrContext _context;
-        public HomeController(KeyhanatrContext context)
+        private ISliderServices _sliderServices;
+        private IProductServices  _productServices;
+
+        public HomeController(ISliderServices sliderServices, IProductServices productServices)
         {
-            _context = context;
+            _sliderServices = sliderServices;
+            _productServices = productServices;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        public ActionResult Slider()
-        {
-            return View(_context.Sliders.Where(s => s.IsActive));
-        }
-
-        
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Keyhanatr.Core.Convertor;
+using Keyhanatr.Core.Interfaces.Sliders;
 using Keyhanatr.Data.Context;
 using Keyhanatr.Data.Domain.Slider;
 
@@ -18,15 +19,15 @@ namespace Keyhanatr.Areas.Admin.Controllers
 
     public class SlidersController : Controller
     {
-        private readonly KeyhanatrContext _context;
-        public SlidersController(KeyhanatrContext context)
+       
+        private ISliderServices _sliderServices;
+        public SlidersController(ISliderServices sliderServices)
         {
-            _context = context;
+            _sliderServices = sliderServices;
         }
         public async Task<IActionResult> Index()
         {
-            var myKeyhanatrContext = _context.Sliders;
-            return View(await myKeyhanatrContext.ToListAsync());
+            return View(_sliderServices.GetAllSlider());
         }
 
         #region Details
@@ -37,8 +38,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var slider = await _context.Sliders
-                .FirstOrDefaultAsync(m => m.SlideID == id);
+            var slider = _sliderServices.GetSliderById(id.Value);
             if (slider == null)
             {
                 return NotFound();
@@ -73,8 +73,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
                         imgUp.CopyTo(stream);
                     }
                 }
-                _context.Add(slider);
-                await _context.SaveChangesAsync();
+                _sliderServices.AddSlider(slider);
                 return RedirectToAction(nameof(Index));
             }
             return View(slider);
@@ -89,7 +88,8 @@ namespace Keyhanatr.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var slider = await _context.Sliders.FindAsync(id);
+            var slider = _sliderServices.GetSliderById(id.Value);
+
             if (slider == null)
             {
                 return NotFound();
@@ -128,8 +128,8 @@ namespace Keyhanatr.Areas.Admin.Controllers
                             imgUp.CopyTo(stream);
                         }
                     }
-                    _context.Update(slider);
-                    await _context.SaveChangesAsync();
+                    _sliderServices.EditSlider(slider);
+                   
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -155,27 +155,24 @@ namespace Keyhanatr.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var service = await _context.Sliders
-                .FirstOrDefaultAsync(m => m.SlideID == id);
-            if (service == null)
+            var slider = _sliderServices.GetSliderById(id.Value);
+            if (slider == null)
             {
                 return NotFound();
             }
-            return View(service);
+            return View(slider);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var slider = await _context.Sliders.FindAsync(id);
-            _context.Sliders.Remove(slider);
-            await _context.SaveChangesAsync();
+            _sliderServices.DeleteSlider(id);
             return RedirectToAction(nameof(Index));
         }
         private bool SliderExists(int id)
         {
-            return _context.Sliders.Any(e => e.SlideID == id);
+            return _sliderServices.SliderExist(id);
         }
         #endregion
     }

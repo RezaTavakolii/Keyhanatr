@@ -24,16 +24,16 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GroupTitle)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.ProductGroupId">ویرایش</a> |
-                            <a asp-action="Details" asp-route-id="@item.ProductGroupId">جزییات</a> |
-                            <a asp-action="Delete" asp-route-id="@item.ProductGroupId">حذف</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupTitle)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProductGroupId">ویرایش</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProductGroupId">جزییات</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProductGroupId">حذف</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

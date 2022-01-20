@@ -15,6 +15,8 @@ namespace Keyhanatr.Data.Domain.Order
         [Required]
         public int UserId { get; set; }
         [Required]
+        public int OrderSum { get; set; }
+        [Required]
         public DateTime CreateDate { get; set; } = DateTime.Now;
         public bool IsFinaly { get; set; }
 

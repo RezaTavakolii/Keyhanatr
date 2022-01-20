@@ -11,7 +11,7 @@
             <small>@User.Identity.Name</small>
         </a>
         <!-- Cart dropdown-->
-        <div class="dropdown-menu dropdown-menu-end">
+        <div class="dropdown-menu  dropdown-menu-end">
             <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 15rem;">
                 <div data-simplebar data-simplebar-auto-hide="false">
 
@@ -21,6 +21,10 @@
                     <hr />
                     <h5 class="widget-product-title pb-2 mt-2">
                         <a asp-area="UserPanel" asp-controller="UserInfoes" asp-action="Create"><i class="ci-package me-2 mt-n1 alert-secondary"></i><label>مشاهده حساب کاربری</label></a>
+                    </h5>
+                    <hr />
+                    <h5 class="widget-product-title pb-2 mt-2">
+                        <a asp-area="UserPanel" asp-controller="MyOrders" asp-action="Index"><i class="ci-list me-2 mt-n1 alert-secondary"></i><label>فاکتورهای من</label></a>
                     </h5>
                     <hr />
                     <h5 class="widget-product-title pb-2 mt-2">

@@ -1,0 +1,212 @@
+﻿@model IEnumerable<Keyhanatr.Data.Domain.Products.Product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = ViewBag.GroupName;
+}
+
+@section navbar{
+    <partial name="_Navbar.cshtml" />
+}
+<html>
+<body class="handheld-toolbar-enabled">
+    <div class="page-title-overlap bg-dark pt-4">
+        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+            <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                        <li class="breadcrumb-item"><a class="text-nowrap" href="/"><i class="ci-home"></i>خانه</a></li>
+                        <li class="breadcrumb-item text-nowrap">
+                            <a href="#">@*فروشگاه*@</a>
+                        </li>
+                        <li class="breadcrumb-item text-nowrap active" aria-current="page">@*نوار کناری سمت چپ*@</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+                <h1 class="h3 text-light mb-0">محصولات گروه @ViewBag.GroupName</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container pb-5 mb-2 mb-md-4">
+        <div class="row">
+            <!-- Sidebar-->
+            <aside class="col-lg-4">
+                <!-- Sidebar-->
+                <div class="offcanvas offcanvas-collapse bg-white w-100 rounded-3 shadow-lg py-1" id="shop-sidebar" style="max-width: 22rem;">
+                    <div class="offcanvas-cap align-items-center shadow-sm">
+                        <h2 class="h5 mb-0">فیلتر</h2>
+                        <button class="btn-close ms-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body py-grid-gutter px-lg-grid-gutter">
+                        <!-- Categories-->
+                        <div class="widget widget-categories mb-4 pb-4 border-bottom">
+                            <h3 class="widget-title">دسته بندی</h3>
+                            <div class="accordion mt-n1" id="shop-categories">
+                                <!-- Shoes-->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#shoes" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="shoes">@*کفش*@</a></h3>
+                                    <div class="accordion-collapse collapse" id="shoes" data-bs-parent="#shop-categories">
+                                        <div class="accordion-body">
+                                            <div class="widget widget-links widget-filter">
+                                                <div class="input-group input-group-sm mb-2">
+                                                    <input class="widget-filter-search form-control rounded-end" type="text" placeholder="جستجو"><i class="ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3"></i>
+                                                </div>
+                                                @*<ul class="widget-list widget-filter-list pt-1" style="height: 12rem;" data-simplebar data-simplebar-auto-hide="false">
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">دیدن همه</span><span class="fs-xs text-muted ms-3">1,953</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">پمپ و کفش پاشنه بلند</span><span class="fs-xs text-muted ms-3">247</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">پمپ و کفش پاشنه بلند</span><span class="fs-xs text-muted ms-3">156</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">صندل</span><span class="fs-xs text-muted ms-3">310</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">دمپایی</span><span class="fs-xs text-muted ms-3">402</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">بوت</span><span class="fs-xs text-muted ms-3">393</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">بوت زنانه</span><span class="fs-xs text-muted ms-3">50</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">بوت مردانه</span><span class="fs-xs text-muted ms-3">93</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">دمپایی</span><span class="fs-xs text-muted ms-3">122</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">بند انگشتی</span><span class="fs-xs text-muted ms-3">116</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">تی شرت</span><span class="fs-xs text-muted ms-3">24</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">همه کفش ها</span><span class="fs-xs text-muted ms-3">31</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">کفش مجلسی</span><span class="fs-xs text-muted ms-3">9</span></a></li>
+                                                        <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">کفش کوچک</span><span class="fs-xs text-muted ms-3">18</span></a></li>
+                                                    </ul>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Price range-->
+                        <div class="widget mb-4 pb-4 border-bottom">
+                            <h3 class="widget-title">قیمت</h3>
+                            <div class="range-slider" data-start-min="250" data-start-max="680" data-min="0" data-max="1000" data-step="1">
+                                <div class="range-slider-ui"></div>
+                                <div class="d-flex pb-1">
+                                    <div class="w-50 pe-2 me-2">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text">تومان</span>
+                                            <input class="form-control range-slider-value-min" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="w-50 ps-2">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text">تومان</span>
+                                            <input class="form-control range-slider-value-max" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Filter by Brand-->
+                        <div class="widget widget-filter mb-4 pb-4 border-bottom">
+                            <h3 class="widget-title">برند</h3>
+                            <div class="input-group input-group-sm mb-2">
+                                <input class="widget-filter-search form-control rounded-end pe-5" type="text" placeholder="جستجو"><i class="ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3"></i>
+                            </div>
+                            <ul class="widget-list widget-filter-list list-unstyled pt-1" style="max-height: 11rem;" data-simplebar data-simplebar-auto-hide="false">
+                                <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="adidas">
+                                        <label class="form-check-label widget-filter-item-text" for="adidas">آدیداس</label>
+                                    </div><span class="fs-xs text-muted">425</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- Filter by Size-->
+                        <div class="widget widget-filter mb-4 pb-4 border-bottom">
+                            <h3 class="widget-title">سایز</h3>
+                            <div class="input-group input-group-sm mb-2">
+                                <input class="widget-filter-search form-control rounded-end pe-5" type="text" placeholder="جستجو"><i class="ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3"></i>
+                            </div>
+                            <ul class="widget-list widget-filter-list list-unstyled pt-1" style="max-height: 11rem;" data-simplebar data-simplebar-auto-hide="false">
+                                <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="size-xs">
+                                        <label class="form-check-label widget-filter-item-text" for="size-xs">XS</label>
+                                    </div><span class="fs-xs text-muted">34</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- Filter by Color-->
+                        <div class="widget">
+                            <h3 class="widget-title">رنگ</h3>
+                            <div class="d-flex flex-wrap">
+                                <div class="form-check form-option text-center mb-2 mx-1" style="width: 4rem;">
+                                    <input class="form-check-input" type="checkbox" id="color-blue-gray">
+                                    <label class="form-option-label rounded-circle" for="color-blue-gray"><span class="form-option-color rounded-circle" style="background-color: #b3c8db;"></span></label>
+                                    <label class="d-block fs-xs text-muted mt-n1" for="color-blue-gray">آبی</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!-- Content  -->
+            <section class="col-lg-8">
+                <!-- Toolbar-->
+                <div class="d-flex justify-content-center justify-content-sm-between align-items-center pt-2 pb-4 pb-sm-5">
+                    @*<div class="d-flex flex-wrap">
+                            <div class="d-flex align-items-center flex-nowrap me-3 me-sm-4 pb-3">
+                                <label class="text-light opacity-75 text-nowrap fs-sm me-2 d-none d-sm-block" for="sorting">مرتب سازی:</label>
+                                <select class="form-select" id="sorting">
+                                    <option>محبوبیت</option>
+                                    <option>قیمت کم به زیاد</option>
+                                    <option>قیمت زیاد به کم</option>
+                                    <option>امتیاز</option>
+
+                                </select><span class="fs-sm text-light opacity-75 text-nowrap ms-2 d-none d-md-block">از 287 محصول</span>
+                            </div>
+                        </div>*@
+                    <div class="d-flex pb-3"><a class="nav-link-style nav-link-light me-3" href="#"><i class="ci-arrow-right"></i></a><span class="fs-md text-light">1 / 5</span><a class="nav-link-style nav-link-light ms-3" href="#"><i class="ci-arrow-left"></i></a></div>
+                    <div class="d-none d-sm-flex pb-3"><a class="btn btn-icon nav-link-style bg-light text-dark disabled opacity-100 me-2" href="#"><i class="ci-view-grid"></i></a><a class="btn btn-icon nav-link-style nav-link-light" href="shop-list-ls.html"><i class="ci-view-list"></i></a></div>
+                </div>
+                <!-- Products grid-->
+                <div class="row mx-n2">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 col-sm-6 px-2 mb-4">
+                            <div class="card product-card">
+                                <!-- Product-->
+                                <partial name="_BoxProduct" model="@item" />
+                               
+                            </div>
+                        </div>
+                    }
+                </div>
+                <br />
+                <br />
+                <hr class="my-3">
+                <!-- Pagination-->
+                <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#"><i class="ci-arrow-right me-2"></i>قبلی</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li class="page-item d-sm-none"><span class="page-link page-link-static">1 / 5</span></li>
+                        <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(فعلی)</span></span></li>
+                        <li class="page-item d-none d-sm-block"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item d-none d-sm-block"><a class="page-link" href="#">5</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#" aria-label="Next">بعدی<i class="ci-arrow-left ms-2"></i></a></li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </div>
+    <!-- Footer-->
+    <!-- Toolbar for handheld devices (Shop)-->
+    <div class="handheld-toolbar">
+        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar"><span class="handheld-toolbar-icon"><i class="ci-filter-alt"></i></span><span class="handheld-toolbar-label">Filters</span></a><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">علاقه مندی</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">منو</span></a><a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">25600</span></a></div>
+    </div>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+
+</body>
+</html>
+
+@section footer{
+    <partial name="_Footer.cshtml" />
+}

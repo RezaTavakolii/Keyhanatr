@@ -1,0 +1,49 @@
+﻿@model Keyhanatr.Data.Domain.Products.Product
+
+@{
+    ViewData["Title"] = ViewBag.GroupName;
+}
+
+<!-- Product-->
+<button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه کردن به علاقه مندی"><i class="ci-heart"></i></button>
+<a class="card-img-top d-block overflow-hidden" href="/Single/@Model.ProductId"><img src="/Images/ProductImages/@Model.ImageName" style="height:287px" alt="@Model.Tags" title="@Model.ProductTitle"></a>
+<div class="card-body py-2">
+    @*<a class="product-meta d-block fs-xs pb-1" href="/Single/@Model.ProductId">@Model.ProductSubGroup</a>*@
+    <h3 class="product-title fs-sm"><a href="/Single/@Model.ProductId">@Model.ProductTitle</a></h3>
+    <div class="d-flex justify-content-between">
+        <div class="product-price"><span class="text-accent">@Model.Price.ToString("N0") <small>تومان</small></span></div>
+        @*<div class="star-rating">
+            <i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+        </div>*@
+    </div>
+</div>
+<div class="card-body card-body-hidden">
+    <div class="text-center pb-2">
+        @*<div class="form-check form-option form-check-inline mb-2">
+                <input class="form-check-input" type="radio" name="color1" id="white" checked>
+                <label class="form-option-label rounded-circle" for="white"><span class="form-option-color rounded-circle" style="background-color: #eaeaeb;"></span></label>
+            </div>
+            <div class="form-check form-option form-check-inline mb-2">
+                <input class="form-check-input" type="radio" name="color1" id="blue">
+                <label class="form-option-label rounded-circle" for="blue"><span class="form-option-color rounded-circle" style="background-color: #d1dceb;"></span></label>
+            </div>
+            <div class="form-check form-option form-check-inline mb-2">
+                <input class="form-check-input" type="radio" name="color1" id="yellow">
+                <label class="form-option-label rounded-circle" for="yellow"><span class="form-option-color rounded-circle" style="background-color: #f4e6a2;"></span></label>
+            </div>
+            <div class="form-check form-option form-check-inline mb-2">
+                <input class="form-check-input" type="radio" name="color1" id="pink">
+                <label class="form-option-label rounded-circle" for="pink"><span class="form-option-color rounded-circle" style="background-color: #f3dcff;"></span></label>
+            </div>*@
+    </div>
+    @*@if (User.Identity.IsAuthenticated) {*@
+    <a onclick="ShoppingCart(@Model.ProductId)" class="btn btn-primary btn-sm d-block w-100 mb-2" ><i class="ci-cart fs-sm me-1"></i>اضافه کردن به سبدخرید</a>
+    @*}*@
+
+    <div class="text-center"><a class="nav-link-style fs-ms" href="/Single/@Model.ProductId" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>مشاهده</a></div>
+</div>
+<hr class="d-sm-none">
+
+
+
+

@@ -29,6 +29,7 @@ namespace Keyhanatr.Core.Interfaces.Users
 
         #region Admin User CRUD 
         User GetUserById(int userId);
+        int GetUserIdByUserName(string userName);
         IEnumerable<User> GetAllUser();
         void AddUser(User user);
         void EditUser(User user);

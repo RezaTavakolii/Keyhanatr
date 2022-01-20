@@ -20,6 +20,10 @@ using Keyhanatr.Core.Senders;
 using Keyhanatr.Core.Interfaces.Message;
 using Keyhanatr.Core.Interfaces.Sliders;
 using Keyhanatr.Core.Services.Sliders;
+using Keyhanatr.Core.Interfaces.Brands;
+using Keyhanatr.Core.Services.Brands;
+using Keyhanatr.Core.Interfaces.Orders;
+using Keyhanatr.Core.Services.Orders;
 
 namespace Keyhanatr
 {
@@ -37,10 +41,10 @@ namespace Keyhanatr
         {
             services.AddControllersWithViews();
             
-            services.AddMvc(options =>
-            {
-                options.EnableEndpointRouting = false;
-            });
+            //services.AddMvc(options =>
+            //{
+            //    options.EnableEndpointRouting = false;
+            //});
 
             #region Authentication
 
@@ -56,6 +60,7 @@ namespace Keyhanatr
                     option.LogoutPath = "/Logout";
                     option.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
                 });
+
 
             #endregion
 
@@ -79,6 +84,8 @@ namespace Keyhanatr
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISliderServices, SliderService>();
+            services.AddScoped<IBrandService, BrandServices>();
+            services.AddScoped<IShopingCardService, ShopingCardService>();
             #endregion
         }
 
@@ -101,7 +108,7 @@ namespace Keyhanatr
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

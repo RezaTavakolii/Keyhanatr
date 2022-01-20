@@ -138,6 +138,10 @@ namespace Keyhanatr.Core.Services.Users
         {
             return _context.Users.Include(u => u.Role);
         }
+        public int GetUserIdByUserName(string userName)
+        {
+            return _context.Users.Single(u => u.UserName == userName).UserId;
+        }
 
         public User GetUserById(int userId)
         {

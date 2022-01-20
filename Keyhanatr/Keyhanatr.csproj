@@ -33,6 +33,8 @@
     <Folder Include="wwwroot\Images\ProductThumbs\" />
     <Folder Include="wwwroot\Images\ProductImages\" />
     <Folder Include="wwwroot\Images\MyImagesForCKEditor\" />
+    <Folder Include="wwwroot\NavGroupImages\" />
+    <Folder Include="wwwroot\BrandImages\" />
   </ItemGroup>
 
 </Project>

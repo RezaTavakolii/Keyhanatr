@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Keyhanatr.Data.Domain.Order;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -89,9 +90,9 @@ namespace Keyhanatr.Data.Domain.Products
         
         public List<ProductComment> ProductComments { get; set; }
 
+        public List<OrderDetail> OrderDetails { get; set; }
 
 
-    
         #endregion
 
 

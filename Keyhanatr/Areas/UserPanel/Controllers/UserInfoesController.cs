@@ -24,8 +24,6 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
             _Context = context;
         }
 
-       
-
         public async Task<IActionResult> Index()
         {
             return View(await _Context.UserInfos.ToListAsync());

@@ -14,5 +14,6 @@ namespace Keyhanatr.Core.Interfaces.Sliders
         void AddSlider(Slider slider);
         void EditSlider(Slider slider);
         void DeleteSlider(int sliderId);
+        bool SliderExist(int id);
     }
 }

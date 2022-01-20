@@ -21,98 +21,54 @@ namespace Keyhanatr.Core.Services.Products
 
         public void AddSelectedFeature(ProductSelectedFeature selectedFeature)
         {
-            throw new NotImplementedException();
+            _context.ProductSelectedFeatures.Add(selectedFeature);
+            SaveChanges();
         }
 
         public void DeleteSelectedFeature(int selectedFeatureId)
         {
-            throw new NotImplementedException();
+            var selectedFeature = GetSelectedFeatureById(selectedFeatureId);
+            _context.ProductSelectedFeatures.Remove(selectedFeature);
+            SaveChanges();
         }
 
         public void EditSelectedFeature(ProductSelectedFeature selectedFeature)
         {
-            throw new NotImplementedException();
+            _context.ProductSelectedFeatures.Update(selectedFeature);
+            SaveChanges();
         }
 
-        public IEnumerable<ProductFeature> GetAllFeatures()
+        public IEnumerable<Data.Domain.Products.ProductFeature> GetAllFeatures()
         {
-            throw new NotImplementedException();
+            return _context.ProductFeatures.Include(s => s.ProductSelectedFeatures);
         }
 
         public IEnumerable<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return _context.Products.Include(s => s.ProductSelectedFeatures);
         }
 
         public IEnumerable<ProductSelectedFeature> GetAllSelectedFeatures()
         {
-            throw new NotImplementedException();
+            return _context.ProductSelectedFeatures.Include(p => p.Product).Include(f =>
+                 f.ProductFeature);
         }
 
         public Product GetProductById(int productId)
         {
-            throw new NotImplementedException();
+            return _context.Products.Find(productId);
         }
 
         public ProductSelectedFeature GetSelectedFeatureById(int selectedFeatureId)
         {
-            throw new NotImplementedException();
+            return _context.ProductSelectedFeatures.Include(p => p.Product)
+                .Include(f => f.ProductFeature).FirstOrDefault(s =>
+                  s.SelectedFeatureId == selectedFeatureId);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
-        //public void AddSelectedFeature(ProductSelectedFeature selectedFeature)
-        //{
-        //    _context.ProductSelectedFeatures.Add(selectedFeature);
-        //    SaveChanges();
-        //}
-
-        //public void DeleteSelectedFeature(int selectedFeatureId)
-        //{
-        //    var selectedFeature = GetSelectedFeatureById(selectedFeatureId);
-        //    _context.ProductSelectedFeatures.Remove(selectedFeature);
-        //    SaveChanges();
-        //}
-
-        //public void EditSelectedFeature(ProductSelectedFeature selectedFeature)
-        //{
-        //    _context.ProductSelectedFeatures.Update(selectedFeature);
-        //    SaveChanges();
-        //}
-
-        //public IEnumerable<Data.Domain.Products.ProductFeature> GetAllFeatures()
-        //{
-        //    return _context.ProductFeatures.Include(s => s.ProductSelectedFeatures);
-        //}
-
-        //public IEnumerable<Product> GetAllProducts()
-        //{
-        //    return _context.Products.Include(s => s.ProductSelectedFeatures);
-        //}
-
-        //public IEnumerable<ProductSelectedFeature> GetAllSelectedFeatures()
-        //{
-        //    return _context.ProductSelectedFeatures.Include(p => p.Product).Include(f =>
-        //         f.ProductFeature);
-        //}
-
-        //public Product GetProductById(int productId)
-        //{
-        //    return _context.Products.Find(productId);
-        //}
-
-        //public ProductSelectedFeature GetSelectedFeatureById(int selectedFeatureId)
-        //{
-        //    return _context.ProductSelectedFeatures.Include(p => p.Product)
-        //        .Include(f => f.ProductFeature).FirstOrDefault(s =>
-        //          s.SelectedFeatureId == selectedFeatureId);
-        //}
-
-        //public void SaveChanges()
-        //{
-        //    _context.SaveChanges();
-        //}
     }
 }

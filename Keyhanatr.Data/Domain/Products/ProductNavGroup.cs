@@ -18,6 +18,13 @@ namespace Keyhanatr.Data.Domain.Products
         [MaxLength(100,ErrorMessage = "{0} نمیتواند بیش تر از {1}کاراکتر باشد")]
         public string NavTitle { get; set; }
 
+        [Display(Name = "رنگ پس زمینه")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string BackColor { get; set; }
+
+        [Display(Name = "تصویر")]
+        public string ImageName { get; set; }
+
         #region Relations
         public List<ProductGroup> ProductGroups { get; set; }
         #endregion

@@ -30,12 +30,7 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
             return View();
         }
 
-        
-
-        public IActionResult Order()
-        {
-            return View();
-        }
+       
        
 
         #region Change Password
@@ -72,43 +67,6 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
         }
         #endregion
 
-        //#region Address
-        //public IActionResult Address(int id)
-        //{
-        //    ViewBag.Address = _Context.Addresses.Where(u => u.UserId == id).ToList();
-        //    return View(new Address()
-        //    {
-        //        UserId = id
-        //    });
-        //}
-
-        //[HttpPost]
-        //public IActionResult Address(Address address)
-        //{
-        //    Address Adrs = new Address()
-        //    {
-        //        UserId = address.UserId,
-        //        Name = address.Name,
-        //        Family = address.Family,
-        //        Company = address.Company,
-        //        Ostan = address.Ostan,
-        //        Shahr = address.Shahr,
-        //        Adress = address.Adress,
-        //        CodePosti = address.CodePosti,
-        //        Mobile = address.Mobile,
-        //    };
-        //    _Context.Addresses.Add(Adrs);
-        //    _Context.SaveChanges();
-        //    ViewBag.Address = _Context.Addresses.Where(g => g.UserId == address.UserId).ToList();
-        //    return View();
-        //}
-
-        //public void DeleteAddress(int id)
-        //{
-        //    var adress = _Context.Addresses.Find(id);
-        //    _Context.Addresses.Remove(adress);
-        //    _Context.SaveChanges();
-        //}
-        //#endregion
+       
     }
 }

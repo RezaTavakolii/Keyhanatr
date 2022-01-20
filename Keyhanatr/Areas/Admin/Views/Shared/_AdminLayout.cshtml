@@ -3,24 +3,26 @@
 @inject IProductServices productServices ;
 <!DOCTYPE html>
 @{
-//string role = User.FindFirstValue("RoleId").ToString();
-//if (role != "5")
-//{
-//    Context.Response.Redirect("/Login");
-//}
+    //string role = User.FindFirstValue("RoleId").ToString();
+    //if (role != "5")
+    //{
+    //    Context.Response.Redirect("/Login");
+    //}
 
 }
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Cartzilla | Account Settings</title>
+    <title>فروشگاه اینترنتی کیهان عطر|@ViewData["Title"]</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="Cartzilla - Bootstrap تجارت الکترونیکی Template">
-    <meta name="keywords" content="bootstrap, shop, تجارت الکترونیکی, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
-    <meta name="author" content="گروه ستین">
+    <
+    <meta name="description" content="فروشگاه اینترنتی کیهان عطر">
+    <meta name="keywords" content="bootstrap, shop, فروشگاه اینترنتی کیهان عطر, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="رضا توکلی و حسین دارا">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
+    <
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -44,7 +46,7 @@
     <header class="bg-light shadow-sm navbar-sticky">
         <div class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand d-none d-sm-block flex-shrink-0 me-4 order-lg-1" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+                <a class="navbar-brand d-none d-sm-block flex-shrink-0 me-4 order-lg-1" href="index.html"><img src="/img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="/img/logo-icon.png" width="74" alt="Cartzilla"></a>
                 <!-- Toolbar-->
                 <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox">
@@ -55,17 +57,17 @@
                                 <span class="navbar-tool-tooltip">علاقه مندی</span>
                                 <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-heart"></i></div>
                             </a>*@
-                        <div class="navbar-tool dropdown ms-2">
-                            <a class="navbar-tool-icon-box border dropdown-toggle" href="dashboard-sales.html"><img src="img/marketplace/account/avatar-sm.png" width="32" alt="گروه ستین"></a><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>امتیاز</small>137500</a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <div style="min-width: 14rem;">
-                                    <h6 class="dropdown-header">حساب کاربری</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-settings.html"><i class="ci-settings opacity-60 me-2"></i>تنظیمات</a><a class="dropdown-item d-flex align-items-center" href="dashboard-purchases.html"><i class="ci-basket opacity-60 me-2"></i>خرید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-favorites.html"><i class="ci-heart opacity-60 me-2"></i>علاقه مندی<span class="fs-xs text-muted ms-auto">4</span></a>
-                                    <div class="dropdown-divider"></div>
-                                    <h6 class="dropdown-header">داشبورد فروشنده</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-sales.html"><i class="ci-dollar opacity-60 me-2"></i>فروش<span class="fs-xs text-muted ms-auto">137500</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-add-new-product.html"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه جدید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item d-flex align-items-center" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a>
+                        @*<div class="navbar-tool dropdown ms-2">
+                                <a class="navbar-tool-icon-box border dropdown-toggle" href="dashboard-sales.html"><img src="img/marketplace/account/avatar-sm.png" width="32" alt="گروه ستین"></a><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>امتیاز</small>137500</a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <div style="min-width: 14rem;">
+                                        <h6 class="dropdown-header">حساب کاربری</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-settings.html"><i class="ci-settings opacity-60 me-2"></i>تنظیمات</a><a class="dropdown-item d-flex align-items-center" href="dashboard-purchases.html"><i class="ci-basket opacity-60 me-2"></i>خرید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-favorites.html"><i class="ci-heart opacity-60 me-2"></i>علاقه مندی<span class="fs-xs text-muted ms-auto">4</span></a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">داشبورد فروشنده</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-sales.html"><i class="ci-dollar opacity-60 me-2"></i>فروش<span class="fs-xs text-muted ms-auto">137500</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-products.html"><i class="ci-package opacity-60 me-2"></i>محصولات<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="dashboard-add-new-product.html"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه جدید</a><a class="dropdown-item d-flex align-items-center" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item d-flex align-items-center" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div>*@
                         <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="marketplace-cart.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon ci-cart"></i></a></div>
                 </div>
                 <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
@@ -77,102 +79,102 @@
                         </div>
                     </form>
                     <!-- Categories dropdown-->
-                    <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown"><i class="ci-menu align-middle mt-n1 me-2"></i>دسته بندی</a>
-                            <ul class="dropdown-menu py-1">
-                                <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">عکس</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه عکس ها<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">چکیده</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">حیوانات</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">معماری</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">مد و زیبایی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">مردم</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">ورزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">تکنولوژی</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">گرافیک</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item product-title fw-medium"><a href="#">همه گرافیک<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">طراحی</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه طراحی<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">قالب وب سایت</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه قالب ها<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">فونت</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه فونت ها<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
+                    @*<ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown"><i class="ci-menu align-middle mt-n1 me-2"></i>دسته بندی</a>
+                                <ul class="dropdown-menu py-1">
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">عکس</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه عکس ها<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">چکیده</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">حیوانات</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">معماری</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">مد و زیبایی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">مردم</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">ورزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">تکنولوژی</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">گرافیک</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item product-title fw-medium"><a href="#">همه گرافیک<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">طراحی</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه طراحی<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">قالب وب سایت</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه قالب ها<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">فونت</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه فونت ها<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
 
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">موارد جانبی</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه موارد جانبی<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
-                                        <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">موارد جانبی</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">همه موارد جانبی<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">غذا و نوشیدنی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">تعطیلات</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">صنعتی</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">کسب و کار</a></li>
+                                            <li><a class="dropdown-item" href="marketplace-category.html">آموزشی</a></li>
 
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>*@
                     <!-- Primary menu-->
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">برگشت به دمو اصلی</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/">برگشت به دمو اصلی</a></li>
                     </ul>
                 </div>
             </div>
@@ -196,7 +198,7 @@
     <div class="page-title-overlap bg-accent pt-4">
         <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
             <div class="d-flex align-items-center pb-3">
-                <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="img/marketplace/account/avatar.png" alt="گروه ستین"></div>
+                <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="/img/marketplace/account/avatar.png" alt="گروه ستین"></div>
                 <div class="ps-3">
                     <h3 class="text-light fs-lg mb-0">گروه ستین</h3><span class="d-block text-light fs-ms opacity-60 py-1">عضویت از تیر 1400 </span>
                 </div>
@@ -244,8 +246,11 @@
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductNavGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه های ناوبری </a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>گروه ها </a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/Admin/ProductSubGroups"><i class="ci-cloud-upload opacity-60 me-2"></i>زیر گروه ها </a></li>
+
+                                <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="ProductFeatures" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>ویژگی ها </a></li>
                                 <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Users" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>کاربران </a></li>
-                                <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Sliders" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>اسلایدر</a></li>
+                                <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Sliders" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>اسلایدرها</a></li>
+                                <li class="border-bottom mb-0"><a asp-area="Admin" asp-controller="Brand" asp-action="Index" class="nav-link-style d-flex align-items-center px-4 py-3"><i class="ci-cloud-upload opacity-60 me-2"></i>برندها</a></li>
 
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="dashboard-payouts.html"><i class="ci-currency-exchange opacity-60 me-2"></i>پرداخت</a></li>
                                 <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>خروج</a></li>
@@ -263,74 +268,10 @@
     </div>
     <!-- Footer-->
     <footer class="bg-dark pt-5">
-        <div class="container pt-2 pb-3">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-4">
-                    <div class="text-nowrap mb-3"><a class="d-inline-block align-middle mt-n2 me-2" href="#"><img class="d-block" src="img/footer-logo-light.png" width="117" alt="Cartzilla"></a><span class="d-inline-block align-middle h5 fw-light text-white mb-0">بازار</span></div>
-                    <p class="fs-sm text-white opacity-70 pb-1">موارد با کیفیت بالا که توسط جامعه جهانی ما ایجاد شده است.</p>
-                    <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">65,478 </span><span class="fw-normal text-white">محصولات</span></h6>
-                    <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">2,521 </span><span class="fw-normal text-white">کاربران</span></h6>
-                    <h6 class="d-inline-block me-3"><span class="text-primary">897 </span><span class="fw-normal text-white">فروشنده</span></h6>
-                    <div class="widget mt-4 text-md-nowrap text-center text-md-start"><a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-dribbble me-2 mb-2" href="#"><i class="ci-dribbble"></i></a><a class="btn-social bs-light bs-behance me-2 mb-2" href="#"><i class="ci-behance"></i></a><a class="btn-social bs-light bs-pinterest me-2 mb-2" href="#"><i class="ci-pinterest"></i></a></div>
-                </div>
-                <!-- Mobile dropdown menu (visible on screens below md)-->
-                <div class="col-12 d-md-none text-center mb-4 pb-2">
-                    <div class="btn-group dropdown d-block mx-auto mb-3">
-                        <button class="btn btn-outline-light border-light dropdown-toggle" type="button" data-bs-toggle="dropdown">دسته بندی</button>
-                        <ul class="dropdown-menu my-1">
-                            <li><a class="dropdown-item" href="#">عکس</a></li>
-                            <li><a class="dropdown-item" href="#">گرافیک</a></li>
-                            <li><a class="dropdown-item" href="#">طراحی</a></li>
-                            <li><a class="dropdown-item" href="#">قالب وب سایت</a></li>
-                            <li><a class="dropdown-item" href="#">فونت</a></li>
-                            <li><a class="dropdown-item" href="#">موارد جانبی</a></li>
-                        </ul>
-                    </div>
-                    <div class="btn-group dropdown d-block mx-auto">
-                        <button class="btn btn-outline-light border-light dropdown-toggle" type="button" data-bs-toggle="dropdown">برای اعضا</button>
-                        <ul class="dropdown-menu my-1">
-                            <li><a class="dropdown-item" href="#">لایسنس</a></li>
-                            <li><a class="dropdown-item" href="#">قوانین مرجوع</a></li>
-                            <li><a class="dropdown-item" href="#">روش پرداخت</a></li>
-                            <li><a class="dropdown-item" href="#">فروشنده شوید</a></li>
-                            <li><a class="dropdown-item" href="#">بازاریابی</a></li>
-                            <li><a class="dropdown-item" href="#">مزایا</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Desktop menu (visible on screens above md)-->
-                <div class="col-md-3 d-none d-md-block text-center text-md-start mb-4">
-                    <div class="widget widget-links widget-light pb-2">
-                        <h3 class="widget-title text-light">دسته بندی</h3>
-                        <ul class="widget-list">
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">عکس</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">گرافیک</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">طراحی</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">قالب وب سایت</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">فونت</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">موارد جانبی</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 d-none d-md-block text-center text-md-start mb-4">
-                    <div class="widget widget-links widget-light pb-2">
-                        <h3 class="widget-title text-light">برای اعضا</h3>
-                        <ul class="widget-list">
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">لایسنس</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">قوانین مرجوع</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">روش پرداخت</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">فروشنده شوید</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">بازاریابی</a></li>
-                            <li class="widget-list-item"><a class="widget-list-link" href="#">مزایا</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Second row-->
-        <div class="pt-5 bg-darker">
-            <div class="container">
-                <div class="widget w-100 mb-4 pb-3 text-center mx-auto" style="max-width: 28rem;">
+
+        <div class="container">
+            <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-center">© کلیه حقوق متعلق به فروشگاه اینترنتی کیهان عطر بوده و محفوظ است <a class="text-light" href="" target="_blank" rel="noopener"></a></div>
+            @*<div class="widget w-100 mb-4 pb-3 text-center mx-auto" style="max-width: 28rem;">
                     <h3 class="widget-title text-light pb-1">مشترک شدن در خبرنامه</h3>
                     <form class="subscription-form validate" action="" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
                         <div class="input-group flex-nowrap">
@@ -338,28 +279,25 @@
                             <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="ایمیل شما" required>
                             <button class="btn btn-primary" type="submit" name="subscribe">عضویت</button>
                         </div>
-                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                         real people should not fill this in and expect good things - do not remove this or risk form bot signups
                         <div style="position: absolute; right: -5000px;" aria-hidden="true">
                             <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
                         </div>
                         <div class="form-text text-light opacity-50">* پیشنهادات تخفیف ، به روزرسانی ها و اطلاعات جدید محصولات را زود هنگام دریافت کنید.</div>
                         <div class="subscription-status"></div>
                     </form>
-                </div>
-                <hr class="hr-light mb-3">
-                <div class="d-md-flex justify-content-between pt-4">
-                    <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© کلیه حقوق محفوظ است <a class="text-light" href="" target="_blank" rel="noopener">گروه ستین</a></div>
-                    <div class="widget widget-links widget-light pb-4">
-                        <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
-                            <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">کمک</a></li>
-                            <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">شرکت های وابسته</a></li>
-                            <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">پشتیبانی</a></li>
-                            <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">شرایط</a></li>
-                        </ul>
-                    </div>
-                </div>
+                </div>*@
+            <hr class="hr-light mb-3">
+
+            <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-center col-md-12 ">
+                طراحی و برنامه نویسی توسط
+                <a class="text-light" href="https://engrezatavakoli.ir" target="_blank" rel="noopener"> "رضا توکلی" </a>
+                و
+                <a class="text-light" href="/" target="_blank" rel="noopener"> "حسین دارا" </a>
             </div>
         </div>
+
+
     </footer>
     <!-- Toolbar for handheld devices (Marketplace)-->
     <div class="handheld-toolbar">

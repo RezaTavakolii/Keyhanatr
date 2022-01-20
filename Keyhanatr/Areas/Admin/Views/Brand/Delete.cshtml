@@ -1,0 +1,33 @@
+﻿@model Keyhanatr.Data.Domain.Brand.Brand
+
+@{
+    ViewData["Title"] = "DeleteBrand";
+}
+
+<h1>حذف برند</h1>
+
+<h3>آیا از حذف برند  @Model.Title مطمئن هستید؟؟؟</h3>
+<div>
+    <hr />
+    <br />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImageName)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BrandID" />
+        <input type="submit" value="حذف برند" class="btn btn-danger" /> |
+        <a asp-action="Index">بازگشت به لیست</a>
+    </form>
+</div>

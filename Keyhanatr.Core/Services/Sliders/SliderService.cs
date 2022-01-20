@@ -44,5 +44,10 @@ namespace Keyhanatr.Core.Services.Sliders
         {
             return _context.Sliders.Find(sliderId);
         }
+
+        public bool SliderExist(int id)
+        {
+            return _context.Sliders.Any(e => e.SlideID == id);
+        }
     }
 }

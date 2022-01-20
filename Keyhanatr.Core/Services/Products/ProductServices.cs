@@ -4,6 +4,7 @@ using Keyhanatr.Core.ImageMethods;
 using Keyhanatr.Core.Interfaces.Products;
 using Keyhanatr.Data.Context;
 using Keyhanatr.Data.Domain.Products;
+using Keyhanatr.Data.ViewModel.Search;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -81,6 +82,7 @@ namespace Keyhanatr.Core.Services.Products
         public List<ProductSubGroup> GetAllProductSubGroups()
         {
             return _context.ProductSubGroups.Include(s => s.ProductGroup).ToList();
+
         }
 
         public ProductSubGroup GetProductSubGroupById(int productSubGroupId)
@@ -345,7 +347,26 @@ namespace Keyhanatr.Core.Services.Products
             }).ToList();
         }
 
-        
+        public GroupsProductsViewModel GetProductsGroups()
+        {
+            return new GroupsProductsViewModel()
+            {
+                productNavGroups = _context.ProductNavGroups.ToList(),
+                ProductGroups = _context.ProductGroups.ToList(),
+                ProductSubGroups = _context.ProductSubGroups.ToList()
+            };
+        }
+
+        public bool NaveGroupExists(int id)
+        {
+            return _context.ProductNavGroups.Any(e => e.NavGroupId == id);
+        }
+
+        public List<Product> GetLastProducts()
+        {
+            return _context.Products.OrderByDescending(p=>p.CreateDate).Take(12).ToList();
+        }
+
         #endregion
     }
 }

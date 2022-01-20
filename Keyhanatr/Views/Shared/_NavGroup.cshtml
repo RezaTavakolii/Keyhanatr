@@ -1,0 +1,6 @@
+﻿@model Keyhanatr.Core.DTOs.Products.GroupsProductsViewModel
+
+@foreach (var navgroup in Model.productNavGroups)
+{
+    <li class="widget-list-item"><a class="widget-list-link" href="/NavGroup/@navgroup.NavGroupId/@navgroup.NavTitle">@navgroup.NavTitle</a></li>
+}

@@ -17,7 +17,7 @@ namespace Keyhanatr.Components
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("/Views/Shared/_ProductsNew.cshtml", _productServices.GetProducts());
+            return View("/Views/Shared/_ProductsNew.cshtml", _productServices.GetLastProducts());
         }
     }
 }

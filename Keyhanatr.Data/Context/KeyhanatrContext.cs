@@ -1,4 +1,6 @@
 ﻿using Keyhanatr.Data.Domain;
+using Keyhanatr.Data.Domain.Brand;
+using Keyhanatr.Data.Domain.Order;
 using Keyhanatr.Data.Domain.Products;
 using Keyhanatr.Data.Domain.Slider;
 using Keyhanatr.Data.Domain.User;
@@ -30,11 +32,15 @@ namespace Keyhanatr.Data.Context
         public DbSet<ProductSelectedFeature> ProductSelectedFeatures { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<ProductNavGroup> ProductNavGroups { get; set; }
+        public DbSet<Brand> Brands  { get; set; }
       
         //public DbSet<Test> Tsets { get; set; }
 
         public DbSet<UserInfo> UserInfos { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
 
 
 

@@ -8,12 +8,10 @@
     <partial name="_Navbar" />
 }
 
-
-
-@section popularcategories
+@*@section popularcategories
 {
     <partial name="_PopularCategpries" />
-}
+}*@
 @section slider
 {
     @await Component.InvokeAsync("Slider")
@@ -24,30 +22,31 @@
     @await Component.InvokeAsync("Product")
 }
 
-@*@section products
-    {
-        <partial name="_Products" />
-    }*@
-
 @section banners
 {
     <partial name="_Banner" />
 }
 
-@section featurecategory
+@section productvisited
 {
-    <partial name="_FeatureCategory" />
+    @await Component.InvokeAsync("ProductVisited")
 }
+
+@section productdiscunt
+{
+    @await Component.InvokeAsync("ProductDiscunt")
+}
+
 
 @section brands
 {
-    <partial name="_Brands" />
+    @await Component.InvokeAsync("Brand")
 }
 
-@section bloginsta
+@*@section bloginsta
 {
     <partial name="_bloginsta" />
-}
+}*@
 
 @section footer
 {

@@ -22,6 +22,11 @@ namespace Keyhanatr.Data.Domain.User
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
         public string UserName { get; set; }
 
+        public static ReadOnlySpan<char> FindFirstValue(string nameIdentifier)
+        {
+            throw new NotImplementedException();
+        }
+
         [Display(Name = "شماره همراه")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(11, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
@@ -49,6 +54,7 @@ namespace Keyhanatr.Data.Domain.User
 
         #region Relations
         public List<Address> Addresses { get; set; }
+        public List<Order.Order> Orders { get; set; }
         #endregion
         #region Relations
         [ForeignKey("RoleId")]

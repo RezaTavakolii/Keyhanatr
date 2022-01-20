@@ -22,7 +22,7 @@ namespace Keyhanatr.Data.Domain.Products
         [Display(Name = "نام محصول")]
         public int ProductId { get; set; }
 
-        [Display(Name = "نوع ویژگی انخابی")]
+        [Display(Name = "نوع ویژگی انتخابی")]
         [Required(ErrorMessage = "لطفا نوع ویژگی را انتخاب کنید")]
         [MaxLength(100, ErrorMessage = "نباید بیشتر از 100 کاراکتر برای این فیلد در نظر گرفته شود")]
         public string Value { get; set; }

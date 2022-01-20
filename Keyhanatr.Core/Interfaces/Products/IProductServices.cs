@@ -1,4 +1,6 @@
-﻿using Keyhanatr.Data.Domain.Products;
+﻿using Keyhanatr.Core.DTOs.Products;
+using Keyhanatr.Data.Domain.Products;
+using Keyhanatr.Data.ViewModel.Search;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -18,10 +20,11 @@ namespace Keyhanatr.Core.Interfaces.Products
 
 
         ////For ProductGroupsServices
-       
+        GroupsProductsViewModel GetProductsGroups();
 
-        List<ProductGroup> GetAllProducts();
+         List<ProductGroup> GetAllProducts();
         List<Product> GetProducts();
+        List<Product> GetLastProducts();
         void AddProductGroup(ProductGroup productGroup);
 
         void EditProductGroup(ProductGroup productGroup);
@@ -93,7 +96,7 @@ namespace Keyhanatr.Core.Interfaces.Products
         //for Delete.cshtml
         void DeleteNavGroupById(int navGroupId);
 
-        
+        bool NaveGroupExists(int id);
 
 
 
@@ -104,6 +107,8 @@ namespace Keyhanatr.Core.Interfaces.Products
         //for Products.cs
         //for comments
         Tuple<List<ProductComment>,int> GetAllCommentsByProductId(int productId);
+
+
 
     }
 }
