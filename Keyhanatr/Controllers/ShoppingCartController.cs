@@ -22,7 +22,7 @@ namespace Keyhanatr.Controllers
             _context = context;
         }
 
-        [Authorize]
+        //[Authorize]
         public void AddToCart(int productId)
         {
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));

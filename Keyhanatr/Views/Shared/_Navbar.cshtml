@@ -1,45 +1,46 @@
-﻿@using Keyhanatr.Core.Interfaces.Products
-@{
-    @inject IProductServices _productServices;
-    var navGroups = _productServices.GetAllNavGroups();
-
-}
-<header class="shadow-sm">
-    <!-- Topbar-->
-    <div class="topbar topbar-dark bg-dark">
-        <div class="container">
-            <div class="topbar-text dropdown d-md-none">
-                <a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown">لینک ها</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="tel:00331697720"><i class="ci-support text-muted me-2"></i>09127894496</a></li>
-                    <li><a class="dropdown-item" href="order-tracking.html"><i class="ci-location text-muted me-2"></i>رهیگیری سفارش</a></li>
-                </ul>
-            </div>
-            <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="ci-support"></i><span class="text-muted me-1">پشتیبانی</span><a class="topbar-link" href="tel:00331697720">09127894496</a></div>
-            <div class="tns-carousel tns-controls-static d-none d-md-block">
-                <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}">
-                    <div class="topbar-text">به فروشگاه اینترنتی کیهان عطر خوش آمدید</div>
-                    <div class="topbar-text">ما محصولات با کیفیت و با برند معتبر ارائه می دهیم</div>
-                    <div class="topbar-text">ارسال کالا به همه نقاط کشور در کمترین زمان</div>
-                </div>
-            </div>
-            <div class="ms-3 text-nowrap">
-                <a class="topbar-link me-4 d-none d-md-inline-block" href="order-tracking.html"><i class="ci-location"></i>رهیگیری سفارش</a>
-                <div class="topbar-text dropdown disable-autohide">
-                    <a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><img class="me-2" src="/img/flags/en.png" width="20" alt="English">انگلیسی</a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li class="dropdown-item">
-                            <select class="form-select form-select-sm">
-                                <option value="usd">دلار</option>
-                                <option value="eur">تومان</option>
-                                <option value="ukp">یورو</option>
-                                <option value="jpy">پوند</option>
-                            </select>
-                        </li>
-                        <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="/img/flags/fr.png" width="20" alt="فرانسه">فرانسه</a></li>
-                        <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="/img/flags/de.png" width="20" alt="آلمان">آلمان</a></li>
-                        <li><a class="dropdown-item" href="#"><img class="me-2" src="/img/flags/it.png" width="20" alt="ایتالیا">ایتالیا</a></li>
+﻿
+<body class="handheld-toolbar-enabled">
+    <!-- Google Tag Manager (noscript)-->
+    <!-- Sign in / sign up modal-->
+    <!-- مشاهده Modal-->
+    <!-- Navbar 3 Level (Light)-->
+    <header class="shadow-sm">
+        <!-- Topbar-->
+        <div class="topbar topbar-dark bg-dark">
+            <div class="container">
+                <div class="topbar-text dropdown d-md-none">
+                    <a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown">لینک ها</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="tel:09127894496"><i class="ci-support text-muted me-2"></i>09127894496</a></li>
+                        <li><a class="dropdown-item" href="order-tracking.html"><i class="ci-location text-muted me-2"></i>رهیگیری سفارش</a></li>
                     </ul>
+                </div>
+                <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="ci-support"></i><span class="text-muted me-1">پشتیبانی</span><a class="topbar-link" href="tel:00331697720">09127894496</a></div>
+                <div class="tns-carousel tns-controls-static d-none d-md-block">
+                    <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}">
+                        <div class="topbar-text">به فروشگاه اینترنتی کیهان عطر خوش آمدید</div>
+                        <div class="topbar-text">ما محصولات با کیفیت و با برند معتبر ارائه می دهیم</div>
+                        <div class="topbar-text">ارسال کالا به همه نقاط کشور در کمترین زمان</div>
+                    </div>
+                </div>
+                <div class="ms-3 text-nowrap">
+                    <a class="topbar-link me-4 d-none d-md-inline-block" href="order-tracking.html"><i class="ci-location"></i>رهیگیری سفارش</a>
+                    @*<div class="topbar-text dropdown disable-autohide">
+                            <a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><img class="me-2" src="img/flags/en.png" width="20" alt="English">انگلیسی</a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li class="dropdown-item">
+                                    <select class="form-select form-select-sm">
+                                        <option value="usd">دلار</option>
+                                        <option value="eur">تومان</option>
+                                        <option value="ukp">یورو</option>
+                                        <option value="jpy">پوند</option>
+                                    </select>
+                                </li>
+                                <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/fr.png" width="20" alt="فرانسه">فرانسه</a></li>
+                                <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/de.png" width="20" alt="آلمان">آلمان</a></li>
+                                <li><a class="dropdown-item" href="#"><img class="me-2" src="img/flags/it.png" width="20" alt="ایتالیا">ایتالیا</a></li>
+                            </ul>
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -70,459 +71,50 @@
                             <ul class="navbar-nav">
                                 <partial name="_LoggedIn" />
                             </ul>
-                        </div>
-                    </a>
-                    <div class="navbar-tool dropdown ms-3">
-                        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>سبدخرید</small>25600</a>
-                        <!-- Cart dropdown-->
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
-                                <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
-                                    <div class="widget-cart-item pb-2 border-bottom">
-                                        <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                                        <div class="d-flex align-items-center">
-                                            <a class="flex-shrink-0" href="shop-single-v1.html"><img src="/img/shop/cart/widget/01.jpg" width="64" alt="Product"></a>
-                                            <div class="ps-2">
-                                                <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                                                <div class="widget-product-meta"><span class="text-accent me-2">150<small>00</small></span><span class="text-muted">x 1</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-cart-item py-2 border-bottom">
-                                        <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                                        <div class="d-flex align-items-center">
-                                            <a class="flex-shrink-0" href="shop-single-v1.html"><img src="/img/shop/cart/widget/02.jpg" width="64" alt="Product"></a>
-                                            <div class="ps-2">
-                                                <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                                                <div class="widget-product-meta"><span class="text-accent me-2">25<small>50</small></span><span class="text-muted">x 1</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-cart-item py-2 border-bottom">
-                                        <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                                        <div class="d-flex align-items-center">
-                                            <a class="flex-shrink-0" href="shop-single-v1.html"><img src="/img/shop/cart/widget/03.jpg" width="64" alt="Product"></a>
-                                            <div class="ps-2">
-                                                <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                                                <div class="widget-product-meta"><span class="text-accent me-2">22<small>50</small></span><span class="text-muted">x 1</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-cart-item py-2 border-bottom">
-                                        <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                                        <div class="d-flex align-items-center">
-                                            <a class="flex-shrink-0" href="shop-single-v1.html"><img src="/img/shop/cart/widget/04.jpg" width="64" alt="Product"></a>
-                                            <div class="ps-2">
-                                                <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                                                <div class="widget-product-meta"><span class="text-accent me-2">90<small>00</small></span><span class="text-muted">x 1</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-                                    <div class="fs-sm me-2 py-2"><span class="text-muted">جمع کل:</span><span class="text-accent fs-base ms-1">2560<small>00</small></span></div><a class="btn btn-outline-secondary btn-sm" href="shop-cart.html">ادامه خرید<i class="ci-arrow-left  ms-1 me-n1"></i></a>
-                                </div><a class="btn btn-primary btn-sm d-block w-100" href="checkout-details.html"><i class="ci-card me-2 fs-base align-middle"></i>بررسی</a>
+                            @*<div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                                <div class="navbar-tool-text ms-n3"><small>سلام وارد شوید</small>حساب من</div>*@
+                        </a>
+
+                        <div class="navbar-tool dropdown ms-3">
+                            <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">@*4*@</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>سبدخرید</small>@*25600*@</a>
+                            <div class="dropdown-menu dropdown-menu-end" id="bascket">
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <!-- Search-->
-                    <div class="input-group d-lg-none my-3">
-                        <i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
-                        <input class="form-control rounded-start" type="text" placeholder="جستجو برای محصول">
-                    </div>
-
-                    <!-- Departments menu-->
-                    <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown"><i class="ci-view-grid me-2"></i>بخش ها</a>
-
-                        </li>
-                    </ul>
-                    <!-- Primary menu-->
-
-                    <ul class="navbar-nav " style="width:100%">
-
-                        @foreach (var nav in navGroups)
-                        {
-
+            <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <!-- Search-->
+                        <div class="input-group d-lg-none my-3">
+                            <i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
+                            <input class="form-control rounded-start" type="text" placeholder="جستجو برای محصول">
+                        </div>
+                        <!-- Departments menu-->
+                        <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">@nav.NavTitle</a> @*NavGroup  TODO NavId*@
-
-                                @if (nav.ProductGroups.Any())
-                                {
-                                    <ul class="dropdown-menu">
-                                        @foreach (var group in nav.ProductGroups)
-                                        {
-
-                                            <li class="dropdown">
-                                                <a class="dropdown-item @((group.ProductSubGroups.Any())?"dropdown-toggle":"")" href="#" data-bs-toggle="dropdown">@group.GroupTitle</a> @*Group TODO GroupId*@
-                                                @if (group.ProductSubGroups.Any())
-                                                {
-                                                    <ul class="dropdown-menu">
-                                                        @foreach (var sub in group.ProductSubGroups)
-                                                        {
-                                                            <li><a class="dropdown-item" href="account-orders.html">@sub.SubGroupTitle</a></li>
-                                                        }
-                                                    </ul>
-                                                }
-                                            </li>
-                                        }
-                                    </ul>
-                                }
-
-                                </div>
-                        }
-                    </ul>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-</header>                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/05.jpg" alt="تجهیزات جانبی"></a>
-                                            <h6 class="fs-base mb-2">تجهیزات جانبی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کلاه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">عینک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کیف</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/06.jpg" alt="سرگرمی"></a>
-                                            <h6 class="fs-base mb-2">سرگرمی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">اسباب بازی های کودک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">بازی های ویدیویی</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">در فضای باز / کمپینگ</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- Primary menu-->
-
-                    <ul class="navbar-nav " style="width:100%">
-
-
-                        @for (int i = 0; i < 7; i++)
-                        {
-                            <li class="nav-item dropdown">
-
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">فروشگاه</a>
-                                <div class="dropdown-menu p-0">
-                                    <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">لایه های فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">فروشگاه-نوار سمت راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-rs.html">فروشگاه-نوار سمت چپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ft.html">فروشگاه-فیلتر بالا</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ls.html">لیست فروشگاه-منو راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-rs.html">لیست فروشگاه-منوچپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ft.html">لیست فروشگاه-فیلتر بالا</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">بازار</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-single.html">تک صفحه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-vendor.html">چند فروشنده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">صفحات فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-categories.html">دسته بندی فروشگاه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v1.html">محصول 1</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v2.html">محصول 2 </a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-details.html">بررسی-جزئیات</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-shipping.html">بررسی-حمل و نقل</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-payment.html">بررسی-پرداخت</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-review.html">بررسی-مشاهده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-complete.html">بررسی-کامل شدن</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="order-tracking.html">رهیگیری سفارش</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="comparison.html">مقایسه محصول</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">ارگانیک</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-catalog.html">کاتالوگ محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">تحویل غذا</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-cart.html">سبد خرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-checkout.html">بررسی و پرداخت</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                </div>
-                        }
-
-
-
-                    </ul>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-</header>                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/05.jpg" alt="تجهیزات جانبی"></a>
-                                            <h6 class="fs-base mb-2">تجهیزات جانبی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کلاه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">عینک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کیف</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/06.jpg" alt="سرگرمی"></a>
-                                            <h6 class="fs-base mb-2">سرگرمی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">اسباب بازی های کودک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">بازی های ویدیویی</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">در فضای باز / کمپینگ</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- Primary menu-->
-
-                    <ul class="navbar-nav " style="width:100%">
-
-
-                        @for (int i = 0; i < 7; i++)
-                        {
-                            <li class="nav-item dropdown">
-
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">فروشگاه</a>
-                                <div class="dropdown-menu p-0">
-                                    <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">لایه های فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">فروشگاه-نوار سمت راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-rs.html">فروشگاه-نوار سمت چپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ft.html">فروشگاه-فیلتر بالا</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ls.html">لیست فروشگاه-منو راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-rs.html">لیست فروشگاه-منوچپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ft.html">لیست فروشگاه-فیلتر بالا</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">بازار</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-single.html">تک صفحه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-vendor.html">چند فروشنده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">صفحات فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-categories.html">دسته بندی فروشگاه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v1.html">محصول 1</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v2.html">محصول 2 </a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-details.html">بررسی-جزئیات</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-shipping.html">بررسی-حمل و نقل</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-payment.html">بررسی-پرداخت</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-review.html">بررسی-مشاهده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-complete.html">بررسی-کامل شدن</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="order-tracking.html">رهیگیری سفارش</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="comparison.html">مقایسه محصول</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">ارگانیک</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-catalog.html">کاتالوگ محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">تحویل غذا</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-cart.html">سبد خرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-checkout.html">بررسی و پرداخت</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                </div>
-                                <div class="d-flex flex-wrap flex-sm-nowrap">
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/04.jpg" alt="Furniture"></a>
-                                            <h6 class="fs-base mb-2">مبلمان و دکور</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">مبلمان منزل</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">مبلمان اداری</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">روشنایی و دکوراسیون</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/05.jpg" alt="تجهیزات جانبی"></a>
-                                            <h6 class="fs-base mb-2">تجهیزات جانبی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کلاه</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">عینک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">کیف</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="mega-dropdown-column pt-4 px-2 px-lg-3">
-                                        <div class="widget widget-links">
-                                            <a class="d-block overflow-hidden rounded-3 mb-3" href="#"><img src="/img/shop/departments/06.jpg" alt="سرگرمی"></a>
-                                            <h6 class="fs-base mb-2">سرگرمی</h6>
-                                            <ul class="widget-list">
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">اسباب بازی های کودک</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">بازی های ویدیویی</a></li>
-                                                <li class="widget-list-item mb-1"><a class="widget-list-link" href="#">در فضای باز / کمپینگ</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- Primary menu-->
-
-                    <ul class="navbar-nav " style="width:100%">
-
-
-                        @for (int i = 0; i < 7; i++)
-                        {
-                            <li class="nav-item dropdown">
-
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">فروشگاه</a>
-                                <div class="dropdown-menu p-0">
-                                    <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">لایه های فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">فروشگاه-نوار سمت راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-rs.html">فروشگاه-نوار سمت چپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ft.html">فروشگاه-فیلتر بالا</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ls.html">لیست فروشگاه-منو راست</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-rs.html">لیست فروشگاه-منوچپ</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ft.html">لیست فروشگاه-فیلتر بالا</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">بازار</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-single.html">تک صفحه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-vendor.html">چند فروشنده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="marketplace-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">صفحات فروشگاه</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-categories.html">دسته بندی فروشگاه</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v1.html">محصول 1</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v2.html">محصول 2 </a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="shop-cart.html">سبدخرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-details.html">بررسی-جزئیات</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-shipping.html">بررسی-حمل و نقل</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-payment.html">بررسی-پرداخت</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-review.html">بررسی-مشاهده</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="checkout-complete.html">بررسی-کامل شدن</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="order-tracking.html">رهیگیری سفارش</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="comparison.html">مقایسه محصول</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                                            <div class="widget widget-links mb-4">
-                                                <h6 class="fs-base mb-3">ارگانیک</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-catalog.html">کاتالوگ محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="grocery-checkout.html">بررسی</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="widget widget-links">
-                                                <h6 class="fs-base mb-3">تحویل غذا</h6>
-                                                <ul class="widget-list">
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-category.html">دسته بندی</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-single.html">تک محصول</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-cart.html">سبد خرید</a></li>
-                                                    <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-checkout.html">بررسی و پرداخت</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown"><i class="ci-view-grid me-2"></i>بخش ها</a>
+                                @await Component.InvokeAsync("NavGroupTop")
                             </li>
-                        }
-                    </ul>
-
-
+                        </ul>
+                        <!-- Primary menu-->
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="/">خانه</a>
+                            </li>
+                            @await Component.InvokeAsync("GroupsProducts")
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+    </header>
+    <!-- Toolbar for handheld devices (Default)-->
+    <div class="handheld-toolbar">
+        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">علاقه مندی</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">منو</span></a><a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">25600</span></a></div>
     </div>
-</header>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+</body>
