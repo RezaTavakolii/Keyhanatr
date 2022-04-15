@@ -12,10 +12,13 @@ namespace Keyhanatr.Data.Domain.Order
     {
         [Key]
         public int OrderId { get; set; }
+
         [Required]
         public int UserId { get; set; }
-        [Required]
-        public int OrderSum { get; set; }
+
+        //[Required]
+        //public int OrderSum { get; set; }
+
         [Required]
         public DateTime CreateDate { get; set; } = DateTime.Now;
         public bool IsFinaly { get; set; }

@@ -51,9 +51,6 @@ namespace Keyhanatr.Data.Migrations
                     b.Property<bool>("IsFinaly")
                         .HasColumnType("bit");
 
-                    b.Property<int>("OrderSum")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -90,6 +87,51 @@ namespace Keyhanatr.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("Keyhanatr.Data.Domain.Pay.Payment", b =>
+                {
+                    b.Property<int>("PaymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("Amount")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("BankName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("HashCardNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("InsertDatetime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("PaymentFinished")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("RRN")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("StatusMessage")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("StatusPayment")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("TerminalNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Token")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("PaymentId");
+
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("Keyhanatr.Data.Domain.Products.Discount", b =>
@@ -551,7 +593,8 @@ namespace Keyhanatr.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneDaftar")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

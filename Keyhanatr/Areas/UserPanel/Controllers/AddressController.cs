@@ -21,9 +21,21 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
         {
             _Context = context;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _Context.Addresses.ToListAsync());
+            List<Address> list = new List<Address>();
+            if (User.Identity.IsAuthenticated)
+            {
+                int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var company = _Context.Addresses.FirstOrDefault(o => o.UserId == userId);
+                if (company != null)
+                {
+                    list.AddRange(_Context.Addresses.Where(d => d.UserId == company.UserId).ToList());
+
+                }
+            }
+            return View(list);
+            //return View(await _Context.Addresses.ToListAsync());
         }
         private bool AddressExists(int id)
         {

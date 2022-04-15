@@ -1,83 +1,85 @@
 ﻿@model IEnumerable<Keyhanatr.Data.Domain.Order.OrderDetail>
 
 <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
-    <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
+    <div data-simplebar data-simplebar-auto-hide="false">
         @if (Model.Any())
         {
             @foreach (var item in Model)
             {
                 <div class="widget-cart-item pb-2 border-bottom">
-                    <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                    @*<button onclick="DeleteOrder(@item.DetailId)" class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>*@
                     <div class="d-flex align-items-center">
-                        <a class="flex-shrink-0" href="shop-single-v1.html"><img src="/Images/ProductImages/@item.Product.ImageName" width="64" title="@item.Product.ProductTitle" alt="@item.Product.ProductTitle"></a>
+                        <a class="flex-shrink-0" href="shop-single-v1.html"><img style="width:50px;height:50px" src="/Images/ProductImages/@item.Product.ImageName" width="64" title="@item.Product.ProductTitle" alt="@item.Product.ProductTitle"></a>
                         <div class="ps-2">
                             <h6 class="widget-product-title"><a href="shop-single-v1.html">@item.Product.ProductTitle</a></h6>
-                            <div class="widget-product-meta"><span class="text-accent me-2">@item.Product.Price</span><span class="text-muted">x @item.Count</span></div>
+                            <div class="widget-product-meta"><span class="text-accent me-2">@item.Product.Price.ToString("#,0")</span><span  class="text-muted">x @item.Count</span></div>
                         </div>
                     </div>
                 </div>
-
             }
         }
         else
         {
-            <p>سبد خرید شما خالیست</p>
+            <p>محصولی انتخاب نشده</p>
         }
     </div>
     <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-        <div class="fs-sm me-2 py-2"><span class="text-muted">جمع کل:</span><span class="text-accent fs-base ms-1">@*2560*@<small>@*00*@</small></span></div><a class="btn btn-outline-secondary btn-sm" href="shop-cart.html">ادامه خرید<i class="ci-arrow-left  ms-1 me-n1"></i></a>
-    </div><a class="btn btn-primary btn-sm d-block w-100" href="checkout-details.html"><i class="ci-card me-2 fs-base align-middle"></i>بررسی</a>
+        <div class="fs-sm me-2 py-2"><span class="text-muted">جمع کل:</span><span class="text-accent fs-base ms-1"> @(Model.Sum(m=>m.Count*m.Price).ToString("#,0")) تومان</span></div>
+        @*<a class="btn btn-outline-secondary btn-sm" href="/ShowOrder">ادامه خرید<i class="ci-arrow-left  ms-1 me-n1"></i></a>*@
+    </div>
+    <a class="btn btn-success btn-sm d-block w-100" href="/ShowOrder"><i class="ci-basket me-2 fs-base align-middle"></i> ادامه فرآیند خرید</a>
+
 </div>
-<!--<div class="navbar-tool dropdown ms-3">
-    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>سبدخرید</small>-->@*25600*@<!--</a>-->
-    <!-- Cart dropdown-->
-    <!--<div class="dropdown-menu dropdown-menu-end">
-        <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
-            <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
-                <div class="widget-cart-item pb-2 border-bottom">
-                    <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                    <div class="d-flex align-items-center">
-                        <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/01.jpg" width="64" alt="Product"></a>
-                        <div class="ps-2">
-                            <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                            <div class="widget-product-meta"><span class="text-accent me-2">150<small>00</small></span><span class="text-muted">x 1</span></div>
+    @*<div class="navbar-tool dropdown ms-3">
+            <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>سبدخرید</small>25600</a>
+             Cart dropdown
+            <div class="dropdown-menu dropdown-menu-end">
+                <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
+                    <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
+                        <div class="widget-cart-item pb-2 border-bottom">
+                            <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                            <div class="d-flex align-items-center">
+                                <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/01.jpg" width="64" alt="Product"></a>
+                                <div class="ps-2">
+                                    <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
+                                    <div class="widget-product-meta"><span class="text-accent me-2">150<small>00</small></span><span class="text-muted">x 1</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-cart-item py-2 border-bottom">
+                            <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                            <div class="d-flex align-items-center">
+                                <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/02.jpg" width="64" alt="Product"></a>
+                                <div class="ps-2">
+                                    <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
+                                    <div class="widget-product-meta"><span class="text-accent me-2">25<small>50</small></span><span class="text-muted">x 1</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-cart-item py-2 border-bottom">
+                            <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                            <div class="d-flex align-items-center">
+                                <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/03.jpg" width="64" alt="Product"></a>
+                                <div class="ps-2">
+                                    <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
+                                    <div class="widget-product-meta"><span class="text-accent me-2">22<small>50</small></span><span class="text-muted">x 1</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-cart-item py-2 border-bottom">
+                            <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                            <div class="d-flex align-items-center">
+                                <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/04.jpg" width="64" alt="Product"></a>
+                                <div class="ps-2">
+                                    <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
+                                    <div class="widget-product-meta"><span class="text-accent me-2">90<small>00</small></span><span class="text-muted">x 1</span></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="widget-cart-item py-2 border-bottom">
-                    <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                    <div class="d-flex align-items-center">
-                        <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/02.jpg" width="64" alt="Product"></a>
-                        <div class="ps-2">
-                            <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                            <div class="widget-product-meta"><span class="text-accent me-2">25<small>50</small></span><span class="text-muted">x 1</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget-cart-item py-2 border-bottom">
-                    <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                    <div class="d-flex align-items-center">
-                        <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/03.jpg" width="64" alt="Product"></a>
-                        <div class="ps-2">
-                            <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                            <div class="widget-product-meta"><span class="text-accent me-2">22<small>50</small></span><span class="text-muted">x 1</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget-cart-item py-2 border-bottom">
-                    <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                    <div class="d-flex align-items-center">
-                        <a class="flex-shrink-0" href="shop-single-v1.html"><img src="img/shop/cart/widget/04.jpg" width="64" alt="Product"></a>
-                        <div class="ps-2">
-                            <h6 class="widget-product-title"><a href="shop-single-v1.html">کفش کتانی</a></h6>
-                            <div class="widget-product-meta"><span class="text-accent me-2">90<small>00</small></span><span class="text-muted">x 1</span></div>
-                        </div>
-                    </div>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
+                        <div class="fs-sm me-2 py-2"><span class="text-muted">جمع کل:</span><span class="text-accent fs-base ms-1">2560<small>00</small></span></div><a class="btn btn-outline-secondary btn-sm" href="shop-cart.html">ادامه خرید<i class="ci-arrow-left  ms-1 me-n1"></i></a>
+                    </div><a class="btn btn-primary btn-sm d-block w-100" href="checkout-details.html"><i class="ci-card me-2 fs-base align-middle"></i>بررسی</a>
                 </div>
             </div>
-            <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-                <div class="fs-sm me-2 py-2"><span class="text-muted">جمع کل:</span><span class="text-accent fs-base ms-1">2560<small>00</small></span></div><a class="btn btn-outline-secondary btn-sm" href="shop-cart.html">ادامه خرید<i class="ci-arrow-left  ms-1 me-n1"></i></a>
-            </div><a class="btn btn-primary btn-sm d-block w-100" href="checkout-details.html"><i class="ci-card me-2 fs-base align-middle"></i>بررسی</a>
-        </div>
-    </div>
-</div>-->
+        </div>*@

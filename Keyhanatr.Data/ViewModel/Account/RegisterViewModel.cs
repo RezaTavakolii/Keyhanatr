@@ -25,7 +25,7 @@ namespace Keyhanatr.Data.ViewModels.Account
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "کلمه عبور")]
+        [Display(Name = "تکرار کلمه عبور")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
         [DataType(DataType.Password)]

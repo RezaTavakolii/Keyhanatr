@@ -102,7 +102,7 @@ namespace Keyhanatr.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError("UserName", "اطلاعات صحیح نمی باشد");
+                ModelState.AddModelError("Password",  "اطلاعات ورود صحیح نمی باشد");
                 return View(login);
             }
             if (user.IsActive)

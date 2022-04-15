@@ -30,8 +30,6 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
             return View();
         }
 
-       
-       
 
         #region Change Password
         public IActionResult ChangePassword()

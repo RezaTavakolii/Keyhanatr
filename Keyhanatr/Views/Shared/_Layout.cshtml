@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />*@
     <meta charset="utf-8">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">*@
     <title>فروشگاه اینترنتی کیهان عطر|@ViewData["Title"]</title>
     <partial name="_RefrencesHead" />
     <script src="/js/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/css/bootstrap.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
@@ -20,8 +21,6 @@
     <!-- Hero slider-->
     @RenderSection("slider", false)
     <br />
-
-
     <!-- Popular categories-->
     @*@RenderSection("popularcategories", false)*@
     <!-- Products grid (محصولات پرطرفدار)-->
@@ -35,7 +34,6 @@
     <!-- Featured category (Hoodie)-->
     @RenderSection("productvisited", false)
     @RenderSection("productdiscunt", false)
-
     <br />
     <br />
     <!-- با مارک خرید کنید-->
@@ -43,42 +41,39 @@
     <!-- Blog + Instagram info cards-->
     @RenderSection("bloginsta", false)
     <!-- Footer-->
-
     @RenderSection("footer", false)
     <!-- Toolbar for handheld devices (Default)-->
     <div class="handheld-toolbar">
         <div class="d-table table-layout-fixed w-100">
             <a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">علاقه مندی</span></a>
             <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">منو</span></a>
-            <a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">25600</span></a>
+            <a class="d-table-cell handheld-toolbar-item" href="/ShowOrder"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1"></span></span><span class="handheld-toolbar-label"></span></a>
         </div>
     </div>
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">بالا</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+
+    <partial name="RefrenceJs" />
+
     @RenderSection("Scripts", false)
-
-
-    @*<partial name="RefrenceJs" />*@
-   
-    <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
-    <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
-    <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="/vendor/drift-zoom/dist/Drift.min.js"></script>
-    <script src="/js/theme.min.js"></script>
-    <script src="/vendor/nouislider/distribute/nouislider.min.js"></script>
-
     <script>
         function ShoppingCart(id) {
-            $.get("/ShoppingCart/AddToCart?ProductId=" + id);
+            $.get("/ShoppingCart/AddToCart?ProductId=" + id,
+                function () {
+                    ShowCart();
+                });
         }
+        function ShowCart() {
+            $("#bascket").load("/ShoppingCart/ShowCart");
+            $("#CountCart").load("/ShoppingCart/CountShopCart");
+        }
+        $(function () {
+            ShowCart();
+        });
     </script>
-
 </body>
 </html>
 
 
 
 
-
-@RenderBody()
-<title>@ViewData["Title"] - Keyhanatr</title><title>@ViewData["Title"] - Keyhanatr</title>

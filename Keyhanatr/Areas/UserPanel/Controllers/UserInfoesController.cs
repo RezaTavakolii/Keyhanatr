@@ -24,9 +24,26 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
             _Context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int id)
         {
-            return View(await _Context.UserInfos.ToListAsync());
+            List<UserInfo> list = new List<UserInfo>();
+            if (User.Identity.IsAuthenticated)
+            {
+                int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var userInfo = _Context.UserInfos.FirstOrDefault(o => o.UserId == userId);
+                if (userInfo != null)
+                {
+                    list.AddRange(_Context.UserInfos.Where(d => d.UserId == userInfo.UserId).ToList());
+                }
+            }
+            return View(list);
+            //ViewBag.UserInfoId = id;
+            //int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            //var userInfo = _Context.UserInfos.FirstOrDefault(o => o.UserId == userId);
+            //return View(await _Context.UserInfos.Where(d => d.UserId == userInfo.UserId).ToListAsync());
+
+            //return View(await _Context.UserInfos.ToListAsync());
+
         }
         public bool IsNewUserInfo(int userId)
         {
@@ -47,7 +64,7 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserInfoID,UserId,Name,Family,ImageName,Email,PhoneDaftar")] UserInfo userInfo, IFormFile imgUp)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || userInfo.Name == null)
             {
                 userInfo.ImageName = "default.jpg";
                 if (imgUp != null)
@@ -71,7 +88,7 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
         #endregion
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("UserInfoID,UserId,Name,Family,ImageName,Email,PhoneDaftar")] UserInfo userinfo, IFormFile imgUp)
+        //public async Task<IActionResult> Create([Bind("UserInfoID,UserId,Name,Family,ImageName,Email,PhoneDaftar")] UserInfo userinfo, IFormFile imgUp, int? id)
         //{
         //    if (ModelState.IsValid)
         //    {
@@ -101,7 +118,6 @@ namespace Keyhanatr.Areas.UserPanel.Controllers
         //    }
         //    return View(userinfo);
         //}
-
 
         #region Edit
         public async Task<IActionResult> Edit(int? id)

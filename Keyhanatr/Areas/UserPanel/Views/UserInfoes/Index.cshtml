@@ -7,68 +7,23 @@
     <h6 class="fs-base text-light mb-0">جزئیات نمایه خود را در زیر به روز کنید:</h6><a asp-action="Logout" class="btn btn-primary btn-sm"><i class="ci-sign-out me-2"></i>خروج</a>
 </div>
 
-@*<table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Family)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImageName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PhoneDaftar)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Family)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ImageName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PhoneDaftar)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.Mobile)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.UserInfoID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.UserInfoID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.UserInfoID">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>*@
 
 <form asp-action="Edit" enctype="multipart/form-data" method="post">
-    <div class="col-md-12 alert alert-info">
-        اطلاعات کاربر
-    </div>
+
+
+
+
+
+
     @foreach (var item in Model)
     {
+        @if (item != null)
+        {
+            <div class="col-md-12 alert alert-info">
+                <a  asp-area="UserPanel" asp-controller="UserInfoes" asp-action="Create"><i class="ci-package me-2 mt-n1 alert-secondary"></i><label>افزودن اطلاعات کاربری</label></a>
+            </div>
+
+        }
         <div class="bg-secondary rounded-3 p-4 mb-4">
             <div class="d-flex align-items-center">
                 <div class="row gx-4 gy-3 ">
@@ -103,7 +58,7 @@
                             <div>
                                 <label class="form-check-label" for="subscribe_me">در صورت تمایل اطلاعات خود را بروزرسانی کنید</label>
                             </div>
-                            @*<button type="submit" value="Edit" class="btn btn-primary mt-3 mt-sm-0">بروزرسانی پروفایل</button>*@
+
                             <a class="btn btn-primary mt-3 mt-sm-0" asp-action="Edit" asp-route-id="@item.UserInfoID">بروزرسانی پروفایل</a>
 
                         </div>
@@ -114,7 +69,10 @@
         </div>
 
     }
+
+
 </form>
+
 
 
 @section Scripts {

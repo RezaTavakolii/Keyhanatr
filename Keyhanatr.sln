@@ -5,9 +5,14 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keyhanatr", "Keyhanatr\Keyhanatr.csproj", "{F98C5219-60CF-4BD4-845A-B50E4C258CF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keyhanatr.Core", "Keyhanatr.Core\Keyhanatr.Core.csproj", "{0B4A60C3-88E6-4B9B-BC98-40A3145077D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keyhanatr.Core", "Keyhanatr.Core\Keyhanatr.Core.csproj", "{0B4A60C3-88E6-4B9B-BC98-40A3145077D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keyhanatr.Data", "Keyhanatr.Data\Keyhanatr.Data.csproj", "{33FBBE8C-029F-4FA5-8791-40F0EF97693D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keyhanatr.Data", "Keyhanatr.Data\Keyhanatr.Data.csproj", "{33FBBE8C-029F-4FA5-8791-40F0EF97693D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A5FA2C2-15F8-47D1-8D55-9AB8881F87E2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

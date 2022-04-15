@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>پرداخت</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="http://karkoo.ir/favicon.ico" type="image/ico" />
+    <meta name="description" content="درگاه پرداخت" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <form asp-controller="ShoppingCart" asp-action="Payment" method="post">
+        <div class="main">
+            <img class="banner" src="~/Images/logo.png" />
+            <br />
+            <div class="title">فروشگاه اینترنتی کارکو</div>
+            <div class="specification">
+                <table>
+                    <tr>
+                        <td class="value">
+                            <span>مبلغ به ریال:</span>
+                            <input type="text" id="Price" name="Price" class="form-control" required="" />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lbl">
+                            <span style="font-size: 18px;">
+                                انتخاب درگاه پرداخت
+                            </span>
+                            <br />
+                            <input type="radio" name="dargahpardakht" value="پارسیان" checked="" />
+                            <img src="~/Images/parsian.png" width="50" height="50" style="padding-left: 70px;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="error">
+                            @Html.Raw(ViewBag.message)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">
+                            <input type="submit" value="پرداخت" class="btn-payment">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <p> تمامي كالاها و خدمات اين فروشگاه، حسب مورد داراي مجوزهاي لازم از مراجع مربوطه مي‌باشند و فعاليت‌هاي اين سايت تابع قوانين و مقررات جمهوري اسلامي ايران است.</p>
+            <a href="http://karkoo.ir" target="_blank">www.karkoo.ir</a>
+        </div>
+    </form>
+</body>
+</html>

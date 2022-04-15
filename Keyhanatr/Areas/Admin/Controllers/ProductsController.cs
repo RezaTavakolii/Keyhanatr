@@ -22,7 +22,7 @@ namespace Keyhanatr.Areas.Admin.Controllers
             _productServices = productServices;
         }
 
-        public IActionResult Index(int pageId = 1, int take = 2, string filter = "",
+        public IActionResult Index(int pageId = 1, int take = 10, string filter = "",
             string sortType = "all", string buyType = "all")
         {
             var options = new List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>() {

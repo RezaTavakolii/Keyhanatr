@@ -146,7 +146,7 @@ namespace Keyhanatr.Core.Services.Products
         #endregion
 
         #region Index
-        public Tuple<ShowProducts_VM, int> ShowProductsByFilter(int pageId = 1, int take = 8, string filter = "",
+        public Tuple<ShowProducts_VM, int> ShowProductsByFilter(int pageId = 1, int take = 16, string filter = "",
             string sortType = "all", string buyType = "all")
         {
 

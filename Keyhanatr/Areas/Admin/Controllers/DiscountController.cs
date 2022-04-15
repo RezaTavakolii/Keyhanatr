@@ -76,8 +76,6 @@ namespace Keyhanatr.Areas.Admin.Controllers
         public IActionResult Edit(Discount discount, int PId, string strtDate = "", string edDate = "")
         {
 
-
-
             if (!ModelState.IsValid || discount.PercentValue < 0)
             {
                 ViewBag.ProductId = PId;

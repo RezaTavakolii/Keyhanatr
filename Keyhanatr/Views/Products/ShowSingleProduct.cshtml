@@ -47,6 +47,7 @@
                         <div class="product-gallery-preview order-sm-2">
                             <div class="product-gallery-preview-item active" id="first">
                                 <img class="image-zoom" src="/Images/ProductImages/@Model.ImageName" data-zoom="/Images/ProductImages/@Model.ImageName" alt="Product image">
+                                
                                 <div class="image-zoom-pane"></div>
                             </div>
                             @if (Model.ProductGalleries.Any())
@@ -56,7 +57,7 @@
                                 {
                                     <div class="product-gallery-preview-item" id="pic_@i">
                                         <img class="image-zoom" src="/Images/ProductImages/@item.ImageName" data-zoom="/Images/ProductImages/@item.ImageName" alt="@Model.ProductTitle">
-                                        <div class="image-zoom-pane"></div>
+                                        <div  class="lg image-zoom-pane"></div>
                                     </div>
                                     i++;
                                 }
@@ -705,6 +706,6 @@
 
 }
 
-@section footer{
+@*@section footer{
     <partial name="_Footer.cshtml" />
-}
+}*@

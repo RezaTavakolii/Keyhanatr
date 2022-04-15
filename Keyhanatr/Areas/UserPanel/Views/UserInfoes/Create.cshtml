@@ -11,10 +11,7 @@
 
 <form asp-action="Create" class="needs-validation" enctype="multipart/form-data" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-    @*<input type="hidden" asp-for="UserInfoID" />*@
-    <input type="hidden" asp-for="UserId" class="form-control" asp-items="ViewBag.userId">
-
+    <input type="hidden" asp-for="UserId" name="UserId" value="@ViewBag.userId" />
     <div class="bg-secondary rounded-3 p-4 mb-4">
         <div class="d-flex align-items-center">
             @*<img class="rounded" src="img/shop/account/avatar.jpg" width="90" alt="سوزان گاردنر">*@
@@ -49,7 +46,7 @@
                 @*<div>
                         <a asp-action="Index">بازگشت به لیست</a>
                     </div>*@
-                <button class="btn btn-primary mt-3 mt-sm-0" type="submit">ویرایش</button>
+                <button class="btn btn-primary mt-3 mt-sm-0" type="submit">ثبت اطلاعات</button>
             </div>
         </div>
     </div>

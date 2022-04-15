@@ -9,12 +9,17 @@
 }
 
 @*@section popularcategories
-{
-    <partial name="_PopularCategpries" />
-}*@
+    {
+        <partial name="_PopularCategpries" />
+    }*@
+
+
+
 @section slider
 {
-    @await Component.InvokeAsync("Slider")
+    <cache expires-after="@TimeSpan.FromMinutes(360)">
+        @await Component.InvokeAsync("Slider")
+    </cache>
 }
 
 @section products
@@ -44,9 +49,9 @@
 }
 
 @*@section bloginsta
-{
-    <partial name="_bloginsta" />
-}*@
+    {
+        <partial name="_bloginsta" />
+    }*@
 
 @section footer
 {
