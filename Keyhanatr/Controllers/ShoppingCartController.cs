@@ -14,11 +14,9 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using BankParsian;
-using BankParsianConfirmPayment;
-using BankParsianReversal;
 using Keyhanatr.Data.Domain.Pay;
 using Keyhanatr.Data.ViewModel.Pay;
+using Keyhanatr.Services;
 
 namespace Keyhanatr.Controllers
 {
@@ -159,38 +157,69 @@ namespace Keyhanatr.Controllers
 
         #endregion
 
-        public IActionResult Payment()
+
+        string redirectPage = "https://localhost:5001/Home/CallBack";
+        string GroupTelegram = "623332525";
+        public async Task<IActionResult> Payment()
         {
-            long token = 0;
-            int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var order = _context.Orders.FirstOrDefault(o => !o.IsFinaly && o.UserId == userId);
-            int amount = _context.OrderDetails.Where(d => d.OrderId == order.OrderId).Sum(d => d.Count * d.Price);
+            await TelegramService.SendMessageToDynamicGroupPost("دکمه پرداخت زده شد", GroupTelegram);
+            try
+            {
+                long token = 0;
+                int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var order = _context.Orders.FirstOrDefault(o => !o.IsFinaly && o.UserId == userId);
+                int amount = _context.OrderDetails.Where(d => d.OrderId == order.OrderId).Sum(d => d.Count * d.Price);
 
-            string loginaccount = "U2s0fa5rlFWv740s6351";
-            string terminal = "81346758";
+                string loginaccount = "U2s0fa5rlFWv740s6351";
+                string terminal = "81346758";
 
-            var data = new
-            {
-                LoginAccount = loginaccount,
-                Amount = amount,
-                OrderId = DateTime.Now.Ticks,
-                //TerminalId = terminal,
-                CallBackUrl = "http://localhost:36053/Home/CallBack"
-            };
-            var res = CallApi<RequestPaymentResult>("https://pec.shaparak.ir/NewIPGServices/Sale/SaleService.asmx", data).Result;
-                                                     
-            if (res.Status == 0)
-            {
-                token = res.Token;
-                //you must save the token in a data store for subsequent support and api calls.
-                //Session["Token"] = token;
-                return Redirect($"https://pec.shaparak.ir/NewIPG/?token={token}");
-                               
+
+                // ایجاد یک شی از 
+                //ParsianServiceReference
+                //برای پرداخت
+                var saleData = new BankPayment.ClientSaleRequestData();
+                saleData.LoginAccount = loginaccount; // 1- پین
+                saleData.Amount = amount; // 2- مبلغ
+                saleData.OrderId = order.OrderId;  // 3- شمار سفارش
+                saleData.CallBackUrl = redirectPage;   // 4- آدرس برگشت
+
+                // ایجاد یک شی از سرویس فوق
+
+                var saleService = new BankPayment.SaleServiceSoapClient(BankPayment.SaleServiceSoapClient.EndpointConfiguration.SaleServiceSoap);
+                var requestResult = saleService.SalePaymentRequestAsync(saleData).GetAwaiter().GetResult();
+
+
+                await TelegramService.SendMessageToDynamicGroupPost(JsonConvert.SerializeObject(requestResult), GroupTelegram);
+                // بررسی وجود اطلاعات ارسال شده از درگاه بانک
+                if (requestResult.Body.SalePaymentRequestResult.Status == 0 && requestResult.Body.SalePaymentRequestResult.Token > 0)
+                {
+                    // ویرایش اطلاعات در دیتابیس
+                    //await UpdatePayment(paymentId, null, null, requestResult.Body.SalePaymentRequestResult.Token, null, 0, null, false);
+
+                    // اتصال به درگاه بانک
+                    Response.Redirect("https://pec.shaparak.ir/NewIPG/?Token=" + requestResult.Body.SalePaymentRequestResult.Token);
+                }
+                else
+                {
+                    // ویرایش اطلاعات ارسالی از بانک در صورت عدم اتصال
+                    //await UpdatePayment(paymentId, requestResult.Body.SalePaymentRequestResult.Status.ToString(), requestResult.Body.SalePaymentRequestResult.Message, 0, null, 0, null, false);
+
+                    // بانک پیام علت عدم اتصال به بانک را هم ارسال می کند که می توانید به کاربر نمایش دهید
+                    // استفاده کنید PaymentResult  یا اینکه از کلاس
+                    //requestResult.Result.Body.SalePaymentRequestResult.Message
+
+
+                    // نمایش خطا به کاربر                    
+                    ViewBag.Message = Infrastructure.PaymentResult.Parsian(requestResult.Body.SalePaymentRequestResult.Status.ToString());
+                }
+
             }
-            else
+            catch (Exception)
             {
-                return View("PaymentError", res);
+
+                ViewBag.message = "در حال حاظر امکان اتصال به این درگاه وجود ندارد ";
             }
+            return View("PaymentError", ViewBag.message);
         }
 
         public async Task<T> CallApi<T>(string apiUrl, object value) where T : new()

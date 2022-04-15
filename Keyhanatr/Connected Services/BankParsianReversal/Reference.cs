@@ -9,12 +9,11 @@
 
 namespace BankParsianReversal
 {
-   
     using System.Runtime.Serialization;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ClientReversalRequestData", Namespace="https://pec.Shaparak.ir/NewIPGServices/Reversal/ReversalService")]
     public partial class ClientReversalRequestData : object
     {
@@ -51,7 +50,7 @@ namespace BankParsianReversal
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ResponseDataViewModelBase", Namespace="https://pec.Shaparak.ir/NewIPGServices/Reversal/ReversalService")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankParsianReversal.ClientReversalResponseData))]
     public partial class ResponseDataViewModelBase : object
@@ -89,7 +88,7 @@ namespace BankParsianReversal
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ClientReversalResponseData", Namespace="https://pec.Shaparak.ir/NewIPGServices/Reversal/ReversalService")]
     public partial class ClientReversalResponseData : BankParsianReversal.ResponseDataViewModelBase
     {
@@ -110,7 +109,7 @@ namespace BankParsianReversal
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="https://pec.Shaparak.ir/NewIPGServices/Reversal/ReversalService", ConfigurationName="BankParsianReversal.ReversalServiceSoap")]
     public interface ReversalServiceSoap
     {
@@ -120,7 +119,7 @@ namespace BankParsianReversal
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class ReversalRequestRequest
@@ -140,7 +139,7 @@ namespace BankParsianReversal
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="https://pec.Shaparak.ir/NewIPGServices/Reversal/ReversalService")]
     public partial class ReversalRequestRequestBody
@@ -160,7 +159,7 @@ namespace BankParsianReversal
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class ReversalRequestResponse
@@ -180,7 +179,7 @@ namespace BankParsianReversal
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="https://pec.Shaparak.ir/NewIPGServices/Reversal/ReversalService")]
     public partial class ReversalRequestResponseBody
@@ -199,13 +198,13 @@ namespace BankParsianReversal
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     public interface ReversalServiceSoapChannel : BankParsianReversal.ReversalServiceSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     public partial class ReversalServiceSoapClient : System.ServiceModel.ClientBase<BankParsianReversal.ReversalServiceSoap>, BankParsianReversal.ReversalServiceSoap
     {
         

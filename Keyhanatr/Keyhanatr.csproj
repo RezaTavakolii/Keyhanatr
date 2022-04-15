@@ -4,6 +4,12 @@
 		<TargetFramework>net5.0</TargetFramework>
 
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Connected Services\BankParsianConfirmPayment\Reference.cs" />
+	  <Compile Remove="Connected Services\BankParsianReversal\Reference.cs" />
+	  <Compile Remove="Connected Services\BankParsian\Reference.cs" />
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="DocumentFormat.OpenXml" Version="2.15.0" />
 		<PackageReference Include="EfConfigurationProvider.Core" Version="0.6.2" />
@@ -49,12 +55,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include="..\.editorconfig" Link=".editorconfig" />
+	  <None Include="Connected Services\BankParsianConfirmPayment\Reference.cs" />
+	  <None Include="Connected Services\BankParsianReversal\Reference.cs" />
+	  <None Include="Connected Services\BankParsian\Reference.cs" />
 	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="System.ServiceModel" />
-	</ItemGroup>
-	<ItemGroup>
-		<WCFMetadata Include="Connected Services" />
-	</ItemGroup>
+
 
 </Project>

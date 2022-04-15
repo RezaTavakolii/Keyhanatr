@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BankParsian
+namespace BankPayment
 {
     using System.Runtime.Serialization;
     
@@ -15,8 +15,8 @@ namespace BankParsian
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ClientPaymentRequestDataBase", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankParsian.ClientSaleRequestData))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankParsian.ClientSaleDiscountRequestData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankPayment.ClientSaleRequestData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankPayment.ClientSaleDiscountRequestData))]
     public partial class ClientPaymentRequestDataBase : object
     {
         
@@ -114,21 +114,21 @@ namespace BankParsian
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ClientSaleRequestData", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankParsian.ClientSaleDiscountRequestData))]
-    public partial class ClientSaleRequestData : BankParsian.ClientPaymentRequestDataBase
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankPayment.ClientSaleDiscountRequestData))]
+    public partial class ClientSaleRequestData : BankPayment.ClientPaymentRequestDataBase
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ClientSaleDiscountRequestData", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService")]
-    public partial class ClientSaleDiscountRequestData : BankParsian.ClientSaleRequestData
+    public partial class ClientSaleDiscountRequestData : BankPayment.ClientSaleRequestData
     {
         
-        private BankParsian.Product[] DiscountProductField;
+        private BankPayment.Product[] DiscountProductField;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public BankParsian.Product[] DiscountProduct
+        public BankPayment.Product[] DiscountProduct
         {
             get
             {
@@ -181,7 +181,7 @@ namespace BankParsian
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ClientPaymentResponseDataBase", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankParsian.ClientSaleResponseData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BankPayment.ClientSaleResponseData))]
     public partial class ClientPaymentResponseDataBase : object
     {
         
@@ -234,26 +234,26 @@ namespace BankParsian
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ClientSaleResponseData", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService")]
-    public partial class ClientSaleResponseData : BankParsian.ClientPaymentResponseDataBase
+    public partial class ClientSaleResponseData : BankPayment.ClientPaymentResponseDataBase
     {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", ConfigurationName="BankParsian.SaleServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", ConfigurationName="BankPayment.SaleServiceSoap")]
     public interface SaleServiceSoap
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService/SalePaymentRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<BankParsian.SalePaymentRequestResponse> SalePaymentRequestAsync(BankParsian.SalePaymentRequestRequest request);
+        System.Threading.Tasks.Task<BankPayment.SalePaymentRequestResponse> SalePaymentRequestAsync(BankPayment.SalePaymentRequestRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService/SalePaymentWithId", ReplyAction="*")]
-        System.Threading.Tasks.Task<BankParsian.SalePaymentWithIdResponse> SalePaymentWithIdAsync(BankParsian.SalePaymentWithIdRequest request);
+        System.Threading.Tasks.Task<BankPayment.SalePaymentWithIdResponse> SalePaymentWithIdAsync(BankPayment.SalePaymentWithIdRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService/UDSalePaymentRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<BankParsian.UDSalePaymentRequestResponse> UDSalePaymentRequestAsync(BankParsian.UDSalePaymentRequestRequest request);
+        System.Threading.Tasks.Task<BankPayment.UDSalePaymentRequestResponse> UDSalePaymentRequestAsync(BankPayment.UDSalePaymentRequestRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService/SalePaymentWithDiscount", ReplyAction="*")]
-        System.Threading.Tasks.Task<BankParsian.SalePaymentWithDiscountResponse> SalePaymentWithDiscountAsync(BankParsian.SalePaymentWithDiscountRequest request);
+        System.Threading.Tasks.Task<BankPayment.SalePaymentWithDiscountResponse> SalePaymentWithDiscountAsync(BankPayment.SalePaymentWithDiscountRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -264,13 +264,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="SalePaymentRequest", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.SalePaymentRequestRequestBody Body;
+        public BankPayment.SalePaymentRequestRequestBody Body;
         
         public SalePaymentRequestRequest()
         {
         }
         
-        public SalePaymentRequestRequest(BankParsian.SalePaymentRequestRequestBody Body)
+        public SalePaymentRequestRequest(BankPayment.SalePaymentRequestRequestBody Body)
         {
             this.Body = Body;
         }
@@ -284,13 +284,13 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientSaleRequestData requestData;
+        public BankPayment.ClientSaleRequestData requestData;
         
         public SalePaymentRequestRequestBody()
         {
         }
         
-        public SalePaymentRequestRequestBody(BankParsian.ClientSaleRequestData requestData)
+        public SalePaymentRequestRequestBody(BankPayment.ClientSaleRequestData requestData)
         {
             this.requestData = requestData;
         }
@@ -304,13 +304,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="SalePaymentRequestResponse", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.SalePaymentRequestResponseBody Body;
+        public BankPayment.SalePaymentRequestResponseBody Body;
         
         public SalePaymentRequestResponse()
         {
         }
         
-        public SalePaymentRequestResponse(BankParsian.SalePaymentRequestResponseBody Body)
+        public SalePaymentRequestResponse(BankPayment.SalePaymentRequestResponseBody Body)
         {
             this.Body = Body;
         }
@@ -324,13 +324,13 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientSaleResponseData SalePaymentRequestResult;
+        public BankPayment.ClientSaleResponseData SalePaymentRequestResult;
         
         public SalePaymentRequestResponseBody()
         {
         }
         
-        public SalePaymentRequestResponseBody(BankParsian.ClientSaleResponseData SalePaymentRequestResult)
+        public SalePaymentRequestResponseBody(BankPayment.ClientSaleResponseData SalePaymentRequestResult)
         {
             this.SalePaymentRequestResult = SalePaymentRequestResult;
         }
@@ -344,13 +344,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="SalePaymentWithId", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.SalePaymentWithIdRequestBody Body;
+        public BankPayment.SalePaymentWithIdRequestBody Body;
         
         public SalePaymentWithIdRequest()
         {
         }
         
-        public SalePaymentWithIdRequest(BankParsian.SalePaymentWithIdRequestBody Body)
+        public SalePaymentWithIdRequest(BankPayment.SalePaymentWithIdRequestBody Body)
         {
             this.Body = Body;
         }
@@ -364,13 +364,13 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientSaleRequestData requestData;
+        public BankPayment.ClientSaleRequestData requestData;
         
         public SalePaymentWithIdRequestBody()
         {
         }
         
-        public SalePaymentWithIdRequestBody(BankParsian.ClientSaleRequestData requestData)
+        public SalePaymentWithIdRequestBody(BankPayment.ClientSaleRequestData requestData)
         {
             this.requestData = requestData;
         }
@@ -384,13 +384,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="SalePaymentWithIdResponse", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.SalePaymentWithIdResponseBody Body;
+        public BankPayment.SalePaymentWithIdResponseBody Body;
         
         public SalePaymentWithIdResponse()
         {
         }
         
-        public SalePaymentWithIdResponse(BankParsian.SalePaymentWithIdResponseBody Body)
+        public SalePaymentWithIdResponse(BankPayment.SalePaymentWithIdResponseBody Body)
         {
             this.Body = Body;
         }
@@ -404,13 +404,13 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientSaleResponseData SalePaymentWithIdResult;
+        public BankPayment.ClientSaleResponseData SalePaymentWithIdResult;
         
         public SalePaymentWithIdResponseBody()
         {
         }
         
-        public SalePaymentWithIdResponseBody(BankParsian.ClientSaleResponseData SalePaymentWithIdResult)
+        public SalePaymentWithIdResponseBody(BankPayment.ClientSaleResponseData SalePaymentWithIdResult)
         {
             this.SalePaymentWithIdResult = SalePaymentWithIdResult;
         }
@@ -424,13 +424,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="UDSalePaymentRequest", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.UDSalePaymentRequestRequestBody Body;
+        public BankPayment.UDSalePaymentRequestRequestBody Body;
         
         public UDSalePaymentRequestRequest()
         {
         }
         
-        public UDSalePaymentRequestRequest(BankParsian.UDSalePaymentRequestRequestBody Body)
+        public UDSalePaymentRequestRequest(BankPayment.UDSalePaymentRequestRequestBody Body)
         {
             this.Body = Body;
         }
@@ -444,13 +444,13 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientSaleRequestData requestData;
+        public BankPayment.ClientSaleRequestData requestData;
         
         public UDSalePaymentRequestRequestBody()
         {
         }
         
-        public UDSalePaymentRequestRequestBody(BankParsian.ClientSaleRequestData requestData)
+        public UDSalePaymentRequestRequestBody(BankPayment.ClientSaleRequestData requestData)
         {
             this.requestData = requestData;
         }
@@ -464,13 +464,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="UDSalePaymentRequestResponse", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.UDSalePaymentRequestResponseBody Body;
+        public BankPayment.UDSalePaymentRequestResponseBody Body;
         
         public UDSalePaymentRequestResponse()
         {
         }
         
-        public UDSalePaymentRequestResponse(BankParsian.UDSalePaymentRequestResponseBody Body)
+        public UDSalePaymentRequestResponse(BankPayment.UDSalePaymentRequestResponseBody Body)
         {
             this.Body = Body;
         }
@@ -484,13 +484,13 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientPaymentResponseDataBase UDSalePaymentRequestResult;
+        public BankPayment.ClientPaymentResponseDataBase UDSalePaymentRequestResult;
         
         public UDSalePaymentRequestResponseBody()
         {
         }
         
-        public UDSalePaymentRequestResponseBody(BankParsian.ClientPaymentResponseDataBase UDSalePaymentRequestResult)
+        public UDSalePaymentRequestResponseBody(BankPayment.ClientPaymentResponseDataBase UDSalePaymentRequestResult)
         {
             this.UDSalePaymentRequestResult = UDSalePaymentRequestResult;
         }
@@ -504,13 +504,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="SalePaymentWithDiscount", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.SalePaymentWithDiscountRequestBody Body;
+        public BankPayment.SalePaymentWithDiscountRequestBody Body;
         
         public SalePaymentWithDiscountRequest()
         {
         }
         
-        public SalePaymentWithDiscountRequest(BankParsian.SalePaymentWithDiscountRequestBody Body)
+        public SalePaymentWithDiscountRequest(BankPayment.SalePaymentWithDiscountRequestBody Body)
         {
             this.Body = Body;
         }
@@ -524,13 +524,13 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientSaleDiscountRequestData requestData;
+        public BankPayment.ClientSaleDiscountRequestData requestData;
         
         public SalePaymentWithDiscountRequestBody()
         {
         }
         
-        public SalePaymentWithDiscountRequestBody(BankParsian.ClientSaleDiscountRequestData requestData)
+        public SalePaymentWithDiscountRequestBody(BankPayment.ClientSaleDiscountRequestData requestData)
         {
             this.requestData = requestData;
         }
@@ -544,13 +544,13 @@ namespace BankParsian
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="SalePaymentWithDiscountResponse", Namespace="https://pec.Shaparak.ir/NewIPGServices/Sale/SaleService", Order=0)]
-        public BankParsian.SalePaymentWithDiscountResponseBody Body;
+        public BankPayment.SalePaymentWithDiscountResponseBody Body;
         
         public SalePaymentWithDiscountResponse()
         {
         }
         
-        public SalePaymentWithDiscountResponse(BankParsian.SalePaymentWithDiscountResponseBody Body)
+        public SalePaymentWithDiscountResponse(BankPayment.SalePaymentWithDiscountResponseBody Body)
         {
             this.Body = Body;
         }
@@ -564,26 +564,26 @@ namespace BankParsian
     {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public BankParsian.ClientSaleResponseData SalePaymentWithDiscountResult;
+        public BankPayment.ClientSaleResponseData SalePaymentWithDiscountResult;
         
         public SalePaymentWithDiscountResponseBody()
         {
         }
         
-        public SalePaymentWithDiscountResponseBody(BankParsian.ClientSaleResponseData SalePaymentWithDiscountResult)
+        public SalePaymentWithDiscountResponseBody(BankPayment.ClientSaleResponseData SalePaymentWithDiscountResult)
         {
             this.SalePaymentWithDiscountResult = SalePaymentWithDiscountResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    public interface SaleServiceSoapChannel : BankParsian.SaleServiceSoap, System.ServiceModel.IClientChannel
+    public interface SaleServiceSoapChannel : BankPayment.SaleServiceSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    public partial class SaleServiceSoapClient : System.ServiceModel.ClientBase<BankParsian.SaleServiceSoap>, BankParsian.SaleServiceSoap
+    public partial class SaleServiceSoapClient : System.ServiceModel.ClientBase<BankPayment.SaleServiceSoap>, BankPayment.SaleServiceSoap
     {
         
         /// <summary>
@@ -620,59 +620,59 @@ namespace BankParsian
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankParsian.SalePaymentRequestResponse> BankParsian.SaleServiceSoap.SalePaymentRequestAsync(BankParsian.SalePaymentRequestRequest request)
+        System.Threading.Tasks.Task<BankPayment.SalePaymentRequestResponse> BankPayment.SaleServiceSoap.SalePaymentRequestAsync(BankPayment.SalePaymentRequestRequest request)
         {
             return base.Channel.SalePaymentRequestAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankParsian.SalePaymentRequestResponse> SalePaymentRequestAsync(BankParsian.ClientSaleRequestData requestData)
+        public System.Threading.Tasks.Task<BankPayment.SalePaymentRequestResponse> SalePaymentRequestAsync(BankPayment.ClientSaleRequestData requestData)
         {
-            BankParsian.SalePaymentRequestRequest inValue = new BankParsian.SalePaymentRequestRequest();
-            inValue.Body = new BankParsian.SalePaymentRequestRequestBody();
+            BankPayment.SalePaymentRequestRequest inValue = new BankPayment.SalePaymentRequestRequest();
+            inValue.Body = new BankPayment.SalePaymentRequestRequestBody();
             inValue.Body.requestData = requestData;
-            return ((BankParsian.SaleServiceSoap)(this)).SalePaymentRequestAsync(inValue);
+            return ((BankPayment.SaleServiceSoap)(this)).SalePaymentRequestAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankParsian.SalePaymentWithIdResponse> BankParsian.SaleServiceSoap.SalePaymentWithIdAsync(BankParsian.SalePaymentWithIdRequest request)
+        System.Threading.Tasks.Task<BankPayment.SalePaymentWithIdResponse> BankPayment.SaleServiceSoap.SalePaymentWithIdAsync(BankPayment.SalePaymentWithIdRequest request)
         {
             return base.Channel.SalePaymentWithIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankParsian.SalePaymentWithIdResponse> SalePaymentWithIdAsync(BankParsian.ClientSaleRequestData requestData)
+        public System.Threading.Tasks.Task<BankPayment.SalePaymentWithIdResponse> SalePaymentWithIdAsync(BankPayment.ClientSaleRequestData requestData)
         {
-            BankParsian.SalePaymentWithIdRequest inValue = new BankParsian.SalePaymentWithIdRequest();
-            inValue.Body = new BankParsian.SalePaymentWithIdRequestBody();
+            BankPayment.SalePaymentWithIdRequest inValue = new BankPayment.SalePaymentWithIdRequest();
+            inValue.Body = new BankPayment.SalePaymentWithIdRequestBody();
             inValue.Body.requestData = requestData;
-            return ((BankParsian.SaleServiceSoap)(this)).SalePaymentWithIdAsync(inValue);
+            return ((BankPayment.SaleServiceSoap)(this)).SalePaymentWithIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankParsian.UDSalePaymentRequestResponse> BankParsian.SaleServiceSoap.UDSalePaymentRequestAsync(BankParsian.UDSalePaymentRequestRequest request)
+        System.Threading.Tasks.Task<BankPayment.UDSalePaymentRequestResponse> BankPayment.SaleServiceSoap.UDSalePaymentRequestAsync(BankPayment.UDSalePaymentRequestRequest request)
         {
             return base.Channel.UDSalePaymentRequestAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankParsian.UDSalePaymentRequestResponse> UDSalePaymentRequestAsync(BankParsian.ClientSaleRequestData requestData)
+        public System.Threading.Tasks.Task<BankPayment.UDSalePaymentRequestResponse> UDSalePaymentRequestAsync(BankPayment.ClientSaleRequestData requestData)
         {
-            BankParsian.UDSalePaymentRequestRequest inValue = new BankParsian.UDSalePaymentRequestRequest();
-            inValue.Body = new BankParsian.UDSalePaymentRequestRequestBody();
+            BankPayment.UDSalePaymentRequestRequest inValue = new BankPayment.UDSalePaymentRequestRequest();
+            inValue.Body = new BankPayment.UDSalePaymentRequestRequestBody();
             inValue.Body.requestData = requestData;
-            return ((BankParsian.SaleServiceSoap)(this)).UDSalePaymentRequestAsync(inValue);
+            return ((BankPayment.SaleServiceSoap)(this)).UDSalePaymentRequestAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankParsian.SalePaymentWithDiscountResponse> BankParsian.SaleServiceSoap.SalePaymentWithDiscountAsync(BankParsian.SalePaymentWithDiscountRequest request)
+        System.Threading.Tasks.Task<BankPayment.SalePaymentWithDiscountResponse> BankPayment.SaleServiceSoap.SalePaymentWithDiscountAsync(BankPayment.SalePaymentWithDiscountRequest request)
         {
             return base.Channel.SalePaymentWithDiscountAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankParsian.SalePaymentWithDiscountResponse> SalePaymentWithDiscountAsync(BankParsian.ClientSaleDiscountRequestData requestData)
+        public System.Threading.Tasks.Task<BankPayment.SalePaymentWithDiscountResponse> SalePaymentWithDiscountAsync(BankPayment.ClientSaleDiscountRequestData requestData)
         {
-            BankParsian.SalePaymentWithDiscountRequest inValue = new BankParsian.SalePaymentWithDiscountRequest();
-            inValue.Body = new BankParsian.SalePaymentWithDiscountRequestBody();
+            BankPayment.SalePaymentWithDiscountRequest inValue = new BankPayment.SalePaymentWithDiscountRequest();
+            inValue.Body = new BankPayment.SalePaymentWithDiscountRequestBody();
             inValue.Body.requestData = requestData;
-            return ((BankParsian.SaleServiceSoap)(this)).SalePaymentWithDiscountAsync(inValue);
+            return ((BankPayment.SaleServiceSoap)(this)).SalePaymentWithDiscountAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

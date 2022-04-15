@@ -1,14 +1,14 @@
 {
   "ExtendedData": {
     "inputs": [
-      "https://pec.shaparak.ir/NewIPGServices/Reverse/ReversalService.asmx"
+      "https://pec.shaparak.ir/NewIPGServices/Sale/SaleService.asmx"
     ],
     "collectionTypes": [
       "System.Array",
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, BankParsianReversal"
+      "*, BankPayment"
     ],
     "targetFramework": "net5.0",
     "typeReuseMode": "None"
